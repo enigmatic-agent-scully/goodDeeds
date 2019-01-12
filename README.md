@@ -1,4 +1,11 @@
-# project_3
+# Good Deeds
+
+### Team
+* AJ Jordan || [enigmatic-agent-scully](https://github.com/enigmatic-agent-scully) || ___aj
+    * Erik Woodworth || [spinozist](https://github.com/spinozist) || spinozist
+    * Hayden Estes || [haydest](https://github.com/haydest) || haydest
+    * Mike B || [mb480s](https://github.com/mb480s) || MikeB
+     * [GoodDeeds](https://github.com/enigmatic-agent-scully/GoodDeeds)
 
 ### Requirements
 
