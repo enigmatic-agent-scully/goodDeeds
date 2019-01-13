@@ -7,6 +7,10 @@
     * Hayden Estes || [haydest](https://github.com/haydest) || haydest
     * Mike B || [mb480s](https://github.com/mb480s) || MikeB
 
+### React App Diagram
+
+![Alt Text](./images/ReactAppDiagram.png "React App Diagram")
+
 ### Requirements
 
 * Must use React, Vue, or Angular in some way (even if minimal)
