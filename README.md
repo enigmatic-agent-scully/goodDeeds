@@ -1,5 +1,7 @@
 # Good Deeds
 
+This app aims to promote good deeds - direct, person-to-person acts of kindness, service, or financial assistance - for people who live in low-income neighborhoods. The idea began as a way to connect people in low-income neighborhoods with service providers who were willing to donate home repair services, but our group quickly saw its potential to match users with a much wider variety of personal and professional services. 
+
 ### Team
 * Members
     * AJ Jordan || [enigmatic-agent-scully](https://github.com/enigmatic-agent-scully) || ___aj
