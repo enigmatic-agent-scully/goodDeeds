@@ -16,6 +16,7 @@ export default {
     return axios.post(`/api/deeds`, deedData);
   },
 
+  // Change the status of deed
   markComplete: id => {
     return axios.put(`/api/deeds/${id}`, {
       completed: true
