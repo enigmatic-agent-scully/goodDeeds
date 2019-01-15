@@ -2,15 +2,15 @@
 
 # dependencies
 /node_modules
-././node_modules
 /.pnp
 .pnp.js
-./.eslintrc
+
 # testing
 /coverage
 
 # production
 /build
+
 
 # misc
 .DS_Store
