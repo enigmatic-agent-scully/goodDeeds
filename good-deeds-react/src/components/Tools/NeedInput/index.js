@@ -14,6 +14,8 @@ function NeedInput() {
           <option value='3'>Cleaning Up</option>
           <option value='4'>Fixing Something</option>
         </Input>
+        <h4>Upload Photo (optional)</h4>
+        <Input type="file" label="File" s={12} multiple placeholder="Upload one or more files" />
         <h4>Date</h4>
         <Input s={12} label="What's a preferred date?" name='on' type='date' onChange={function(e, value) {}} />
         <h4>Description</h4>

@@ -7,7 +7,7 @@ function Landing() {
   return(
     <div className='Landing-Page'>
       <Row>
-        <Col s="8">
+        <Col s="12">
           <Slider>
             <Slide
               src="https://assets.trabiancdn.com/api/file/29QNOSugRqICIdZkNEBM+cu_101.png/convert?format=jpg&quality=85&compress=true&w=1500&h=600&fit=crop&align=faces"
@@ -29,9 +29,11 @@ function Landing() {
             </Slide>
           </Slider>
         </Col> 
+        <Col s="4"></Col>
         <Col s="4">
           <Login />
         </Col>
+        <Col s="4"></Col>
       </Row>
     </div>
 
