@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "express": "^4.16.4",
+    "leaflet": "^1.4.0",
     "mongo": "^0.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-leaflet": "^2.2.0",
     "react-materialize": "^2.6.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3"
