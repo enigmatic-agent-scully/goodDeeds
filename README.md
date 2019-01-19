@@ -7,11 +7,11 @@ This app aims to promote good deeds - direct, person-to-person acts of kindness,
     * AJ Jordan || [enigmatic-agent-scully](https://github.com/enigmatic-agent-scully) || ___aj
     * Erik Woodworth || [spinozist](https://github.com/spinozist) || spinozist
     * Hayden Estes || [haydest](https://github.com/haydest) || haydest
-    * Mike B || [mb480s](https://github.com/mb480s) || MikeB
+    * Mike Baghari || [mb480s](https://github.com/mb480s) || MikeB
 
 ### React App Diagram
 
-![Alt Text](./images/ReactAppDiagram.png "React App Diagram")
+![Alt Text](./READMEimages/ReactAppDiagram.png "React App Diagram")
 
 ### Requirements
 

@@ -1,0 +1,33 @@
+{
+  "name": "gooddeeds",
+  "version": "1.0.0",
+  "description": "This app aims to promote good deeds - direct, person-to-person acts of kindness, service, or financial assistance - for people who live in low-income neighborhoods. The idea began as a way to connect people in low-income neighborhoods with service providers who were willing to donate home repair services, but our group quickly saw its potential to match users with a much wider variety of personal and professional services.",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node seed/seedDB.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enigmatic-agent-scully/goodDeeds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enigmatic-agent-scully/goodDeeds/issues"
+  },
+  "homepage": "https://github.com/enigmatic-agent-scully/goodDeeds#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^5.0.17",
+    "if-env": "^1.0.4"
+  }
+}
