@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-materialize';
-import HelpInput from '../../Tools/HelpInput';
+import NeedSearch from '../../Tools/NeedSearch';
 import MapView from '../../Tools/MapView';
 import ListView from '../../Tools/ListView';
 import './style.css';
@@ -10,7 +10,7 @@ function GiveHelp() {
     <div className='Give-Help-Wrapper'>
       <Row>
         <Col s="4">
-          <HelpInput />
+          <NeedSearch />
         </Col>
         <Col s="4">
           <ListView />

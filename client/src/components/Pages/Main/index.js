@@ -5,6 +5,8 @@ import GetHelp from '../../Wrappers/GetHelp';
 import GiveHelp from '../../Wrappers/GiveHelp';
 import './style.css';
 
+// Rewrite as Class with User state
+
 function Main() {
   return(
     <div className='Main-Page'>
@@ -12,8 +14,7 @@ function Main() {
         <Dropdown trigger={
           <Chip className="user-badge">
             <img src='https://openclipart.org/download/216413/coniglio_rabbit_small.svg' alt='Contact Person' />
-            Username</Chip>
-        }>
+            Username</Chip>}>
           <NavItem>View Profile</NavItem>
           <NavItem>Logout</NavItem>
         </Dropdown>
