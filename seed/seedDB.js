@@ -12,6 +12,10 @@ const needSeed = [
   {
     category: "Getting Around",
     description: "I need to get to the doctors"
+  },
+  {
+    category: "Cleaning Up",
+    description: "Help clean out shed"
   }
 ];
 
