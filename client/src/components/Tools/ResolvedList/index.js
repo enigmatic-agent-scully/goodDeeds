@@ -6,7 +6,7 @@ import './style.css';
 function ResolvedList() {
   return(
     <Card>
-      <h3>Resolved Needs</h3>
+      <h4>Resolved Needs</h4>
       List of resolved needs will go here.
     </Card> 
   );

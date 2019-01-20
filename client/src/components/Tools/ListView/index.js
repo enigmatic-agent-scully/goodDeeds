@@ -6,8 +6,9 @@ import './style.css';
 function ListView() {
   return(
     <Card>
-      <h3>List View</h3>
-      List of needs will go here.
+      <p>
+          List of needs will go here on cards.
+      </p>
     </Card> 
   );
 }

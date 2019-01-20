@@ -10,10 +10,10 @@ import './style.css';
 function Main() {
   return(
     <div className='Main-Page'>
-      <Navbar brand='goodDeeds'right>
+      <Navbar brand='goodDeeds' fixed right>
         <Dropdown trigger={
           <Chip className="user-badge">
-            <img src='https://openclipart.org/download/216413/coniglio_rabbit_small.svg' alt='Contact Person' />
+            <img src='https://via.placeholder.com/50' alt='Contact Person' />
             Username</Chip>}>
           <NavItem>View Profile</NavItem>
           <NavItem>Logout</NavItem>

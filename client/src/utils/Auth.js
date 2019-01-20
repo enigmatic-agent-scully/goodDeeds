@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-  signup: function () {
-    return axios.post('/api/user/signup');
+  signup: data => {
+    return axios.post('/api/user/signup', data);
   },
   login: function () {
     return axios.post('/api/user/login');
