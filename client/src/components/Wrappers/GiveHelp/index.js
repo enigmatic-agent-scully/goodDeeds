@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-materialize';
+import { Col, Row, Preloader } from 'react-materialize';
 import NeedSearch from '../../Tools/NeedSearch';
 import MapView from '../../Tools/MapView';
 import ListView from '../../Tools/ListView';
@@ -11,12 +11,14 @@ function GiveHelp() {
       <Row>
         <Col s="4">
           <NeedSearch />
+          <ListView>
+            <Preloader flashing/>
+          </ListView>
         </Col>
-        <Col s="4">
-          <ListView />
-        </Col>
-        <Col s="4">
-          <MapView />
+        <Col s="8">
+          <MapView>
+            <Preloader flashing/>
+          </MapView>
         </Col>
       </Row>
     </div>

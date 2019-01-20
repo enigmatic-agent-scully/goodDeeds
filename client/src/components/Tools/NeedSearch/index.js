@@ -14,20 +14,21 @@ function NeedSearch() {
     
   return(
     <Card>
-      <h3>Search Needs</h3>
+      <h4>Search Needs</h4>
       <Row>
-        <h4>Keyword</h4>
+        <h5>Keyword</h5>
         <Autocomplete
           s = {12}
           title='Type here'
           data={keyword}/>
-        <h4>Type</h4>
-        <Input s={12} label="Pick One" type='select' defaultValue='2'>
-          <option value='2'>Getting Around</option>
-          <option value='3'>Cleaning Up</option>
-          <option value='4'>Fixing Something</option>
+        <h5>Type</h5>
+        <Input s={12} label="Select Need Type" type='select' defaultValue='0'>
+          <option value='0'>-Pick One-</option>
+          <option value='1'>Getting Around</option>
+          <option value='2'>Cleaning Up</option>
+          <option value='3'>Fixing Something</option>
         </Input>
-        <h4>Date</h4>
+        <h5>Date</h5>
         <Input s={12} label="What's a preferred date?" name='on' type='date' onChange={function(e, value) {}} />
         <Button waves='light'>submit</Button>
       </Row>

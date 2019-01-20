@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Row, Button, Modal} from 'react-materialize';
+import { Input, Row, Button, Modal, Card } from 'react-materialize';
 // import Auth from '../../../utils/'
 import NewUser from '../NewUser';
 import './style.css';
@@ -32,18 +32,17 @@ class Login extends Component {
   render() {
     return(
       <Row>
-        <h2>Already a member?</h2> 
-        <Input name="email" onChange={this.handleInputChange} type="email" label="Email" s={12} />
-        <Input name="password" onChange={this.handleInputChange} type="password" label="password" s={12} />
-        <Button waves='light' onClick={this.LoginHandler} >Login</Button>
+        <Card>
         <Modal
           header='New User'
           trigger={<Button>Create New User Account</Button>}>
           <NewUser />
         </Modal>
-        {/* <p>
-        <a href="/main/get-help">Create an account if not already a member.</a>
-      </p> */}
+        <h2>Already a member?</h2> 
+        <Input name="email" onChange={this.handleInputChange} type="email" label="Email" s={12} />
+        <Input name="password" onChange={this.handleInputChange} type="password" label="password" s={12} />
+        <Button waves='light' onClick={this.LoginHandler} >Login</Button>
+        </Card>
       </Row>
     );
   }

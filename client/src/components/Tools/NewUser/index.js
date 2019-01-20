@@ -12,14 +12,14 @@ function NewUser() {
   return(
     <Card>
       <Row>
-        <h3>Create User Account</h3>
-        <Input placeholder="Placeholder" s={6} label="First Name" />
+        <Input s={6} label="First Name" />
         <Input s={6} label="Last Name" />
-        <Input type="email" label="Email" s={12} />
-        <Input type="username" label="Usernam" s={12} />
-        <Input type="password" label="password" s={12} />
+        <Input name="email" type="email" label="Email" s={12} />
+        <Input name="username" type="text" label="Username" s={12} />
+        <Input type="password" label="Password" s={12} />
+        <Input name="password" label="Confirm Password" s={12} />
       </Row>
-      <Row>
+      {/* <Row>
         <h4>Need Profile</h4>
         <Input s={12} label="Choose Income Bracket" type='select' defaultValue='0'>         
           <option value='0'>-Pick One-</option>
@@ -37,7 +37,7 @@ function NewUser() {
           <option value='4'>More than one race</option>
           <option value='5'>Other</option>
         </Input>
-      </Row>      
+      </Row>       */}
       <Button waves='light'>submit</Button>
     </Card>  
   );
