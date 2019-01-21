@@ -13,7 +13,7 @@ export default {
 
   // Post a new need
   postNeed: needData => {
-    return axios.post(`/api/needs`, needData);
+    return axios.post('/api/needs', needData);
   },
 
   // Change the status of need

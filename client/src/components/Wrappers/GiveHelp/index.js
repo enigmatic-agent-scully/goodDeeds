@@ -16,7 +16,7 @@ function GiveHelp() {
               <NeedSearch />
             </CollapsibleItem>
             <CollapsibleItem header="List of Needs" icon="list">
-              <ListView />
+              <ListView className="list-view" />
             </CollapsibleItem>
           </Collapsible>
         </Col>

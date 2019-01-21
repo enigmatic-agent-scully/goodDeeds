@@ -2,38 +2,39 @@ import React, { Component } from 'react';
 import { Card } from 'react-materialize';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import './style.css';
+import API from '../../../utils/API';
 
 
 export default class MapView extends Component {
     
   state = {
-    lat: "",
-    lng: "",
-    zoom: "",
+    needs: []
   }
 
+
   componentDidMount() {
-      this.setState ({
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13,
-      })
+    API.getNeeds()
+    .then(res => this.setState({ needs: res.data}))
+    .catch(err => console.log(err));
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng]
     return (
     <Card>
-        <Map className="map-on-card"center={position} zoom={this.state.zoom}>
+        <Map className="map-on-card"center={[51.505, -0.09]} zoom={16}>
         <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
-            <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-        </Marker>
+        {this.state.needs.map(need => (
+          <Marker position={[need.lat, need.lng]}>
+          <Popup>
+            {need.category} <br /> 
+            {need.description} <br /> 
+            {need.needdate}
+          </Popup>
+          </Marker>
+        ))}
         </Map>
     </Card>
     )

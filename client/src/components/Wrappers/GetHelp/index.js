@@ -10,13 +10,13 @@ function GetHelp() {
   return(
     <div className='Get-Help-Wrapper'>
       <Row>
-        <Col s="4">
+        <Col s='4'>
           <NeedInput />
         </Col>
-        <Col s="4">
+        <Col s='4'>
           <NeedList />
         </Col>
-        <Col s="4">
+        <Col s='4'>
           <ResolvedList />
         </Col>
       </Row>

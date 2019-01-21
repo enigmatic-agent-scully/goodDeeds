@@ -4,9 +4,12 @@ const Schema = mongoose.Schema;
 const NeedSchema = new Schema({
   category: { type: String, required: true },
   description: { type: String, required: false },
-  needdate: {  type : Date, default: Date.now() },
+  postdate: {  type : Date, default: Date.now},
+  needdate: {  type : Date, default: Date.now},
   imageurl: { type: String, required: false },
   resolved: { type: Boolean, default: false },
+  lat: { type: Number },
+  lng: { type: Number },
   user: { type: Schema.Types.ObjectId, ref: "User" },
   message: { type: Schema.Types.ObjectId, ref: "Message" }
 });

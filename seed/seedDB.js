@@ -11,11 +11,21 @@ mongoose.connect(
 const needSeed = [
   {
     category: "Getting Around",
-    description: "I need to get to the doctors"
+    description: "I need to get to the doctors",
+    lat: 51.506,
+    lng: -0.092
   },
   {
     category: "Cleaning Up",
-    description: "Help clean out shed"
+    description: "Help clean out shed",
+    lat: 51.5062,
+    lng: -0.0912
+  },
+  {
+    category: "Fixing Something",
+    description: "My sink broke",
+    lat: 51.504,
+    lng: -0.093
   }
 ];
 
