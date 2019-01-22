@@ -29,5 +29,11 @@
     "express": "^4.15.4",
     "mongoose": "^5.0.17",
     "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
   }
 }
