@@ -8,8 +8,8 @@ const NeedSchema = new Schema({
   needdate: {  type : Date, default: Date.now},
   imageurl: { type: String, required: false },
   resolved: { type: Boolean, default: false },
-  lat: { type: Number },
-  lng: { type: Number },
+  lat: { type: Number, default: 0 },
+  lng: { type: Number, default: 0 },
   user: { type: Schema.Types.ObjectId, ref: "User" },
   message: { type: Schema.Types.ObjectId, ref: "Message" }
 });

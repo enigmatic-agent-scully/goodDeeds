@@ -13,19 +13,22 @@ const needSeed = [
     category: "Getting Around",
     description: "I need to get to the doctors",
     lat: 51.506,
-    lng: -0.092
+    lng: -0.092,
+    imageurl: "https://s3.amazonaws.com/gooddeedsimages/test-image.jpg"
   },
   {
     category: "Cleaning Up",
     description: "Help clean out shed",
     lat: 51.5062,
-    lng: -0.0912
+    lng: -0.0912,
+    imageurl: "https://s3.amazonaws.com/gooddeedsimages/test-image.jpg"
   },
   {
     category: "Fixing Something",
     description: "My sink broke",
     lat: 51.504,
-    lng: -0.093
+    lng: -0.093,
+    imageurl: "https://s3.amazonaws.com/gooddeedsimages/test-image.jpg"
   }
 ];
 

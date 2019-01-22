@@ -1,47 +1,36 @@
-import React, { Component } from 'react';
-import { Card, Row } from 'react-materialize';
+import React from 'react';
+import { Card, Row, Col } from 'react-materialize';
 import './style.css';
-import API from '../../../utils/API';
 
-class NeedList extends Component {
+function NeedList(props) {
   
-  state = {
-   needs: []
-  };
-
-  componentDidMount() {
-    this.loadNeeds();
-  };
-
-  loadNeeds = () => {
-    API.getNeeds()
-      .then(res => this.setState({ needs: res.data}))
-      .catch(err => console.log(err));
-  };
-
-  render() {
-    console.log(this.state.needs);
-    return (
-      <Row>
-        {this.state.needs.length ? (
-          <Row>
-            {this.state.needs.map(need => (
-              <Card key={need._id}>
-                <a href={"/needs/" + need._id}>
-                  <h4>{need.category}</h4>
-                  <p>{need.description}</p>
-                </a>
-              </Card>
-            ))}
-          </Row>
-        ) : (
-          <Card>
-            <h4>No Results to Display</h4>
-          </Card>
-        )}
+  return (
+    <Row>
+      {props.needs.length ? (
+        <Row>
+          {props.needs.map(need => (
+            <Card key={need._id}>
+              <a href={'/needs/' + need._id}>
+                <Row>                  
+                  <Col s="6">
+                    <h4>{need.category}</h4>
+                    <p>{need.description}</p>
+                  </Col>
+                  <Col s="6">
+                    <img src={need.imageurl} alt="need"/>
+                  </Col>
+                </Row>
+              </a>
+            </Card>
+          ))}
+        </Row>
+      ) : (
+        <Card>
+          <h4>No Results to Display</h4>
+        </Card>
+      )}
     </Row>
-    )
-  }
+  );
 }
 
 

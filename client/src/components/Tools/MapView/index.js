@@ -31,7 +31,8 @@ export default class MapView extends Component {
           <Popup>
             {need.category} <br /> 
             {need.description} <br /> 
-            {need.needdate}
+            {need.needdate}<br />
+            <img src={need.imageurl} alt="need"/>
           </Popup>
           </Marker>
         ))}

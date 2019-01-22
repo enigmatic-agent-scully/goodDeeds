@@ -1,5 +1,10 @@
-/* .user-badge {
-    width: 150px;
-    height: 35px;
-    font-size: 20px;
-} */
+.Main-Page {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#navbar {
+    width: 80%;
+    padding-left: 60px;
+    padding-right: 60px;
+}

@@ -10,7 +10,7 @@ function GiveHelp() {
   return(
     <div className='Give-Help-Wrapper'>
       <Row>
-        <Col s="4">
+        <Col id="left-column" s="4">
           <Collapsible defaultActiveKey={0}>
             <CollapsibleItem header="Search Needs" icon="search">
               <NeedSearch />

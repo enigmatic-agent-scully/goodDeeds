@@ -10,17 +10,19 @@ import './style.css';
 function Main() {
   return(
     <div className='Main-Page'>
-      <Navbar brand='goodDeeds' fixed right>
-        <Dropdown trigger={
-          <Chip className="user-badge">
-            <img src='https://via.placeholder.com/50' alt='Contact Person' />
-            Username</Chip>}>
-          <NavItem>View Profile</NavItem>
-          <NavItem>Logout</NavItem>
-        </Dropdown>
-        <NavItem href='/main/get-help'>Get Help</NavItem>
-        <NavItem href='/main/give-help'>Give Help</NavItem>
-      </Navbar>
+      <div className="navbar-wrapper">
+        <Navbar id="navbar" brand='goodDeeds' fixed right>
+          <Dropdown trigger={
+            <Chip className="user-badge">
+              <img src='https://via.placeholder.com/50' alt='Contact Person' />
+              Username</Chip>}>
+            <NavItem>View Profile</NavItem>
+            <NavItem>Logout</NavItem>
+          </Dropdown>
+          <NavItem href='/main/get-help'>Get Help</NavItem>
+          <NavItem href='/main/give-help'>Give Help</NavItem>
+        </Navbar>
+      </div>
       <Router>
         <div>
           <Route exact path="/main/get-help" component={GetHelp}/>
