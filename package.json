@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/enigmatic-agent-scully/goodDeeds/issues"
   },
-  "homepage": "https://good-deed-s.herokuapp.com/client",
+  "homepage": "https://good-deed-s.herokuapp.com/",
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
