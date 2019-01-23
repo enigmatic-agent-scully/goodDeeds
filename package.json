@@ -9,7 +9,7 @@
     "start:dev": "nodemon server.js | npm run client",
     "client": "cd client && npm run start",
     "seed": "node seed/seedDB.js",
-    "install": "npm install && cd client && npm install",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
@@ -25,9 +25,19 @@
   "homepage": "https://github.com/enigmatic-agent-scully/goodDeeds#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "concurrently": "^4.1.0",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "nodemon": "^1.18.9",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   }
 }
