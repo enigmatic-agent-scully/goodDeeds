@@ -1,8 +1,9 @@
 import React from 'react';
-import { Navbar, NavItem, Chip, Dropdown } from 'react-materialize';
+import { Navbar, NavItem, Chip, Dropdown, Modal } from 'react-materialize';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GetHelp from '../../Wrappers/GetHelp';
 import GiveHelp from '../../Wrappers/GiveHelp';
+import ProfileView from '../../Tools/ProfileView';
 import './style.css';
 
 // Rewrite as Class with User state
@@ -16,7 +17,11 @@ function Main() {
             <Chip className="user-badge">
               <img src='https://via.placeholder.com/50' alt='Contact Person' />
               Username</Chip>}>
-            <NavItem>View Profile</NavItem>
+            <Modal
+              header='Profile'
+              trigger={<NavItem>View Profile</NavItem>}>
+              <ProfileView />
+            </Modal>
             <NavItem>Logout</NavItem>
           </Dropdown>
           <NavItem href='/main/get-help'>Get Help</NavItem>

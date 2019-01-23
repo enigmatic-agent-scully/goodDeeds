@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
+    "start:prod": "node server.js && npm run client",
     "start:dev": "nodemon server.js | npm run client",
     "client": "cd client && npm run start",
     "seed": "node seed/seedDB.js",
@@ -26,8 +26,9 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "dotenv": "^6.2.0",
     "express": "^4.15.4",
-    "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "mongoose": "^5.0.17"
   }
 }

@@ -6,54 +6,62 @@ import ResolvedList from '../../Tools/ResolvedList';
 import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
-
-const config = {
-  bucketName: 'gooddeedsimages',
-  region: 'us-east-1',
-  accessKeyId: 'AKIAIR3HZZY25ANHTL2A',
-  secretAccessKey: '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'
-}
-
+import { config } from '../../../config/Config';
 
 class GetHelp extends Component {
-  
-  state = {
-    category: "",
-    needdate: "",
-    description: "",
-    imageurl: "",
-    needs: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: "",
+      needdate: "",
+      description: "",
+      imageurl: "",
+      needs: []
+    };
+
+    this.reactS3config = {
+      bucketName: 'gooddeedsimages',
+      region: 'us-east-1',
+      accessKeyId: config.awsKey,
+      secretAccessKey: config.awsSecret
+    };
+    
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.loadNeeds = this.loadNeeds.bind(this);
+    this.uploadHandler = this.uploadHandler.bind(this);
+    this.SubmitHandler = this.SubmitHandler.bind(this);
+  }
 
   componentDidMount() {
     this.loadNeeds();
-  };
+  }
 
-  loadNeeds = () => {
+  loadNeeds() {
     API.getNeeds()
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
-  };
+  }
 
-  uploadFile = event => {
+  uploadHandler(event) {
     const imagefile = event.target.files[0];
     console.log(imagefile);
-    uploadFile(imagefile, config)
-    .then(data => {
-      console.log(data.location);
-      this.setState({ imageurl: data.location});
-    })
-    .catch(err => console.error(err))
-  };
+    uploadFile(imagefile, this.reactS3config)
+      .then(data => {
+        console.log(data.location);
+        this.setState({ imageurl: data.location });
+      })
+      .catch(err => console.error(err));
+  }
 
-  handleInputChange = event => {
-    const { name, value }  = event.target;
+  handleInputChange(event) {
+    const { name, value } = event.target;
+    console.log(this.reactS3config);
     this.setState({
       [name]: value
     });
-  };
+  }
 
-  SubmitHandler = event => {
+  SubmitHandler(event) {
     event.preventDefault();
     const NeedInfo = this.state;
     console.log(NeedInfo);
@@ -63,11 +71,11 @@ class GetHelp extends Component {
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl
     })
-    .then(this.loadNeeds());
-  };
+      .then(this.loadNeeds());
+  }
 
   render() {
-    return(
+    return (
       <div className='Get-Help-Wrapper'>
         <Row>
           <Col s='4'>
@@ -76,14 +84,14 @@ class GetHelp extends Component {
               needdate={this.state.needdate}
               description={this.state.description}
               imageurl={this.state.imageurl}
-              uploadFile={this.uploadFile}
+              uploadHandler={this.uploadHandler}
               handleInputChange={this.handleInputChange}
               SubmitHandler={this.SubmitHandler}
-              />
+            />
           </Col>
           <Col id="need-list" s='4'>
-            <NeedList 
-              needs={this.state.needs}/>
+            <NeedList
+              needs={this.state.needs} />
           </Col>
           <Col s='4'>
             <ResolvedList />

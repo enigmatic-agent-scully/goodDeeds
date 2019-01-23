@@ -23,7 +23,7 @@ function NeedInput(props) {
         </Input>
         <h5>Image</h5>
         <Input
-          onChange={props.uploadFile} 
+          onChange={props.uploadHandler} 
           type="file" 
           label="Add Photo" 
           s={12}  
