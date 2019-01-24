@@ -6,7 +6,7 @@ import './style.css';
 export default function MapView(props) {
   return (
     <Card>
-      <Map className='map-on-card' center={[33.749, 84.388]} zoom={16}>
+      <Map className='map-on-card' center={[51.505, -0.09]} zoom={16}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
