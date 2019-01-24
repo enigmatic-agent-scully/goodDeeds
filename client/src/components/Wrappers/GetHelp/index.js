@@ -55,7 +55,7 @@ class GetHelp extends Component {
 
   handleInputChange(event) {
     const { name, value } = event.target;
-    console.log(this.reactS3config);
+    // console.log(this.reactS3config);
     this.setState({
       [name]: value
     });
