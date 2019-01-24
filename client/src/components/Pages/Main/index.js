@@ -5,6 +5,7 @@ import GetHelp from '../../Wrappers/GetHelp';
 import GiveHelp from '../../Wrappers/GiveHelp';
 import ProfileView from '../../Tools/ProfileView';
 import './style.css';
+import Auth from '../../../utils/Auth';
 
 // Rewrite as Class with User state
 
@@ -13,7 +14,30 @@ class Main extends Component {
     user: {}
   };
 
+
+  constructor(props) {
+    super(props)
+
+    Auth.session().then(user => {
+      this.setState({
+        user: user,
+        authenticated: user.authenticated
+      })
+    })
+  }
+
   render() {
+
+    if (this.state.authenticated === undefined) {
+      return null; // TODO Implement loading gear
+    }
+
+
+    if (!this.state.authenticated) {
+      window.location = "/"
+      return <p>Rredirecting</p>
+    }
+
     return (
       <div className='Main-Page'>
         <div className='navbar-wrapper'>
