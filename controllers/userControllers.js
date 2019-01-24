@@ -45,7 +45,9 @@ const passportLogin =
                 passReqToCallback: true
             })(req, res, next);
         },
-
+        //this function will return our session info, but the reason we write it out
+        //like this is so we only send back specific information we want to send to the 
+        //front end...(for examle not the users password)
         getSession(req, res, next) {
             if (req.session.user) {
                 const userInfo = {

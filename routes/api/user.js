@@ -5,10 +5,10 @@ var userController = require('./../../controllers/userControllers')
 
 
 
-router.route('/main')
-    .get(function (req, res) {
-        console.log(req.user);
-    });
+// router.route('/main')
+//     .get(function (req, res) {
+//         console.log(req.user);
+//     });
 
 router.route('/signup')
     .post(userController.signup, function (req, res) {
@@ -29,8 +29,8 @@ router.route('/login')
         },
         // Success responses
         function (req, res) {
-            console.log(`returned to the router.route('/login) (user.js) API call with, 
-                        req.user = ${req.user}`)
+            console.log(`returned to the router.route('/login) after a successful login, 
+                        req.user = ${req.session.user}`)
             res.json({
                 success: true,
                 redirect: "/main"
@@ -38,8 +38,11 @@ router.route('/login')
         }
     );
 
-router.route("/session").get(userController.getSession)
+//API call will return session info to the front end
+router.route("/session")
+    .get(userController.getSession)
 
+//logout API call
 router.route('/logout')
     .get(userController.logout);
 
