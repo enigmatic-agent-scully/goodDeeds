@@ -17,10 +17,14 @@ export default {
   },
 
   // Change the status of need
-  markComplete: id => {
+  markResolved: id => {
     return axios.put(`/api/needs/${id}`, {
-      completed: true
+      resolved: true
     });
+  },
+
+  deleteNeed: id => {
+    return axios.delete(`/api/needs/${id}`);
   },
 
   // Need to check if this the correct way to organize all the messages for one post

@@ -9,11 +9,10 @@ function NeedList(props) {
       {props.needs.length ? (
         <Row>
           {props.needs.map(need => (
-            <Card key={need._id}>
+            <Card key={need._id} title={need.category}>
               <a href={'/needs/' + need._id}>
-                <Row>                  
+                <Row>
                   <Col s="6">
-                    <h4>{need.category}</h4>
                     <p>{need.description}</p>
                   </Col>
                   <Col s="6">
@@ -21,6 +20,7 @@ function NeedList(props) {
                   </Col>
                 </Row>
               </a>
+              {/* <Button>Delete</Button> */}
             </Card>
           ))}
         </Row>

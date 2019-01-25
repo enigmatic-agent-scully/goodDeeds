@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-materialize';
+import { Col, Row, Card } from 'react-materialize';
 import NeedInput from '../../Tools/NeedInput';
 import NeedList from '../../Tools/NeedList';
 import ResolvedList from '../../Tools/ResolvedList';
@@ -12,10 +12,10 @@ class GetHelp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
-      needdate: "",
-      description: "",
-      imageurl: "",
+      category: '',
+      needdate: '',
+      description: '',
+      imageurl: '',
       needs: []
     };
 
@@ -90,8 +90,11 @@ class GetHelp extends Component {
             />
           </Col>
           <Col id="need-list" s='4'>
-            <NeedList
-              needs={this.state.needs} />
+            <Card>
+              <h4>List of Needs</h4>
+              <NeedList
+                needs={this.state.needs} />
+            </Card>
           </Col>
           <Col s='4'>
             <ResolvedList />
