@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Chip, Dropdown, Modal } from 'react-materialize';
+import { Navbar, NavItem, Dropdown, Modal } from 'react-materialize';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GetHelp from '../../Wrappers/GetHelp';
 import GiveHelp from '../../Wrappers/GiveHelp';
 import ProfileView from '../../Tools/ProfileView';
 import './style.css';
+import Auth from '../../../utils/Auth';
+import Button from 'react-materialize/lib/Button';
 
 // Rewrite as Class with User state
 
@@ -13,25 +15,59 @@ class Main extends Component {
     user: {}
   };
 
+
+  constructor(props) {
+
+    super(props)
+    Auth.session().then(user => {
+      this.setState({
+        user: user,
+        authenticated: user.authenticated
+      })
+    })
+  }
+
+  //logout function
+  logoutFunction = event => {
+    console.log('inside logout func')
+    Auth.logout().then(res => {
+      window.location = res.data.redirect;
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   render() {
+    if (this.state.authenticated === undefined) {
+      return null; // TODO Implement loading gear
+    }
+    if (!this.state.authenticated) {
+      window.location = "/"
+      return
+    }
     return (
       <div className='Main-Page'>
         <div className='navbar-wrapper'>
           <Navbar id='navbar' brand='goodDeeds' fixed right>
             <Dropdown
               trigger={
-                <Chip className='user-badge'>
-                  <img
-                    src='https://via.placeholder.com/50'
-                    alt='Contact Person'
-                  />
-                  Username
-                </Chip>
-              }>
+                <Button
+                >Username</Button>
+                //Chip was not working with the page authentication functions above for some reason
+                // <Chip className='user-badge'>
+                //   <img
+                //     src='https://via.placeholder.com/50'
+                //     alt='Contact Person'
+                //   />
+                //   Username
+                // </Chip>
+              }
+            >
               <Modal header='Profile' trigger={<NavItem>View Profile</NavItem>}>
                 <ProfileView />
               </Modal>
-              <NavItem>Logout</NavItem>
+              <NavItem
+                onClick={this.logoutFunction}>Logout</NavItem>
             </Dropdown>
             <NavItem href='/main/get-help'>Get Help</NavItem>
             <NavItem href='/main/give-help'>Give Help</NavItem>
