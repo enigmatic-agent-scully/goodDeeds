@@ -27,8 +27,7 @@ class Main extends Component {
                   />
                   Username
                 </Chip>
-              }
-            >
+              }>
               <Modal header='Profile' trigger={<NavItem>View Profile</NavItem>}>
                 <ProfileView />
               </Modal>

@@ -7,6 +7,10 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
+// import Geocode from 'react-geocode';
+
+ 
+
 
 class GetHelp extends Component {
   constructor(props) {
@@ -14,9 +18,12 @@ class GetHelp extends Component {
     this.state = {
       category: '',
       needdate: '',
+      address: '',
       description: '',
       imageurl: '',
-      needs: []
+      lat: '',
+      lng: '',
+      needs: [],
     };
 
     this.reactS3config = {
@@ -29,8 +36,41 @@ class GetHelp extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loadNeeds = this.loadNeeds.bind(this);
     this.uploadHandler = this.uploadHandler.bind(this);
+    this.handleGeoCode = this.handleGeoCode.bind(this);
     this.SubmitHandler = this.SubmitHandler.bind(this);
   }
+
+  handleGeoCode(suggest) {
+    // const addressInput = event.target.value
+    console.log(suggest.location);
+    this.setState({
+      lat: suggest.location.lat,
+      lng: suggest.location.lng,
+      address: ''
+    });
+
+    
+    
+    // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
+    // Geocode.setApiKey("AIzaSyBqNx2VeGOfxn8tUBsVM1j1FnbbrPIT1xQ");
+    
+    // // // Enable or disable logs. Its optional.
+    // Geocode.enableDebug();
+    // Geocode.fromAddress(addressInput)
+    //   .then(
+    //     res => {
+    //       const { lat, lng } = res.results[0].geometry.location;
+    //       console.log(lat, lng);
+    //       res.results.forEach(place => {
+    //         console.log(place.geometry.location);
+    //       });
+    //     },
+    //     err => {
+    //       console.error(err);
+    //     }
+    //   ); 
+  }
+
 
   componentDidMount() {
     this.loadNeeds();
@@ -55,7 +95,7 @@ class GetHelp extends Component {
 
   handleInputChange(event) {
     const { name, value } = event.target;
-    // console.log(this.reactS3config);
+    // console.log(event.target);
     this.setState({
       [name]: value
     });
@@ -69,7 +109,9 @@ class GetHelp extends Component {
       category: NeedInfo.category,
       needdate: NeedInfo.needdate,
       description: NeedInfo.description,
-      imageurl: NeedInfo.imageurl
+      imageurl: NeedInfo.imageurl,
+      lat: NeedInfo.lat,
+      lng: NeedInfo.lng
     })
       .then(this.loadNeeds());
   }
@@ -81,12 +123,14 @@ class GetHelp extends Component {
           <Col s='4'>
             <NeedInput
               category={this.state.category}
+              address={this.state.address}
               needdate={this.state.needdate}
               description={this.state.description}
               imageurl={this.state.imageurl}
               uploadHandler={this.uploadHandler}
               handleInputChange={this.handleInputChange}
               SubmitHandler={this.SubmitHandler}
+              handleGeoCode={this.handleGeoCode}
             />
           </Col>
           <Col id="need-list" s='4'>

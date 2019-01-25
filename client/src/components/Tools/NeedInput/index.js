@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Row, Input, Button } from 'react-materialize';
-import './style.css';
+import Geosuggest from 'react-geosuggest';
+import './style.css';    
 
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
@@ -21,6 +22,9 @@ function NeedInput(props) {
           <option value='Cleaning Up'>Cleaning Up</option>
           <option value='Fixing Something'>Fixing Something</option>
         </Input>
+        <h5>Address</h5>
+        <Geosuggest 
+          onSuggestSelect={props.handleGeoCode}/>
         <h5>Image</h5>
         <Input
           onChange={props.uploadHandler} 
