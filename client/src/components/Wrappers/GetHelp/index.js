@@ -7,8 +7,6 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
-// import Geocode from 'react-geocode';
-
  
 
 
@@ -48,27 +46,6 @@ class GetHelp extends Component {
       lng: suggest.location.lng,
       address: ''
     });
-
-    
-    
-    // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-    // Geocode.setApiKey("AIzaSyBqNx2VeGOfxn8tUBsVM1j1FnbbrPIT1xQ");
-    
-    // // // Enable or disable logs. Its optional.
-    // Geocode.enableDebug();
-    // Geocode.fromAddress(addressInput)
-    //   .then(
-    //     res => {
-    //       const { lat, lng } = res.results[0].geometry.location;
-    //       console.log(lat, lng);
-    //       res.results.forEach(place => {
-    //         console.log(place.geometry.location);
-    //       });
-    //     },
-    //     err => {
-    //       console.error(err);
-    //     }
-    //   ); 
   }
 
 

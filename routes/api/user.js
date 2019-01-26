@@ -41,7 +41,7 @@ router.route('/login')
                         req.user = ${req.session.user}`)
             res.json({
                 success: true,
-                redirect: "/main"
+                redirect: "/main/get-help"
             })
         }
     );
