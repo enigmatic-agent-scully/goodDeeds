@@ -40,7 +40,7 @@ class GetHelp extends Component {
 
   handleGeoCode(suggest) {
     // const addressInput = event.target.value
-    console.log(suggest.location);
+    // console.log(suggest.location);
     this.setState({
       lat: suggest.location.lat,
       lng: suggest.location.lng,

@@ -30,5 +30,9 @@ export default {
   // Need to check if this the correct way to organize all the messages for one post
   postMessage: (id, messageData) => {
     return axios.put(`/api/needs/${id}/messages`, messageData);
+  },
+
+  getUserInfo: id => {
+    return axios.get(`/api/user/${id}`);
   }
 };

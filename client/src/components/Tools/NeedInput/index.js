@@ -24,6 +24,7 @@ function NeedInput(props) {
         </Input>
         <h5>Address</h5>
         <Geosuggest 
+          name="address"
           onSuggestSelect={props.handleGeoCode}/>
         <h5>Image</h5>
         <Input

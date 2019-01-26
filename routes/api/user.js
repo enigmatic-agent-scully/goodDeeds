@@ -55,6 +55,10 @@ router.route("/session")
 router.route('/logout')
     .get(userController.logout);
 
+router
+    .route("/:id")
+    .get(userController.findById);
+
 
 
 module.exports = router;

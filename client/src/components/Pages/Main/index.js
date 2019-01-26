@@ -7,28 +7,41 @@ import ProfileView from '../../Tools/ProfileView';
 import './style.css';
 import Auth from '../../../utils/Auth';
 import Button from 'react-materialize/lib/Button';
+import API from '../../../utils/API'
+// import { threadId } from 'worker_threads';
 
 // Rewrite as Class with User state
 
 class Main extends Component {
   state = {
-    user: {}
+    user: {},
+    userInfo: []
   };
 
 
-  constructor(props) {
+  constructor() {
 
-    super(props)
+    super()
     Auth.session().then(user => {
+      // console.log(user);
       this.setState({
         user: user,
         authenticated: user.authenticated
       })
+      // console.log(this.state.user.user)
+      this.getProfileInfo(this.state.user.user)
     })
   }
 
+  getProfileInfo(user) {
+    // console.log(user.id); 
+    API.getUserInfo(user.id)
+      .then(res => this.setState({ userInfo: res.data }))
+      .catch(err => console.log(err));
+  }
+
   //logout function
-  logoutFunction = event => {
+  logoutFunction(event) {
     console.log('inside logout func')
     Auth.logout().then(res => {
       window.location = res.data.redirect;
@@ -52,7 +65,7 @@ class Main extends Component {
             <Dropdown
               trigger={
                 <Button
-                >Username</Button>
+                >{this.state.userInfo.firstName} {this.state.userInfo.lastName}</Button>
                 //Chip was not working with the page authentication functions above for some reason
                 // <Chip className='user-badge'>
                 //   <img
@@ -64,6 +77,7 @@ class Main extends Component {
               }
             >
               <Modal header='Profile' trigger={<NavItem>View Profile</NavItem>}>
+                {this.state.user.user.id}
                 <ProfileView />
               </Modal>
               <NavItem

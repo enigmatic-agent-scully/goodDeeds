@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const MessageSchema = new Schema({
   subject: { type: String,required: false },  
   text: { type: String, required: true },
+  postdate: {  type : Date, default: Date.now},
   user: { type: Schema.Types.ObjectId,ref: "User"},
   need: { type: Schema.Types.ObjectId,ref: "Need"}
 });

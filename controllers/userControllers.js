@@ -1,88 +1,94 @@
 var passport = require('passport');
 var router = require('express').Router();
-const user = require("./../models");
 const db = require("./../models");
 
-const passportLogin =
 
-    module.exports = {
-        beforeLogin(req, res, next) {
-            console.log(`inside the login function "userController.js" with req.body.email = ${req.body.email}, 
-        right before passport.authenticate`);
+module.exports = {
+    findById: (req, res) => {
+        console.log(req.params.id);
+        db.User
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+        },
+
+    beforeLogin(req, res, next) {
+        console.log(`inside the login function "userController.js" with req.body.email = ${req.body.email}, 
+    right before passport.authenticate`);
+        next();
+    },
+    login(req, res, next) {
+        console.log(`inside userControllers.js > login > returned from passport.authenticate, 
+        req.user = ${req.user}`);
+        (passport.authenticate('local.login', {
+            session: true
+        }, function (err, user) {
+            if (err) {
+                return next(err)
+            }
+            req.session.user = user
             next();
-        },
-        login(req, res, next) {
-            console.log(`inside userControllers.js > login > returned from passport.authenticate, 
-            req.user = ${req.user}`);
-            (passport.authenticate('local.login', {
-                session: true
-            }, function (err, user) {
-                if (err) {
-                    return next(err)
-                }
-                req.session.user = user
-                next();
-            }))(req, res, next)
-        },
-        logout(req, res) {
-            console.log(req.user)
-            req.logout();
-            req.session.user = null
-            console.log(req.user)
+        }))(req, res, next)
+    },
+    logout(req, res) {
+        console.log(req.user)
+        req.logout();
+        req.session.user = null
+        console.log(req.user)
+        res.json({
+            redirect: "/",
+            logged_out: true
+        })
+    },
+    signup(req, res, next) {
+        console.log(`inside userControllers.js > login > returned from passport.authenticate, 
+        req.user = ${req.user}`);
+        (passport.authenticate('local.signup', {
+            session: true
+        }, function (err, user) {
+            if (err) {
+                return next(err)
+            }
+            req.session.user = user
+            next();
+        }))(req, res, next)
+    },
+
+    // signup(req, res, next) {
+    //     console.log(`inside the signup function "userController.js" with req.body = ${req.body}, 
+    // right before passport.authenticate`)
+    //     passport.authenticate('local.signup', {
+    //         successRedirect: '/',
+    //         failureRedirect: 'fail',
+    //         passReqToCallback: true
+    //     })(req, res, next);
+    // },
+    //this function will return our session info, but the reason we write it out
+    //like this is so we only send back specific information we want to send to the 
+    //front end...(for examle not the users password)
+    getSession(req, res, next) {
+        if (req.session.user) {
+            const userInfo = {
+                email: req.session.user.email,
+                id: req.session.user._id
+            }
             res.json({
-                redirect: "/",
-                logged_out: true
+                // TODO Don't expose sensitive data
+                user: userInfo,
+                authenticated: true
             })
-        },
-        signup(req, res, next) {
-            console.log(`inside userControllers.js > login > returned from passport.authenticate, 
-            req.user = ${req.user}`);
-            (passport.authenticate('local.signup', {
-                session: true
-            }, function (err, user) {
-                if (err) {
-                    return next(err)
-                }
-                req.session.user = user
-                next();
-            }))(req, res, next)
-        },
-
-        // signup(req, res, next) {
-        //     console.log(`inside the signup function "userController.js" with req.body = ${req.body}, 
-        // right before passport.authenticate`)
-        //     passport.authenticate('local.signup', {
-        //         successRedirect: '/',
-        //         failureRedirect: 'fail',
-        //         passReqToCallback: true
-        //     })(req, res, next);
-        // },
-        //this function will return our session info, but the reason we write it out
-        //like this is so we only send back specific information we want to send to the 
-        //front end...(for examle not the users password)
-        getSession(req, res, next) {
-            if (req.session.user) {
-                const userInfo = {
-                    email: req.session.user.email,
-                    id: req.session.user._id
-                }
-                res.json({
-                    // TODO Don't expose sensitive data
-                    user: userInfo,
-                    authenticated: true
-                })
-            } else {
-                res.json({
-                    user: null,
-                    authenticated: false
-                })
-            }
-        },
-
-        isLoggedIn(req, res, next) {
-            if (req.session.user) {
-                return next();
-            }
-            console.log('must login first!')
+        } else {
+            res.json({
+                user: null,
+                authenticated: false
+            })
         }
-    };
+    },
+
+    isLoggedIn(req, res, next) {
+        if (req.session.user) {
+            return next();
+        }
+        console.log('must login first!')
+    }
+};
