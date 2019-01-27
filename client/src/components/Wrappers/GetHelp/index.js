@@ -21,7 +21,7 @@ class GetHelp extends Component {
       imageurl: '',
       lat: '',
       lng: '',
-      needs: [],
+      needs: []
     };
 
     this.reactS3config = {
@@ -47,7 +47,6 @@ class GetHelp extends Component {
       address: ''
     });
   }
-
 
   componentDidMount() {
     this.loadNeeds();
@@ -88,7 +87,7 @@ class GetHelp extends Component {
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl,
       lat: NeedInfo.lat,
-      lng: NeedInfo.lng
+      lng: NeedInfo.lng,
     })
       .then(this.loadNeeds());
   }

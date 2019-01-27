@@ -10,15 +10,18 @@ module.exports = {
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-        },
+    },
 
-    beforeLogin(req, res, next) {
-        console.log(`inside the login function "userController.js" with req.body.email = ${req.body.email}, 
-    right before passport.authenticate`);
+    beforeLogin: (req, res, next) => {
+        console.log(`inside the login function "userController.js" 
+        with req.body.email = ${req.body.email}, 
+        right before passport.authenticate`);
         next();
     },
-    login(req, res, next) {
-        console.log(`inside userControllers.js > login > returned from passport.authenticate, 
+
+    login: (req, res, next) => {
+        console.log(`inside userControllers.js > login > 
+        returned from passport.authenticate, 
         req.user = ${req.user}`);
         (passport.authenticate('local.login', {
             session: true
@@ -30,18 +33,21 @@ module.exports = {
             next();
         }))(req, res, next)
     },
-    logout(req, res) {
-        console.log(req.user)
+
+    logout: (req, res) => {
+        // console.log(`User ${req.session.user._id} is logging out`)
         req.logout();
         req.session.user = null
-        console.log(req.user)
+        console.log(`User logged out`)
         res.json({
             redirect: "/",
             logged_out: true
         })
     },
-    signup(req, res, next) {
-        console.log(`inside userControllers.js > login > returned from passport.authenticate, 
+
+    signup: (req, res, next) => {
+        console.log(`inside userControllers.js > login > 
+        returned from passport.authenticate, 
         req.user = ${req.user}`);
         (passport.authenticate('local.signup', {
             session: true
@@ -66,7 +72,7 @@ module.exports = {
     //this function will return our session info, but the reason we write it out
     //like this is so we only send back specific information we want to send to the 
     //front end...(for examle not the users password)
-    getSession(req, res, next) {
+    getSession: (req, res, next) => {
         if (req.session.user) {
             const userInfo = {
                 email: req.session.user.email,
@@ -85,10 +91,10 @@ module.exports = {
         }
     },
 
-    isLoggedIn(req, res, next) {
+    isLoggedIn: (req, res, next) => {
         if (req.session.user) {
             return next();
         }
-        console.log('must login first!')
+        console.log('must logout first!')
     }
 };

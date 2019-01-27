@@ -17,7 +17,7 @@ router.route('/signup')
                         req.user = ${req.session.user}`)
             res.json({
                 success: true,
-                redirect: "/main"
+                redirect: "/main/get-help"
             })
         }
     );
@@ -55,8 +55,7 @@ router.route("/session")
 router.route('/logout')
     .get(userController.logout);
 
-router
-    .route("/:id")
+router.route("/:id")
     .get(userController.findById);
 
 

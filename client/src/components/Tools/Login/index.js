@@ -1,31 +1,59 @@
 import React, { Component } from 'react';
 import { Input, Row, Button, Modal, Card } from 'react-materialize';
 import NewUser from '../NewUser';
+import { uploadFile } from 'react-s3';
 import './style.css';
 import Auth from '../../../utils/Auth';
+import { config } from '../../../config/Config';
+
+// import { runInThisContext } from 'vm';
 
 class Login extends Component {
 
-  state = {
-    firstName: '',
-    lastName: '',
-    userName: '',
-    email: '',
-    password: '',
-    passwordConfirmed: ''
-  };
-
   constructor(props) {
     super(props)
+    this.state = {
+      firstName: '',
+      lastName: '',
+      userName: '',
+      email: '',
+      imageURL: '',
+      password: '',
+      passwordConfirmed: ''
+    };
+
     Auth.session().then(user => {
       this.setState({
         user: user,
         authenticated: user.authenticated
-      })
-    })
+      });
+    });
+
+    this.reactS3config = {
+      bucketName: 'gooddeedsimages',
+      region: 'us-east-1',
+      accessKeyId: config.awsKey,
+      secretAccessKey: config.awsSecret
+    };
+
+    this.uploadHandler = this.uploadHandler.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.LoginHandler = this.LoginHandler.bind(this);
+    this.handleModalFormSubmit = this.handleModalFormSubmit.bind(this);
   }
 
-  handleInputChange = event => {
+  uploadHandler(event) {
+    const imagefile = event.target.files[0];
+    console.log(imagefile);
+    uploadFile(imagefile, this.reactS3config)
+      .then(data => {
+        console.log(data.location);
+        this.setState({ imageURL: data.location });
+      })
+      .catch(err => console.error(err));
+  }
+
+  handleInputChange(event) {
     console.log(event.target)
     const { name, value } = event.target;
     this.setState({
@@ -34,7 +62,7 @@ class Login extends Component {
   }
 
   //login/authentication function
-  LoginHandler = event => {
+  LoginHandler(event) {
     event.preventDefault();
 
     const loginInfo = this.state;
@@ -57,18 +85,21 @@ class Login extends Component {
     }
   }
 
-  handleModalFormSubmit = event => {
+
+
+  handleModalFormSubmit(event) {
     event.preventDefault();
     const SignUpInfo = this.state;
     console.log(SignUpInfo)
     if (this.state.password === this.state.passwordConfirmed) {
       console.log(event)
       Auth.signup({
-        email: this.state.email,
-        password: this.state.password,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        userName: this.state.userName
+        email: SignUpInfo.email,
+        password: SignUpInfo.password,
+        firstName: SignUpInfo.firstName,
+        lastName: SignUpInfo.lastName,
+        userName: SignUpInfo.userName,
+        imageURL: SignUpInfo.imageURL
       }).then(res => {
         window.location = res.data.redirect;
       }).catch(err => {
@@ -77,15 +108,12 @@ class Login extends Component {
           //I'll change this to react side flash instead of a window alert
           alert(err.response.data.error)
         }
-      })
+      });
     }
     else {
       return console.log('please confirm passwrod');
     }
-
   }
-
-
 
   render() {
 
@@ -105,11 +133,13 @@ class Login extends Component {
               handleInputChange={this.handleInputChange}
               firstName={this.state.firstName}
               lastName={this.state.lastName}
+              imageURL={this.state.imageURL}
               userName={this.state.userName}
               email={this.state.email}
               password={this.state.password}
               passwordConfirmed={this.state.passwordConfirmed}
-              handleModalFormSubmit={this.handleModalFormSubmit} x />
+              handleModalFormSubmit={this.handleModalFormSubmit}
+              uploadHandler={this.uploadHandler} />
           </Modal>
           <h2>Already a member?</h2>
           <Input name="email" onChange={this.handleInputChange} type="email" label="Email" s={12} />

@@ -76,9 +76,14 @@ class Main extends Component {
                 // </Chip>
               }
             >
-              <Modal header='Profile' trigger={<NavItem>View Profile</NavItem>}>
-                {this.state.user.user.id}
-                <ProfileView />
+              <Modal trigger={<NavItem>View Profile</NavItem>}>
+                <ProfileView
+                firstName={this.state.userInfo.firstName}
+                lastName={this.state.userInfo.lastName}
+                imageURL={this.state.userInfo.imageURL}
+                email={this.state.userInfo.email}
+                userName={this.state.userInfo.userName}
+                 />
               </Modal>
               <NavItem
                 onClick={this.logoutFunction}>Logout</NavItem>
