@@ -27,9 +27,12 @@ export default {
     return axios.delete(`/api/needs/${id}`);
   },
 
-  // Need to check if this the correct way to organize all the messages for one post
-  postMessage: (id, messageData) => {
-    return axios.put(`/api/needs/${id}/messages`, messageData);
+  postMessage: data => {
+    return axios.post('/api/message', data);
+  },
+
+  loadMessage: data => {
+    return axios.get(`/api/message?needId=${data.need}`);
   },
 
   getUserInfo: id => {

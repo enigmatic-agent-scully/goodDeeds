@@ -2,8 +2,9 @@ import React from 'react';
 import { Card, Row, Col, Modal } from 'react-materialize';
 import './style.css';
 import NeedView from '../NeedView';
+import Messages from './../Messages/index';
 function NeedList(props) {
-  
+
   return (
     <Row>
       {props.needs.length ? (
@@ -17,16 +18,17 @@ function NeedList(props) {
                       <p>{need.description}</p>
                     </Col>
                     <Col s="6">
-                      <img src={need.imageurl} alt="need"/>
+                      <img src={need.imageurl} alt="need" />
                     </Col>
                   </Row>
                 </Card>
               }>
               <NeedView
                 category={need.category}
-                description={need.category} 
+                description={need.category}
                 imageurl={need.imageurl}
                 _id={need._id} />
+              <Messages needId={need._id} />
             </Modal>
           ))}
         </Row>
