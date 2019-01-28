@@ -3,14 +3,14 @@ var router = require('express').Router();
 const db = require("./../models");
 
 
-module.exports = {
+const UserControllers = module.exports = {
     findById: (req, res) => {
         console.log(req.params.id);
         db.User
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-        },
+    },
 
     beforeLogin(req, res, next) {
         console.log(`inside the login function "userController.js" with req.body.email = ${req.body.email}, 
@@ -90,5 +90,27 @@ module.exports = {
             return next();
         }
         console.log('must login first!')
+        const err = new Error("You have to log in first");
+        err.statusCode = 403;
+        next(err);
+    },
+
+    checkApiAuthentication(req, res, next) {
+        // Check for public routes (e.g. login/session etc)
+        // And then validate the authenticated routes
+        const publicRoutes = [
+            "/user/login",
+            "/user/signup",
+            "/user/session",
+        ]
+        if (publicRoutes.includes(req.url)) {
+            return next()
+        }
+        UserControllers.isLoggedIn(req, res, next);
     }
 };
+
+
+// middlewares:
+// (req, res) -----> m1, m2, m3 .... mn ---> not found (is also a middleware) ---> 500 (internal server error) middleware  --> 500 express middleware (just in the worst case, when we cannot render even the custom 500 error page)
+// browser

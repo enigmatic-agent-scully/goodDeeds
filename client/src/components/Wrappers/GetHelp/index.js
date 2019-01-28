@@ -7,7 +7,7 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
- 
+
 
 
 class GetHelp extends Component {
@@ -30,7 +30,7 @@ class GetHelp extends Component {
       accessKeyId: config.awsKey,
       secretAccessKey: config.awsSecret
     };
-    
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loadNeeds = this.loadNeeds.bind(this);
     this.uploadHandler = this.uploadHandler.bind(this);
