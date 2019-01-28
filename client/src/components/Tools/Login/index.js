@@ -11,13 +11,13 @@ import { config } from '../../../config/Config';
 class Login extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       firstName: '',
       lastName: '',
       userName: '',
       email: '',
-      imageURL: '',
+      imageurl: '',
       password: '',
       passwordConfirmed: ''
     };
@@ -48,7 +48,7 @@ class Login extends Component {
     uploadFile(imagefile, this.reactS3config)
       .then(data => {
         console.log(data.location);
-        this.setState({ imageURL: data.location });
+        this.setState({ imageurl: data.location });
       })
       .catch(err => console.error(err));
   }
@@ -99,7 +99,7 @@ class Login extends Component {
         firstName: SignUpInfo.firstName,
         lastName: SignUpInfo.lastName,
         userName: SignUpInfo.userName,
-        imageURL: SignUpInfo.imageURL
+        imageurl: SignUpInfo.imageURL
       }).then(res => {
         window.location = res.data.redirect;
       }).catch(err => {
@@ -133,7 +133,7 @@ class Login extends Component {
               handleInputChange={this.handleInputChange}
               firstName={this.state.firstName}
               lastName={this.state.lastName}
-              imageURL={this.state.imageURL}
+              imageurl={this.state.imageurl}
               userName={this.state.userName}
               email={this.state.email}
               password={this.state.password}
