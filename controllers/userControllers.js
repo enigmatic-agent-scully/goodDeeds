@@ -51,7 +51,8 @@ const UserControllers = module.exports = {
             }
             req.session.user = user
             next();
-        }))(req, res, next)
+        }))
+        (req, res, next)
     },
     //this function will return our session info
     getSession(req, res, next) {

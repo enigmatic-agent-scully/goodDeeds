@@ -52,6 +52,10 @@ class GetHelp extends Component {
     this.loadNeeds();
   }
 
+  onHoverEvent(id) {
+    console.log(id)
+  }
+
   loadNeeds() {
     API.getNeeds()
       .then(res => this.setState({ needs: res.data }))
@@ -113,6 +117,7 @@ class GetHelp extends Component {
             <Card>
               <h4>List of Needs</h4>
               <NeedList
+                onHoverEvent={this.onHoverEvent}
                 needs={this.state.needs} />
             </Card>
           </Col>

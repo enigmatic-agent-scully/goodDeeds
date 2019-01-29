@@ -13,7 +13,7 @@ function NeedList(props) {
             <Modal
               trigger={
                 <Card 
-                  onMouseEnter={props.getHoverID}
+                  onMouseEnter={() => props.onHoverEvent(need._id)}
                   key={need._id} 
                   title={need.category}>
                   <Row>

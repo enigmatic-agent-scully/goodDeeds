@@ -13,6 +13,7 @@ import API from '../../../utils/API'
 // Rewrite as Class with User state
 
 class Main extends Component {
+  
   state = {
     user: {},
     userInfo: []

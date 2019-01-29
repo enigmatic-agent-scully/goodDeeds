@@ -13,11 +13,12 @@ class GiveHelp extends Component {
     super(props);
     this.state = {
       needs: [],
-      hoverID: ''
+      cntLat: 33.785,
+      cntLng: -84.385
     };
 
     this.getNeeds = this.getNeeds.bind(this);
-    this.getHoverID = this.getHoverID.bind(this);
+    this.setCenter = this.setCenter.bind(this);
 
   }
 
@@ -28,13 +29,17 @@ class GiveHelp extends Component {
       .catch(err => console.log(err));
   }
 
-  getHoverID(event) {
-    // event.preventDefault();
-    console.log(event.target);
-    this.setState({
-      hoverID: '5c4d1c2f7fec955eb2dcbd2a'
-    });
+  setCenter(id) {
+    API.getNeed(id)
+      .then(res => {
+        this.setState({
+          cntLat: res.data.lat,
+          cntLng: res.data.lng
+        });
+      });
   }
+
+
 
   componentDidMount() {
     this.getNeeds();
@@ -51,7 +56,7 @@ class GiveHelp extends Component {
               </CollapsibleItem>
               <CollapsibleItem header="List of Needs" icon="list">
                 <NeedList
-                  getHoverID={this.getHoverID} 
+                  onHoverEvent={this.setCenter} 
                   className="list-view" 
                   needs={this.state.needs}/>
               </CollapsibleItem>
@@ -60,7 +65,8 @@ class GiveHelp extends Component {
           <Col s="8">
             <MapView 
               needs={this.state.needs}
-              hoverID={this.state.hoverID}>
+              cntLat={this.state.cntLat}
+              cntLng={this.state.cntLng}>
               <Preloader flashing/>
             </MapView>
           </Col>

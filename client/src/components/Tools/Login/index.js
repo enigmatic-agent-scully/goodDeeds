@@ -47,7 +47,6 @@ class Login extends Component {
     console.log(imagefile);
     uploadFile(imagefile, this.reactS3config)
       .then(data => {
-        console.log(data.location);
         this.setState({ imageurl: data.location });
       })
       .catch(err => console.error(err));

@@ -37,7 +37,7 @@ class Messages extends Component {
         this.setState({
           retunedMessageArray: res.data
         });
-        console.log(this.state.retunedMessageArray);
+        // console.log(this.state.retunedMessageArray);
 
       }).catch(err => {
         console.log(err);
