@@ -1,6 +1,8 @@
 
 import App from  '../../../client/src/App';
 import { expect } from "chai";
+import chaiHttp from 'chai-http';
+import mongoose from 'mongoose';
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';

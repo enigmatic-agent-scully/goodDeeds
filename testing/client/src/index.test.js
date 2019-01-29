@@ -1,6 +1,8 @@
 
 import Index from  '../../../client/src/index';
 import { expect } from "chai";
+import chaiHttp from 'chai-http';
+import mongoose from 'mongoose';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
