@@ -4,7 +4,6 @@ import './style.css';
 import NeedView from '../NeedView';
 import Messages from './../Messages/index';
 function NeedList(props) {
-
   return (
     <Row>
       {props.needs.length ? (
@@ -12,26 +11,29 @@ function NeedList(props) {
           {props.needs.map(need => (
             <Modal
               trigger={
-                <Card 
+                <Card
                   onMouseEnter={props.getHoverID}
-                  key={need._id} 
-                  title={need.category}>
+                  key={need._id}
+                  title={need.category}
+                >
                   <Row>
-                    <Col s="6">
+                    <Col s='6'>
                       <p>{need.description}</p>
                     </Col>
-                    <Col s="6">
-                      <img src={need.imageurl} alt="need" />
+                    <Col s='6'>
+                      <img src={need.imageurl} alt='need' />
                     </Col>
                   </Row>
                 </Card>
-              }>
+              }
+            >
               <Card key={need._id} title={need.category}>
                 <NeedView
                   category={need.category}
-                  description={need.category}
+                  description={need.description}
                   imageurl={need.imageurl}
-                  _id={need._id} />
+                  _id={need._id}
+                />
                 <Messages needId={need._id} />
               </Card>
             </Modal>
@@ -45,6 +47,5 @@ function NeedList(props) {
     </Row>
   );
 }
-
 
 export default NeedList;
