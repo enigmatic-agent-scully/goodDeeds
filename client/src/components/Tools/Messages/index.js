@@ -5,14 +5,12 @@ import './style.css';
 import API from '../../../utils/API';
 // import Input from 'react-materialize/lib/Input';
 
-
 class Messages extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       message: '',
-      retunedMessageArray: []
+      returnedMessageArray: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,9 +22,8 @@ class Messages extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => this.loadPosts(), 3000)
+    setInterval(() => this.loadPosts(), 3000);
   }
-
 
   loadPosts() {
     // needId = '5c4cbb8533f08c086075a05c';
@@ -35,15 +32,14 @@ class Messages extends Component {
     })
       .then(res => {
         this.setState({
-          retunedMessageArray: res.data
+          returnedMessageArray: res.data
         });
-        // console.log(this.state.retunedMessageArray);
-
-      }).catch(err => {
+        // console.log(this.state.returnedMessageArray);
+      })
+      .catch(err => {
         console.log(err);
       });
   }
-
 
   handleInputChange(event) {
     const { name, value } = event.target;
@@ -52,7 +48,6 @@ class Messages extends Component {
     });
   }
 
-
   submitPost(event) {
     event.preventDefault();
     API.postMessage({
@@ -60,10 +55,11 @@ class Messages extends Component {
       need: this.props.needId
     })
       .then(res => {
-        //upon completion of creating the post, we are 
-        //calling on the loadPosts func 
+        //upon completion of creating the post, we are
+        //calling on the loadPosts func
         this.loadPosts();
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log(err);
       });
   }
@@ -85,7 +81,7 @@ class Messages extends Component {
                                       Post Message
                         </Button>
               
-                        {this.state.retunedMessageArray.map((message) =>
+                        {this.state.returnedMessageArray.map((message) =>
                           <p key={message._id}>
                             {message.user}: {message.message}
                           </p>)}
@@ -95,26 +91,23 @@ class Messages extends Component {
     return (
       <Row>
         <Input
-          name="message"
+          name='message'
           value={this.state.message}
           onChange={this.handleInputChange}
           s={12}
-          label="type your message"
-          type="textarea"
-        >
-        </Input>
-        <Button onClick={this.submitPost}>
-                    Post Message
-        </Button>
+          label='type your message'
+          type='textarea'
+        />
+        <Button onClick={this.submitPost}>Post Message</Button>
 
-        {this.state.retunedMessageArray.map((message) =>
+        {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
             {message.user.userName}: {message.message}
-          </Card>)}
+          </Card>
+        ))}
       </Row>
     );
   }
-
 }
 
 export default Messages;

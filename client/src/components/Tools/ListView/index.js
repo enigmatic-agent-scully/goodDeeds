@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import { Card, Row, Modal, Col } from 'react-materialize';
+import { Card, Row } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
 
 class ListView extends Component {
-  
   state = {
-   needs: []
+    needs: []
   };
 
   componentDidMount() {
     this.loadNeeds();
-  };
+  }
 
   loadNeeds = () => {
     API.getNeeds()
-      .then(res => this.setState({ needs: res.data}))
+      .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   };
 
@@ -56,6 +55,5 @@ class ListView extends Component {
     )
   }
 }
-
 
 export default ListView;

@@ -7,8 +7,6 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
- 
-
 
 class GetHelp extends Component {
   constructor(props) {
@@ -30,7 +28,7 @@ class GetHelp extends Component {
       accessKeyId: config.awsKey,
       secretAccessKey: config.awsSecret
     };
-    
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loadNeeds = this.loadNeeds.bind(this);
     this.uploadHandler = this.uploadHandler.bind(this);
@@ -91,9 +89,8 @@ class GetHelp extends Component {
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl,
       lat: NeedInfo.lat,
-      lng: NeedInfo.lng,
-    })
-      .then(this.loadNeeds());
+      lng: NeedInfo.lng
+    }).then(this.loadNeeds());
   }
 
   render() {
@@ -113,7 +110,7 @@ class GetHelp extends Component {
               handleGeoCode={this.handleGeoCode}
             />
           </Col>
-          <Col id="need-list" s='4'>
+          <Col id='need-list' s='4'>
             <Card>
               <h4>List of Needs</h4>
               <NeedList
