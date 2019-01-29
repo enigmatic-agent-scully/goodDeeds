@@ -25,10 +25,10 @@
   "homepage": "https://github.com/enigmatic-agent-scully/goodDeeds#readme",
   "dependencies": {
     "axios": "^0.16.2",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.3",
     "express": "^4.15.4",
-    "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "mongoose": "^5.0.17"
   },
   "devDependencies": {
     "babel": "^6.23.0",
