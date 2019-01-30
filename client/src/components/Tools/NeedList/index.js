@@ -11,15 +11,16 @@ function NeedList(props) {
           {props.needs.map(need => (
             <Modal
               trigger={
-                <Card 
+                <Card
                   onMouseEnter={() => props.onHoverEvent(need._id)}
-                  key={need._id} 
-                  title={need.category}>
+                  key={need._id}
+                  title={need.category}
+                >
                   <Row>
-                    <Col s='6'>
+                    <Col s={12} m={6}>
                       <p>{need.description}</p>
                     </Col>
-                    <Col s='6'>
+                    <Col s={12} m={6}>
                       <img src={need.imageurl} alt='need' />
                     </Col>
                   </Row>
