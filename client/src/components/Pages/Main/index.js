@@ -81,7 +81,7 @@ class Main extends Component {
                 <ProfileView
                 firstName={this.state.userInfo.firstName}
                 lastName={this.state.userInfo.lastName}
-                imageURL={this.state.userInfo.imageURL}
+                imageurl={this.state.userInfo.imageurl}
                 email={this.state.userInfo.email}
                 userName={this.state.userInfo.userName}
                  />

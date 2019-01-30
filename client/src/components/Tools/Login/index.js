@@ -47,6 +47,7 @@ class Login extends Component {
     console.log(imagefile);
     uploadFile(imagefile, this.reactS3config)
       .then(data => {
+        console.log(data.location);
         this.setState({ imageurl: data.location });
       })
       .catch(err => console.error(err));
@@ -91,16 +92,18 @@ class Login extends Component {
     const SignUpInfo = this.state;
     console.log(SignUpInfo)
     if (this.state.password === this.state.passwordConfirmed) {
-      console.log(event)
+      // console.log(event);
+      console.log(SignUpInfo);
       Auth.signup({
         email: SignUpInfo.email,
         password: SignUpInfo.password,
         firstName: SignUpInfo.firstName,
         lastName: SignUpInfo.lastName,
         userName: SignUpInfo.userName,
-        imageurl: SignUpInfo.imageURL
+        imageurl: SignUpInfo.imageurl
       }).then(res => {
-        window.location = res.data.redirect;
+        console.log(res)
+        // window.location = res.data.redirect;
       }).catch(err => {
         if (err.response.data.error) {
           // Todo Show the flash message

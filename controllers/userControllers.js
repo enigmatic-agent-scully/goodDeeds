@@ -43,13 +43,14 @@ const UserControllers = module.exports = {
     signup(req, res, next) {
         console.log(`inside userControllers.js > login > returned from passport.authenticate, 
         req.user = ${req.user}`);
+        // console.log(req.body);
         (passport.authenticate('local.signup', {
             session: true
         }, function (err, user) {
             if (err) {
                 return next(err)
             }
-            req.session.user = user
+            req.session.user = user;
             next();
         }))
         (req, res, next)

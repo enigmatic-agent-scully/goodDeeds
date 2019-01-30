@@ -18,6 +18,7 @@ function NewUser(props) {
         <Input name="userName" type="text" label="Username" s={12} onChange={props.handleInputChange} />
         <Input
           onChange={props.uploadHandler} 
+          name='imageurl'
           type="file" 
           label="Add Photo" 
           s={12}  

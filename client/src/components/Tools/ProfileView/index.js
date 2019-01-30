@@ -8,7 +8,7 @@ function ProfileView(props) {
   return(
     <Row>
       <Col s="6">
-        <img src={props.imageURL} alt="user-pic" />
+        <img src={props.imageurl} alt="user-pic" />
       </Col>
       <Col s="6">
         <h2>{props.userName}</h2>
