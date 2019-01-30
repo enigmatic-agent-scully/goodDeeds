@@ -47,15 +47,15 @@ class GetHelp extends Component {
   }
 
   componentDidMount() {
-    this.loadNeeds();
+    this.loadNeeds(this.props.user._id);
   }
 
   onHoverEvent(id) {
-    console.log(id)
+    console.log(id);
   }
 
-  loadNeeds() {
-    API.getNeeds()
+  loadNeeds(userid) {
+    API.getNeeds(userid)
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }
@@ -82,22 +82,27 @@ class GetHelp extends Component {
   SubmitHandler(event) {
     event.preventDefault();
     const NeedInfo = this.state;
-    console.log(NeedInfo);
+    console.log(this.props.user._id);
     API.postNeed({
       category: NeedInfo.category,
       needdate: NeedInfo.needdate,
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl,
       lat: NeedInfo.lat,
-      lng: NeedInfo.lng
-    }).then(this.loadNeeds());
+      lng: NeedInfo.lng,
+      user: this.props.user._id
+    }).then(this.loadNeeds(this.props.user._id));
   }
 
   render() {
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
+<<<<<<< HEAD
           <Col m='12' l="4">
+=======
+          <Col s={4}>
+>>>>>>> bee7b39071d85a19e39ef381134328b0f1448a2a
             <NeedInput
               category={this.state.category}
               address={this.state.address}
@@ -110,15 +115,24 @@ class GetHelp extends Component {
               handleGeoCode={this.handleGeoCode}
             />
           </Col>
+<<<<<<< HEAD
           <Col id='need-list' m='12' l="4">
+=======
+          <Col id='need-list' s={4}>
+>>>>>>> bee7b39071d85a19e39ef381134328b0f1448a2a
             <Card>
               <h4>List of Needs</h4>
               <NeedList
                 onHoverEvent={this.onHoverEvent}
-                needs={this.state.needs} />
+                needs={this.state.needs}
+              />
             </Card>
           </Col>
+<<<<<<< HEAD
           <Col m='12' l="4">
+=======
+          <Col s={4}>
+>>>>>>> bee7b39071d85a19e39ef381134328b0f1448a2a
             <ResolvedList />
           </Col>
         </Row>

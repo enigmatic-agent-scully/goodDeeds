@@ -7,35 +7,32 @@ import ProfileView from '../../Tools/ProfileView';
 import './style.css';
 import Auth from '../../../utils/Auth';
 import Button from 'react-materialize/lib/Button';
-import API from '../../../utils/API'
+import API from '../../../utils/API';
 // import { threadId } from 'worker_threads';
 
 // Rewrite as Class with User state
 
 class Main extends Component {
-  
   state = {
     user: {},
     userInfo: []
   };
 
-
   constructor() {
-
-    super()
+    super();
     Auth.session().then(user => {
       // console.log(user);
       this.setState({
         user: user,
         authenticated: user.authenticated
-      })
+      });
       // console.log(this.state.user.user)
-      this.getProfileInfo(this.state.user.user)
-    })
+      this.getProfileInfo(this.state.user.user);
+    });
   }
 
   getProfileInfo(user) {
-    // console.log(user.id); 
+    // console.log(user.id);
     API.getUserInfo(user.id)
       .then(res => this.setState({ userInfo: res.data }))
       .catch(err => console.log(err));
@@ -43,12 +40,14 @@ class Main extends Component {
 
   //logout function
   logoutFunction(event) {
-    console.log('inside logout func')
-    Auth.logout().then(res => {
-      window.location = res.data.redirect;
-    }).catch(err => {
-      console.log(err)
-    })
+    console.log('inside logout func');
+    Auth.logout()
+      .then(res => {
+        window.location = res.data.redirect;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -56,8 +55,8 @@ class Main extends Component {
       return null; // TODO Implement loading gear
     }
     if (!this.state.authenticated) {
-      window.location = "/"
-      return
+      window.location = '/';
+      return;
     }
     return (
       <div className='Main-Page'>
@@ -65,8 +64,9 @@ class Main extends Component {
           <Navbar id='navbar' brand='goodDeeds' fixed right>
             <Dropdown
               trigger={
-                <Button
-                >{this.state.userInfo.firstName} {this.state.userInfo.lastName}</Button>
+                <Button>
+                  {this.state.userInfo.firstName} {this.state.userInfo.lastName}
+                </Button>
                 //Chip was not working with the page authentication functions above for some reason
                 // <Chip className='user-badge'>
                 //   <img
@@ -79,15 +79,14 @@ class Main extends Component {
             >
               <Modal trigger={<NavItem>View Profile</NavItem>}>
                 <ProfileView
-                firstName={this.state.userInfo.firstName}
-                lastName={this.state.userInfo.lastName}
-                imageurl={this.state.userInfo.imageurl}
-                email={this.state.userInfo.email}
-                userName={this.state.userInfo.userName}
-                 />
+                  firstName={this.state.userInfo.firstName}
+                  lastName={this.state.userInfo.lastName}
+                  imageurl={this.state.userInfo.imageurl}
+                  email={this.state.userInfo.email}
+                  userName={this.state.userInfo.userName}
+                />
               </Modal>
-              <NavItem
-                onClick={this.logoutFunction}>Logout</NavItem>
+              <NavItem onClick={this.logoutFunction}>Logout</NavItem>
             </Dropdown>
             <NavItem href='/main/get-help'>Get Help</NavItem>
             <NavItem href='/main/give-help'>Give Help</NavItem>
@@ -95,7 +94,13 @@ class Main extends Component {
         </div>
         <Router>
           <div>
-            <Route exact path='/main/get-help' component={GetHelp} />
+            <Route
+              exact
+              path='/main/get-help'
+              render={props => (
+                <GetHelp {...props} user={this.state.userInfo} />
+              )}
+            />
             <Route exact path='/main/give-help' component={GiveHelp} />
           </div>
         </Router>
