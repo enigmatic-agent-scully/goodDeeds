@@ -23,7 +23,8 @@ export default {
           authenticated: true
         };
       } else {
-        return axios.get('/api/user/session').then(res => res.data);
+        return axios.get('/api/user/session')
+          .then(res => res.data);
       }
     }).then(data => {
       if (cache && data.user.id) {

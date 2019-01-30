@@ -34,20 +34,22 @@ class GetHelp extends Component {
     this.uploadHandler = this.uploadHandler.bind(this);
     this.handleGeoCode = this.handleGeoCode.bind(this);
     this.SubmitHandler = this.SubmitHandler.bind(this);
+  
+    this.loadNeeds();
+
   }
 
   handleGeoCode(suggest) {
     // const addressInput = event.target.value
     // console.log(suggest.location);
-    this.setState({
-      lat: suggest.location.lat,
-      lng: suggest.location.lng,
-      address: ''
-    });
-  }
+    if(suggest) {
+      this.setState({
+        lat: suggest.location.lat,
+        lng: suggest.location.lng,
+        address: ''
+      });
+    }
 
-  componentDidMount() {
-    this.loadNeeds();
   }
 
   onHoverEvent(id) {
@@ -55,7 +57,7 @@ class GetHelp extends Component {
   }
 
   loadNeeds() {
-    API.getNeeds()
+    API.getNeedsbyUser()
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }

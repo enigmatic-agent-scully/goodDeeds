@@ -2,6 +2,6 @@ img {
     width: 100%;
 }
 
-.modal-box {
-    background-color: #ee6e73;
+.need-card :hover {
+    background-color: #ebd9d9;
 }
