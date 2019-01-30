@@ -102,8 +102,7 @@ class Login extends Component {
         userName: SignUpInfo.userName,
         imageurl: SignUpInfo.imageurl
       }).then(res => {
-        console.log(res)
-        // window.location = res.data.redirect;
+        window.location = res.data.redirect;
       }).catch(err => {
         if (err.response.data.error) {
           // Todo Show the flash message
