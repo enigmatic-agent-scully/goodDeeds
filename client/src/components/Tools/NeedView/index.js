@@ -4,14 +4,14 @@ import './style.css';
 
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
-function NeedView(props) { 
+function NeedView(props) {
   return (
     <Row>
-      <Col s="6">
+      <Col s={12} m={6}>
         <p>{props.description}</p>
       </Col>
-      <Col s="6">
-        <img src={props.imageurl} alt="need"/>
+      <Col s={12} m={6}>
+        <img src={props.imageurl} alt='need' />
       </Col>
     </Row>
   );
