@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row, Card } from 'react-materialize';
 import NeedInput from '../../Tools/NeedInput';
 import NeedList from '../../Tools/NeedList';
-import ResolvedList from '../../Tools/ResolvedList';
+// import ResolvedList from '../../Tools/ResolvedList';
 import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
@@ -96,6 +96,7 @@ class GetHelp extends Component {
   }
 
   render() {
+    console.log(this.state.needs);
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
@@ -117,11 +118,16 @@ class GetHelp extends Component {
               <h4>List of Needs</h4>
               <NeedList
                 onHoverEvent={this.onHoverEvent}
-                needs={this.state.needs} />
+                needs={this.state.needs.filter(need =>!need.resolved)} />
             </Card>
           </Col>
-          <Col m='12' l="4">
-            <ResolvedList />
+          <Col id='need-list' m='12' l="4">
+            <Card>
+              <h4>Resolved Needs</h4>
+              <NeedList
+                onHoverEvent={this.onHoverEvent}
+                needs={this.state.needs.filter(need => need.resolved)} />
+            </Card>
           </Col>
         </Row>
       </div>

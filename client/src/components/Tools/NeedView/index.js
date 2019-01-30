@@ -8,7 +8,9 @@ function NeedView(props) {
   return (
     <Row>
       <Col s="6">
+        <h4>{props.category}</h4>
         <p>{props.description}</p>
+        <small>{props.resolved ? 'Resolved' : 'Not Resolved'}</small>
       </Col>
       <Col s="6">
         <img src={props.imageurl} alt="need"/>
