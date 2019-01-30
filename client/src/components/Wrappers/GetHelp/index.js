@@ -97,7 +97,7 @@ class GetHelp extends Component {
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
-          <Col s='4'>
+          <Col m='12' l="4">
             <NeedInput
               category={this.state.category}
               address={this.state.address}
@@ -110,7 +110,7 @@ class GetHelp extends Component {
               handleGeoCode={this.handleGeoCode}
             />
           </Col>
-          <Col id='need-list' s='4'>
+          <Col id='need-list' m='12' l="4">
             <Card>
               <h4>List of Needs</h4>
               <NeedList
@@ -118,7 +118,7 @@ class GetHelp extends Component {
                 needs={this.state.needs} />
             </Card>
           </Col>
-          <Col s='4'>
+          <Col m='12' l="4">
             <ResolvedList />
           </Col>
         </Row>
