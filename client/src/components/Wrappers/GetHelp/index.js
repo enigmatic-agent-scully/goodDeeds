@@ -54,12 +54,12 @@ class GetHelp extends Component {
 
   markResolved(e) {
     e.preventDefault();
-    API.markResolved(e.target.value);
+    API.markResolved(e.target.value).then(this.loadNeeds());
   }
 
   markUnresolved(e) {
     e.preventDefault();
-    API.markUnresolved(e.target.value);
+    API.markUnresolved(e.target.value).then(this.loadNeeds());
   }
 
   onHoverEvent(id) {
