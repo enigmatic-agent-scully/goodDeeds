@@ -3,10 +3,7 @@ const db = require('../models');
 // Defining methods for the booksController
 module.exports = {
   findAll: (req, res) => {
-    db.Need.find({ user: req.query.user })
-      .populate('user', {
-        _id: true
-      })
+    db.Need.find({})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
   // Get all needs
-  getNeeds: userid => {
-    return axios.get(`/api/needs?user=${userid}`);
+  getNeeds: () => {
+    return axios.get('/api/needs');
   },
 
   // Get need by id
