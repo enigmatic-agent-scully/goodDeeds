@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-// import { Navbar, NavItem, Dropdown, Modal } from 'react-materialize';
+import { Navbar, NavItem, Dropdown, Modal } from 'react-materialize';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GetHelp from '../../Wrappers/GetHelp';
 import GiveHelp from '../../Wrappers/GiveHelp';
-// import ProfileView from '../../Tools/ProfileView';
+import ProfileView from '../../Tools/ProfileView';
 import './style.css';
 import Auth from '../../../utils/Auth';
-// import Button from 'react-materialize/lib/Button';
+import Button from 'react-materialize/lib/Button';
 import API from '../../../utils/API';
 // import { threadId } from 'worker_threads';
-import Navbar from '../../Tools/Navbar/Navbar';
+// import Navbar from '../../Tools/Navbar/Navbar';
 // Rewrite as Class with User state
 
 class Main extends Component {
@@ -60,15 +60,7 @@ class Main extends Component {
     }
     return (
       <div className='Main-Page'>
-        <Navbar
-          firstName={this.state.userInfo.firstName}
-          lastName={this.state.userInfo.lastName}
-          imageurl={this.state.userInfo.imageurl}
-          email={this.state.userInfo.email}
-          userName={this.state.userInfo.userName}
-          logoutFunction={this.logoutFunction}
-        />
-        {/* <div className='navbar-wrapper'>
+        <div className='navbar-wrapper'>
           <Navbar id='navbar' brand='goodDeeds' fixed right>
             <Dropdown
               trigger={
@@ -99,7 +91,7 @@ class Main extends Component {
             <NavItem href='/main/get-help'>Get Help</NavItem>
             <NavItem href='/main/give-help'>Give Help</NavItem>
           </Navbar>
-        </div> */}
+        </div>
         <Router>
           <div>
             <Route
