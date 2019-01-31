@@ -19,7 +19,7 @@ class GiveHelp extends Component {
 
     this.getNeeds = this.getNeeds.bind(this);
     this.setCenter = this.setCenter.bind(this);
-
+    this.filterBySearch = this.filterBySearch.bind(this);
   }
 
 
@@ -39,7 +39,13 @@ class GiveHelp extends Component {
       });
   }
 
-
+  filterBySearch(category){
+    API.getNeeds()
+      .then(res => this.setState({ 
+        needs: res.data.filter(
+          need => need.category === category)
+      }));
+  }
 
   componentDidMount() {
     this.getNeeds();
@@ -52,7 +58,9 @@ class GiveHelp extends Component {
           <Col id="left-column" s="4">
             <Collapsible defaultActiveKey={0}>
               <CollapsibleItem header="Search Needs" icon="search">
-                <NeedSearch />
+                <NeedSearch
+                  filterBySearch={this.filterBySearch}
+                  getNeeds={this.getNeeds} />
               </CollapsibleItem>
               <CollapsibleItem header="List of Needs" icon="list">
                 <NeedList

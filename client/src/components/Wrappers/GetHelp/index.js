@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row, Card } from 'react-materialize';
 import NeedInput from '../../Tools/NeedInput';
 import NeedList from '../../Tools/NeedList';
-import ResolvedList from '../../Tools/ResolvedList';
+// import ResolvedList from '../../Tools/ResolvedList';
 import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
@@ -34,28 +34,30 @@ class GetHelp extends Component {
     this.uploadHandler = this.uploadHandler.bind(this);
     this.handleGeoCode = this.handleGeoCode.bind(this);
     this.SubmitHandler = this.SubmitHandler.bind(this);
+  
+    this.loadNeeds();
+
   }
 
   handleGeoCode(suggest) {
     // const addressInput = event.target.value
     // console.log(suggest.location);
-    this.setState({
-      lat: suggest.location.lat,
-      lng: suggest.location.lng,
-      address: ''
-    });
-  }
+    if(suggest) {
+      this.setState({
+        lat: suggest.location.lat,
+        lng: suggest.location.lng,
+        address: ''
+      });
+    }
 
-  componentDidMount() {
-    this.loadNeeds(this.props.user._id);
   }
 
   onHoverEvent(id) {
     console.log(id);
   }
 
-  loadNeeds(userid) {
-    API.getNeeds(userid)
+  loadNeeds() {
+    API.getNeedsbyUser()
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }
@@ -95,10 +97,11 @@ class GetHelp extends Component {
   }
 
   render() {
+    // console.log(this.state.needs);
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
-          <Col s={4}>
+          <Col m='12' l="4">
             <NeedInput
               category={this.state.category}
               address={this.state.address}
@@ -111,17 +114,22 @@ class GetHelp extends Component {
               handleGeoCode={this.handleGeoCode}
             />
           </Col>
-          <Col id='need-list' s={4}>
+          <Col id='need-list' m='12' l="4">
             <Card>
               <h4>List of Needs</h4>
               <NeedList
                 onHoverEvent={this.onHoverEvent}
-                needs={this.state.needs}
-              />
+                needs={this.state.needs.filter(need =>!need.resolved)} />
             </Card>
           </Col>
-          <Col s={4}>
-            <ResolvedList />
+          <Col id='need-list' m='12' l="4">
+            <Card>
+              <h4>Resolved Needs</h4>
+              <NeedList
+                onHoverEvent={this.onHoverEvent}
+                needs={this.state.needs.filter(need => need.resolved)} />
+            </Card>
+
           </Col>
         </Row>
       </div>
