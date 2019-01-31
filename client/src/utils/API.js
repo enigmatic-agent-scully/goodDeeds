@@ -23,8 +23,18 @@ export default {
 
   // Change the status of need
   markResolved: id => {
+    return axios
+      .put(`/api/needs/${id}`, {
+        resolved: true
+      })
+      .then(resp => {
+        console.log(resp);
+      });
+  },
+
+  markUnresolved: id => {
     return axios.put(`/api/needs/${id}`, {
-      resolved: true
+      resolved: false
     });
   },
 
