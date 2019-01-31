@@ -9,7 +9,6 @@ import { config } from '../../../config/Config';
 // import { runInThisContext } from 'vm';
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -54,7 +53,7 @@ class Login extends Component {
   }
 
   handleInputChange(event) {
-    console.log(event.target)
+    console.log(event.target);
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -66,31 +65,31 @@ class Login extends Component {
     event.preventDefault();
 
     const loginInfo = this.state;
-    console.log(loginInfo)
+    console.log(loginInfo);
     if (this.state.email && this.state.password) {
       Auth.login({
         email: this.state.email,
         password: this.state.password
-      }).then(res => {
-        console.log('back from the promise')
-        //after successful authentication we'll redirect to the returned address (we set this on the server side)
-        window.location = res.data.redirect;
-      }).catch(err => {
-        if (err.response.data.error) {
-          // Todo Show the flash message
-          //I'll change this to react side flash instead of a window alert
-          alert(err.response.data.error)
-        }
-      });
+      })
+        .then(res => {
+          console.log('back from the promise');
+          //after successful authentication we'll redirect to the returned address (we set this on the server side)
+          window.location = res.data.redirect;
+        })
+        .catch(err => {
+          if (err.response.data.error) {
+            // Todo Show the flash message
+            //I'll change this to react side flash instead of a window alert
+            alert(err.response.data.error);
+          }
+        });
     }
   }
-
-
 
   handleModalFormSubmit(event) {
     event.preventDefault();
     const SignUpInfo = this.state;
-    console.log(SignUpInfo)
+    console.log(SignUpInfo);
     if (this.state.password === this.state.passwordConfirmed) {
       // console.log(event);
       console.log(SignUpInfo);
@@ -101,25 +100,25 @@ class Login extends Component {
         lastName: SignUpInfo.lastName,
         userName: SignUpInfo.userName,
         imageurl: SignUpInfo.imageurl
-      }).then(res => {
-        window.location = res.data.redirect;
-      }).catch(err => {
-        if (err.response.data.error) {
-          // Todo Show the flash message
-          //I'll change this to react side flash instead of a window alert
-          alert(err.response.data.error)
-        }
-      });
-    }
-    else {
+      })
+        .then(res => {
+          window.location = res.data.redirect;
+        })
+        .catch(err => {
+          if (err.response.data.error) {
+            // Todo Show the flash message
+            //I'll change this to react side flash instead of a window alert
+            alert(err.response.data.error);
+          }
+        });
+    } else {
       return console.log('please confirm passwrod');
     }
   }
 
   render() {
-
     //this statement is checking ot see if user is authenticated as set by the super constructor up top
-    //if not authenticated they can proceed 
+    //if not authenticated they can proceed
     if (this.state.authenticated === undefined) {
       return null; // TODO Implement loading gear
     }
@@ -127,8 +126,7 @@ class Login extends Component {
     return (
       <Row>
         <Card>
-          <Modal
-            trigger={<Button>Create New User Account</Button>}>
+          <Modal trigger={<Button>Create New User Account</Button>}>
             <NewUser
               header='New User'
               handleInputChange={this.handleInputChange}
@@ -140,12 +138,27 @@ class Login extends Component {
               password={this.state.password}
               passwordConfirmed={this.state.passwordConfirmed}
               handleModalFormSubmit={this.handleModalFormSubmit}
-              uploadHandler={this.uploadHandler} />
+              uploadHandler={this.uploadHandler}
+            />
           </Modal>
           <h2>Already a member?</h2>
-          <Input name="email" onChange={this.handleInputChange} type="email" label="Email" s={12} />
-          <Input name="password" onChange={this.handleInputChange} type="password" label="password" s={12} />
-          <Button waves='light' onClick={this.LoginHandler} >Login</Button>
+          <Input
+            name='email'
+            onChange={this.handleInputChange}
+            type='email'
+            label='Email'
+            s={12}
+          />
+          <Input
+            name='password'
+            onChange={this.handleInputChange}
+            type='password'
+            label='password'
+            s={12}
+          />
+          <Button waves='light' onClick={this.LoginHandler}>
+            Login
+          </Button>
         </Card>
       </Row>
     );

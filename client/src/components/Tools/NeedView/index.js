@@ -12,11 +12,19 @@ function NeedView(props) {
         <p>{props.description}</p>
         <small>
           {props.resolved ? (
-            <Button value={props._id} onClick={props.markUnresolved}>
+            <Button
+              key={props.key}
+              value={props._id}
+              onClick={props.markUnresolved}
+            >
               Mark Unresolved
             </Button>
           ) : (
-            <Button value={props._id} onClick={props.markResolved}>
+            <Button
+              key={props.key}
+              value={props._id}
+              onClick={props.markResolved}
+            >
               Mark Resolved
             </Button>
           )}

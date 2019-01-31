@@ -44,6 +44,7 @@ function NeedList(props) {
                   description={need.description}
                   imageurl={need.imageurl}
                   _id={need._id}
+                  key={need._id}
                 />
                 <Messages needId={need._id} />
               </Card>
