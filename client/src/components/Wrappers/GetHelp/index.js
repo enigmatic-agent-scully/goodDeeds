@@ -53,7 +53,7 @@ class GetHelp extends Component {
   }
 
   onHoverEvent(id) {
-    console.log(id)
+    console.log(id);
   }
 
   loadNeeds() {
@@ -84,15 +84,16 @@ class GetHelp extends Component {
   SubmitHandler(event) {
     event.preventDefault();
     const NeedInfo = this.state;
-    console.log(NeedInfo);
+    console.log(this.props.user._id);
     API.postNeed({
       category: NeedInfo.category,
       needdate: NeedInfo.needdate,
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl,
       lat: NeedInfo.lat,
-      lng: NeedInfo.lng
-    }).then(this.loadNeeds());
+      lng: NeedInfo.lng,
+      user: this.props.user._id
+    }).then(this.loadNeeds(this.props.user._id));
   }
 
   render() {
@@ -128,6 +129,7 @@ class GetHelp extends Component {
                 onHoverEvent={this.onHoverEvent}
                 needs={this.state.needs.filter(need => need.resolved)} />
             </Card>
+
           </Col>
         </Row>
       </div>
