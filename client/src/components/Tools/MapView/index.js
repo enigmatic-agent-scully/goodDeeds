@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'react-materialize';
+import { Card, Icon } from 'react-materialize';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 // import API from '../../../utils/API';
 import './style.css';
@@ -27,11 +27,17 @@ class MapView extends Component {
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           {this.props.needs.map(need => (
-            <Marker position={[need.lat, need.lng]}>
+            <Marker 
+              position={[need.lat, need.lng]}>
               <Popup>
                 <h5>{need.category}</h5>
                 <p>{need.description}</p> 
-                {/* {need.needdate} */}
+                <small>{need.resolved ?  
+                  <Icon small>checked_circle_outine</Icon>
+                  : 
+                  <Icon small>not_interested</Icon>
+                }
+                </small>
                 <br />
                 <img src={need.imageurl} alt='need' />
               </Popup>

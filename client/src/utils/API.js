@@ -11,6 +11,11 @@ export default {
     return axios.get(`/api/needs/${id}`);
   },
 
+  getNeedsbyUser: () => {
+    // console.log(data);
+    return axios.get('/api/needs/user');
+  },
+
   // Post a new need
   postNeed: needData => {
     return axios.post('/api/needs', needData);

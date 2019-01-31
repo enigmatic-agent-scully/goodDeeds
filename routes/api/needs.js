@@ -6,9 +6,11 @@ router.route("/")
   .get(needsController.findAll)
   .post(needsController.create);
 
+router.route("/user")
+  .get(needsController.findByUser)
+
 // Matches with "/api/needs/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(needsController.findById)
   .put(needsController.update)
   .delete(needsController.remove);
