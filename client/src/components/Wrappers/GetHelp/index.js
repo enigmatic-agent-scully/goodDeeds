@@ -96,7 +96,7 @@ class GetHelp extends Component {
   }
 
   render() {
-    console.log(this.state.needs);
+    // console.log(this.state.needs);
     return (
       <div className='Get-Help-Wrapper'>
         <Row>

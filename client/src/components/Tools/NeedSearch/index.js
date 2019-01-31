@@ -14,13 +14,13 @@ class NeedSearch extends Component {
         'used stroller': null
       },
       searchtext: '',
-      searrchcategory: '',
+      searchcategory: '',
       searchdate: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAutoCompChange = this.handleAutoCompChange.bind(this);
-
+    this.getNeedsbySearch = this.getNeedsbySearch.bind(this);
   }
 
   handleAutoCompChange(event) {
@@ -38,6 +38,10 @@ class NeedSearch extends Component {
     this.setState({
       [name]: value
     });
+  }
+
+  getNeedsbySearch() {
+    console.log(this.state);
   }
   
   render() {
@@ -70,7 +74,17 @@ class NeedSearch extends Component {
           label="What's a preferred date?" 
           type='date' 
           onChange={this.handleInputChange} />
-        <Button waves='light'>submit</Button>
+        <Button 
+          waves='light'
+          onClick={() => this.props.filterBySearch(this.state.searchcategory)}>
+        Search
+        </Button>
+        <Button 
+          waves='light'
+          onClick={this.props.getNeeds}>
+        Clear
+        </Button>
+
       </Row>
     );
   }
