@@ -8,7 +8,6 @@ import Collapsible from 'react-materialize/lib/Collapsible';
 import API from '../../../utils/API';
 
 class GiveHelp extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,29 +21,27 @@ class GiveHelp extends Component {
     this.filterBySearch = this.filterBySearch.bind(this);
   }
 
-
   getNeeds() {
     API.getNeeds()
-      .then(res => this.setState({ needs: res.data}))
+      .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }
 
   setCenter(id) {
-    API.getNeed(id)
-      .then(res => {
-        this.setState({
-          cntLat: res.data.lat,
-          cntLng: res.data.lng
-        });
+    API.getNeed(id).then(res => {
+      this.setState({
+        cntLat: res.data.lat,
+        cntLng: res.data.lng
       });
+    });
   }
 
-  filterBySearch(category){
-    API.getNeeds()
-      .then(res => this.setState({ 
-        needs: res.data.filter(
-          need => need.category === category)
-      }));
+  filterBySearch(category) {
+    API.getNeeds().then(res =>
+      this.setState({
+        needs: res.data.filter(need => need.category === category)
+      })
+    );
   }
 
   componentDidMount() {
@@ -52,30 +49,33 @@ class GiveHelp extends Component {
   }
 
   render() {
-    return(
+    return (
       <div className='Give-Help-Wrapper'>
         <Row>
-          <Col id="left-column" s="4">
+          <Col id='left-column' s={4}>
             <Collapsible defaultActiveKey={0}>
-              <CollapsibleItem header="Search Needs" icon="search">
+              <CollapsibleItem header='Search Needs' icon='search'>
                 <NeedSearch
                   filterBySearch={this.filterBySearch}
-                  getNeeds={this.getNeeds} />
+                  getNeeds={this.getNeeds}
+                />
               </CollapsibleItem>
-              <CollapsibleItem header="List of Needs" icon="list">
+              <CollapsibleItem header='List of Needs' icon='list'>
                 <NeedList
-                  onHoverEvent={this.setCenter} 
-                  className="list-view" 
-                  needs={this.state.needs}/>
+                  onHoverEvent={this.setCenter}
+                  className='list-view'
+                  needs={this.state.needs}
+                />
               </CollapsibleItem>
             </Collapsible>
           </Col>
-          <Col s="8">
-            <MapView 
+          <Col s={8}>
+            <MapView
               needs={this.state.needs}
               cntLat={this.state.cntLat}
-              cntLng={this.state.cntLng}>
-              <Preloader flashing/>
+              cntLng={this.state.cntLng}
+            >
+              <Preloader flashing />
             </MapView>
           </Col>
         </Row>

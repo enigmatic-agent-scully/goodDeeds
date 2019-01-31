@@ -2,13 +2,12 @@ import React from 'react';
 import { Card } from 'react-materialize';
 import './style.css';
 
-
 function ResolvedList() {
-  return(
+  return (
     <Card>
       <h4>Resolved Needs</h4>
       List of resolved needs will go here.
-    </Card> 
+    </Card>
   );
 }
 

@@ -9,7 +9,7 @@ import Auth from '../../../utils/Auth';
 import Button from 'react-materialize/lib/Button';
 import API from '../../../utils/API';
 // import { threadId } from 'worker_threads';
-
+// import Navbar from '../../Tools/Navbar/Navbar';
 // Rewrite as Class with User state
 
 class Main extends Component {
