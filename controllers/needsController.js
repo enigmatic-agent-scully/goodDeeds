@@ -12,6 +12,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findBySearch: (req, res) => {
+    console.log('made it');
+    console.log(req.query);
+
+    db.Need.find({
+      category: req.query.category
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findByUser: (req, res) => {
     console.log(req.session.user._id);
     db.Need
@@ -23,6 +33,7 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   create: (req, res) => {
+    console.log(req)
     const newNeed = req.body;
     newNeed.user = req.session.user._id
     db.Need

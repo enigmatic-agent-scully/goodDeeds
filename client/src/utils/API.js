@@ -11,9 +11,13 @@ export default {
     return axios.get(`/api/needs/${id}`);
   },
 
-  getNeedsbyUser: () => {
+  getNeedsCurrentUser: () => {
     // console.log(data);
     return axios.get('/api/needs/user');
+  },
+
+  getNeedsBySearch: (category, keyword, needdate) => {
+    return axios.get(`/api/needs/search?category=${category}&keyword=${keyword}&needdate=${needdate}`);
   },
 
   // Post a new need
@@ -38,16 +42,16 @@ export default {
     });
   },
 
-  deleteNeed: id => {
-    return axios.delete(`/api/needs/${id}`);
+  deleteNeed: needID => {
+    return axios.delete(`/api/needs/${needID}`);
   },
 
-  postMessage: data => {
-    return axios.post('/api/message', data);
+  postMessage: messageData => {
+    return axios.post('/api/message', messageData);
   },
 
-  loadMessage: data => {
-    return axios.get(`/api/message?needId=${data.need}`);
+  loadMessage: needID => {
+    return axios.get(`/api/message?needId=${needID}`);
   },
 
   getUserInfo: id => {

@@ -36,12 +36,21 @@ class GiveHelp extends Component {
     });
   }
 
-  filterBySearch(category) {
-    API.getNeeds().then(res =>
-      this.setState({
-        needs: res.data.filter(need => need.category === category)
-      })
-    );
+  filterBySearch(category, keyword, needdate){
+    console.log(category);
+    console.log(keyword);
+    console.log(needdate);
+
+
+    API.getNeedsBySearch(category, keyword, needdate)
+      .then(res => this.setState({ needs: res.data }))
+      .catch(err => console.log(err));
+
+    // API.getNeeds()
+    //   .then(res => this.setState({ 
+    //     needs: res.data.filter(
+    //       need => need.category === category)
+    //   }));
   }
 
   componentDidMount() {

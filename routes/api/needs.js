@@ -7,7 +7,10 @@ router.route("/")
   .post(needsController.create);
 
 router.route("/user")
-  .get(needsController.findByUser)
+  .get(needsController.findByUser);
+
+router.route("/search")
+  .get(needsController.findBySearch);
 
 // Matches with "/api/needs/:id"
 router.route("/:id")

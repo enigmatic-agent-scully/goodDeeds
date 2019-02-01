@@ -54,12 +54,16 @@ class GetHelp extends Component {
 
   markResolved(e) {
     e.preventDefault();
-    API.markResolved(e.target.value).then(this.loadNeeds());
+    API.markResolved(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
   }
 
   markUnresolved(e) {
     e.preventDefault();
-    API.markUnresolved(e.target.value).then(this.loadNeeds());
+    API.markUnresolved(e.target.value)
+      .then(this.modal('close'))
+      .catch(err => console.log(err));
   }
 
   onHoverEvent(id) {
@@ -67,7 +71,7 @@ class GetHelp extends Component {
   }
 
   loadNeeds() {
-    API.getNeedsbyUser()
+    API.getNeedsCurrentUser()
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }
