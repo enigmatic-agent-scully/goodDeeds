@@ -13,7 +13,7 @@ function Landing() {
               src='https://assets.trabiancdn.com/api/file/29QNOSugRqICIdZkNEBM+cu_101.png/convert?format=jpg&quality=85&compress=true&w=1500&h=600&fit=crop&align=faces'
               title=''
             >
-              <h5 id='title'>Welcome to GoodDeeds</h5>
+              <h6 id='title'>Welcome to GoodDeeds</h6>
               The place where good deeds meet real needs.
             </Slide>
             <Slide
