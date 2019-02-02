@@ -8,33 +8,87 @@ import './style.css';
 import Auth from '../../../utils/Auth';
 import Button from 'react-materialize/lib/Button';
 import API from '../../../utils/API';
-// import { threadId } from 'worker_threads';
+import { uploadFile } from 'react-s3';
+import { config } from '../../../config/Config';
 
-// Rewrite as Class with User state
 
 class Main extends Component {
-  state = {
-    user: {},
-    userInfo: []
-  };
 
   constructor() {
     super();
+
+    this.state = {
+      user: {},
+      userInfo: []
+    };
+
+    this.reactS3config = {
+      bucketName: 'gooddeedsimages',
+      region: 'us-east-1',
+      accessKeyId: config.awsKey,
+      secretAccessKey: config.awsSecret
+    };
+
+    this.uploadHandler = this.uploadHandler.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSaveToExistingProfile = this.handleSaveToExistingProfile.bind(this);
+
     Auth.session().then(user => {
-      // console.log(user);
       this.setState({
         user: user,
         authenticated: user.authenticated
       });
-      // console.log(this.state.user.user)
       this.getProfileInfo(this.state.user.user);
     });
   }
 
+  handleInputChange(event) {
+    const { name, value } = event.target;
+    const userInfo = this.state.userInfo;
+    userInfo[name] = value;
+    // console.log(userInfo);
+    this.setState({
+      userInfo
+    });
+  }
+
+  uploadHandler(event) {
+    const imagefile = event.target.files[0];
+    console.log(imagefile);
+    const userInfo = this.state.userInfo;
+    uploadFile(imagefile, this.reactS3config)
+      .then(res => {
+        console.log(res);
+        userInfo.imageurl = res.location;
+        console.log('res.location after returning from uploadHandler promise' + res.location);
+        console.log('userInfo before the state is set' + userInfo);
+        this.setState({ userInfo });
+      })
+      .catch(err => console.error(err));
+  }
+
+  handleSaveToExistingProfile(event) {
+    event.preventDefault();
+    const SignUpInfo = this.state.userInfo;
+    console.log(SignUpInfo);
+    Auth.updateUserInfo(SignUpInfo)
+      .then(res => {
+        // this.getProfileInfo(this.state.user);
+        console.log('res after returning from hadnleSavetoExistingProfile promise' + res);
+
+      }).catch(err => {
+        console.log(err);
+      });
+
+  }
+
+
   getProfileInfo(user) {
     // console.log(user.id);
     API.getUserInfo(user.id)
-      .then(res => this.setState({ userInfo: res.data }))
+      .then(res => this.setState({
+        userInfo: res.data
+      }))
       .catch(err => console.log(err));
   }
 
@@ -67,14 +121,6 @@ class Main extends Component {
                 <Button>
                   {this.state.userInfo.firstName} {this.state.userInfo.lastName}
                 </Button>
-                //Chip was not working with the page authentication functions above for some reason
-                // <Chip className='user-badge'>
-                //   <img
-                //     src='https://via.placeholder.com/50'
-                //     alt='Contact Person'
-                //   />
-                //   Username
-                // </Chip>
               }
             >
               <Modal trigger={<NavItem>View Profile</NavItem>}>
@@ -84,6 +130,9 @@ class Main extends Component {
                   imageurl={this.state.userInfo.imageurl}
                   email={this.state.userInfo.email}
                   userName={this.state.userInfo.userName}
+                  handleInputChange={this.handleInputChange}
+                  uploadHandler={this.uploadHandler}
+                  handleSaveToExistingProfile={this.handleSaveToExistingProfile}
                 />
               </Modal>
               <NavItem onClick={this.logoutFunction}>Logout</NavItem>

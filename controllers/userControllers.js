@@ -17,6 +17,7 @@ const UserControllers = module.exports = {
     right before passport.authenticate`);
         next();
     },
+
     login(req, res, next) {
         console.log(`inside userControllers.js > login > returned from passport.authenticate, 
         req.user = ${req.user}`);
@@ -30,6 +31,7 @@ const UserControllers = module.exports = {
             next();
         }))(req, res, next)
     },
+
     logout(req, res) {
         console.log(req.user)
         req.logout();
@@ -40,6 +42,7 @@ const UserControllers = module.exports = {
             logged_out: true
         })
     },
+
     signup(req, res, next) {
         console.log(`inside userControllers.js > login > returned from passport.authenticate, 
         req.user = ${req.user}`);
@@ -53,8 +56,9 @@ const UserControllers = module.exports = {
             req.session.user = user;
             next();
         }))
-        (req, res, next)
+            (req, res, next)
     },
+
     //this function will return our session info
     getSession(req, res, next) {
         if (req.session.user) {
@@ -97,6 +101,19 @@ const UserControllers = module.exports = {
             return next()
         }
         UserControllers.isLoggedIn(req, res, next);
+    },
+
+    update: (req, res) => {
+        console.log(req.body);
+        const updatedUserInfo = req.body;
+        db.User.findOneAndUpdate({ _id: updatedUserInfo._id }, updatedUserInfo)
+            .then(dbModel => {
+                console.log('this is the response post findOneANdUPdate promise' + dbModel);
+                res.json(dbModel)
+            })
+            .catch(err => {
+                res.status(422).json(err)
+            });
     }
 };
 
