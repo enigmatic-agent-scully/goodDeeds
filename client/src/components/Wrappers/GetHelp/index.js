@@ -7,24 +7,27 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
+// import { timingSafeEqual } from 'crypto';
 
 class GetHelp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
+      category: '0',
       needdate: '',
       address: '',
       description: '',
       imageurl: '',
       lat: '',
       lng: '',
-      needs: []
+      needs: [],
+      isModalOpen: false
     };
 
     this.reactS3config = {
       bucketName: 'gooddeedsimages',
       region: 'us-east-1',
+      // dirName: `${this.prop}`
       accessKeyId: config.awsKey,
       secretAccessKey: config.awsSecret
     };
@@ -54,22 +57,39 @@ class GetHelp extends Component {
 
   markResolved(e) {
     e.preventDefault();
-    API.markResolved(e.target.value).then(this.loadNeeds());
+    API.markResolved(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
   }
 
   markUnresolved(e) {
     e.preventDefault();
-    API.markUnresolved(e.target.value).then(this.loadNeeds());
+    API.markUnresolved(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
   }
 
   onHoverEvent(id) {
     console.log(id);
   }
 
+  handleCloseModal() {
+    this.setState({ 
+      isModalOpen: false 
+    });
+  }
+
   loadNeeds() {
-    API.getNeedsbyUser()
-      .then(res => this.setState({ needs: res.data }))
+    console.log(this.props.user);
+    API.getNeedsCurrentUser()
+      .then(res => this.setState({ 
+        category: '0',
+        description: '',
+        needdate: '',
+        address: '',
+        needs: res.data }))
       .catch(err => console.log(err));
+    this.handleCloseModal();
   }
 
   uploadHandler(event) {
@@ -113,6 +133,7 @@ class GetHelp extends Component {
         <Row>
           <Col s={12} m={4}>
             <NeedInput
+              imagefile={this.state.imagefile}
               category={this.state.category}
               address={this.state.address}
               needdate={this.state.needdate}
@@ -128,6 +149,7 @@ class GetHelp extends Component {
             <Card>
               <h4>List of Needs</h4>
               <NeedList
+                isModalOpen={this.state.isModalOpen}
                 markResolved={this.markResolved}
                 onHoverEvent={this.onHoverEvent}
                 needs={this.state.needs.filter(need => !need.resolved)}
@@ -138,6 +160,7 @@ class GetHelp extends Component {
             <Card>
               <h4>Resolved Needs</h4>
               <NeedList
+                isModalOpen={this.state.isModalOpen}
                 markUnresolved={this.markUnresolved}
                 onHoverEvent={this.onHoverEvent}
                 needs={this.state.needs.filter(need => need.resolved)}

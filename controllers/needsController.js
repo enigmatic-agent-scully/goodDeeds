@@ -4,11 +4,23 @@ const db = require('../models');
 module.exports = {
   findAll: (req, res) => {
     db.Need.find({})
+      .sort({ postdate: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: (req, res) => {
     db.Need.findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findBySearch: (req, res) => {
+    console.log('made it');
+    console.log(req.query);
+
+    db.Need.find({
+      category: req.query.category
+    })
+      .sort({ postdate: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -18,11 +30,12 @@ module.exports = {
     .find({
       user: req.session.user._id
     })
-    .sort({ date: -1 })
+    .sort({ date: 1 })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
   create: (req, res) => {
+    console.log(req)
     const newNeed = req.body;
     newNeed.user = req.session.user._id
     db.Need
