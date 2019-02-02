@@ -23,8 +23,7 @@ function NeedView(props) {
             <Button
               key={props.key}
               value={props._id}
-              onClick={props.markResolved}
-            >
+              onClick={props.markResolved}            >
               Mark Resolved
             </Button>
           )}

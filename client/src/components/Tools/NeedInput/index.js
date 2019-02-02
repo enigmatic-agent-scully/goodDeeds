@@ -14,9 +14,10 @@ function NeedInput(props) {
           name='category'
           onChange={props.handleInputChange}
           s={12}
+          value={props.category}
           label='Select the type of need'
           type='select'
-          defaultValue='0'
+          // defaultValue='0'
         >
           <option value='0'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>
@@ -29,14 +30,17 @@ function NeedInput(props) {
           </option>
         </Input>
         <h5>Address</h5>
-        <Geosuggest name='address' onSuggestSelect={props.handleGeoCode} />
+        <Geosuggest
+          name='address' 
+          onSuggestSelect={props.handleGeoCode}
+          value={props.address} />
         <h5>Image</h5>
         <Input
           onChange={props.uploadHandler}
           type='file'
           label='Add Photo'
           s={12}
-          placeholder='JPG, PNG, or GIFs only'
+          placeholder={props.imagefile}
         />
         <h5>Date</h5>
         <Input
@@ -44,6 +48,7 @@ function NeedInput(props) {
           s={12}
           placeholder="What's a preferred date?"
           type='date'
+          value={props.needdate}
           onChange={props.handleInputChange}
         />
         <h5>Description</h5>
@@ -52,6 +57,7 @@ function NeedInput(props) {
           name='description'
           s={12}
           type='textarea'
+          value={props.description}
           placeholder='Describe your need.'
         />
         <Button onClick={props.SubmitHandler} waves='light'>

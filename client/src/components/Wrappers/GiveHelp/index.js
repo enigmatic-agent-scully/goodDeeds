@@ -13,7 +13,7 @@ class GiveHelp extends Component {
     this.state = {
       needs: [],
       cntLat: 33.785,
-      cntLng: -84.385
+      cntLng: -84.385,
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -58,6 +58,8 @@ class GiveHelp extends Component {
   }
 
   render() {
+    console.log(this.props.user);
+    console.log(this.state.needs);
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
@@ -65,6 +67,7 @@ class GiveHelp extends Component {
             <Collapsible defaultActiveKey={0}>
               <CollapsibleItem header='Search Needs' icon='search'>
                 <NeedSearch
+                  category={this.state.category}
                   filterBySearch={this.filterBySearch}
                   getNeeds={this.getNeeds}
                 />
@@ -73,14 +76,14 @@ class GiveHelp extends Component {
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
-                  needs={this.state.needs}
+                  needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
                 />
               </CollapsibleItem>
             </Collapsible>
           </Col>
           <Col s={8}>
             <MapView
-              needs={this.state.needs}
+              needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
             >

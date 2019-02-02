@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Input, Button, Autocomplete } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 import './style.css';
 // import { throws } from 'assert';
 // import { isNullOrUndefined } from 'util';
@@ -19,20 +19,20 @@ class NeedSearch extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleAutoCompChange = this.handleAutoCompChange.bind(this);
+    // this.handleAutoCompChange = this.handleAutoCompChange.bind(this);
     // this.getNeedsbySearch = this.getNeedsbySearch.bind(this);
     // this.handleAutoCompleteSelect = this.handleAutoCompleteSelect.bind(this);
 
   }
 
-  handleAutoCompChange(event) {
-    // console.log(name);
-    const value = event.target.value;
-    console.log(value);
-    this.setState({
-      searchtext: value
-    });
-  }
+  // handleAutoCompChange(event) {
+  //   // console.log(name);
+  //   const value = event.target.value;
+  //   console.log(value);
+  //   this.setState({
+  //     searchtext: value
+  //   });
+  // }
 
   // handleAutoCompleteSelect(value) {
   //   console.log(value)
@@ -56,21 +56,22 @@ class NeedSearch extends Component {
   render() {
     return (
       <Row>
-        <h5>Keyword</h5>
+        {/* <h5>Keyword</h5>
         <Autocomplete
           onChange={this.handleAutoCompChange}
           name='keyword'
           s={12}
           title='Type here'
           data={this.state.keywords}
-        />
+        /> */}
         <h5>Type</h5>
         <Input
           onChange={this.handleInputChange}
           name="category" 
           s={12} 
           label="Select Need Type" 
-          type='select' 
+          type='select'
+          // value={this.props.category} 
           defaultValue='0'>
           <option value='0'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>
@@ -82,14 +83,14 @@ class NeedSearch extends Component {
             Professional Assistance
           </option>        
         </Input>
-        <h5>Date</h5>
+        {/* <h5>Date</h5>
         <Input
           name='needdate'
           s={12}
           label="What's a preferred date?"
           type='date'
           onChange={this.handleInputChange}
-        />
+        /> */}
         <Button
           waves='light'
           onClick={() => this.props.filterBySearch(this.state.category, this.state.keyword, this.state.needdate)}>
