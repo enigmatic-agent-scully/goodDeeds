@@ -100,7 +100,26 @@ class Messages extends Component {
 
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
-            {message.user.userName}: {message.message}
+            {message.user.userName}, {message.postdate}: {message.message}
+            {message.user._id === this.props.currentUserID ? (
+              <div>
+                <Button
+                  key={message.user}
+                  value={this.props.currentUserID}
+                  onClick={this.props.editMessage}
+                >
+                  Edit
+                </Button>{' '}
+                <Button
+                  value={this.props.currentUserID}
+                  onClick={this.props.deleteMessage}
+                >
+                  Delete
+                </Button>
+              </div>
+            ) : (
+              <div />
+            )}
           </Card>
         ))}
       </Row>
