@@ -6,7 +6,7 @@ import Messages from './../Messages/index';
 // import NeedSearch from '../NeedSearch';
 
 function NeedList(props) {
-  console.log(props.currentUserID);
+  // console.log(props.currentUserID);
   return (
     <Row>
       {props.needs.length ? (

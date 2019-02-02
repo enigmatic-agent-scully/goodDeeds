@@ -44,12 +44,19 @@ export default {
     });
   },
 
-  deleteNeed: needID => {
-    return axios.delete(`/api/needs/${needID}`);
+  deleteNeed: id => {
+    return axios.delete(`/api/needs/${id}`);
   },
 
-  deleteMessage: messageID => {
-    return axios.delete(`api/message/${messageID}`);
+  deleteMessage: id => {
+    return axios
+      .delete(`/api/message/${id}`)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
 
   postMessage: messageData => {

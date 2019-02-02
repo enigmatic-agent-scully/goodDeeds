@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Card } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
-import moment from 'moment-timezone';
 
 class Messages extends Component {
   constructor(props) {
@@ -83,23 +82,11 @@ class Messages extends Component {
             {message.user.userName}, {message.postdate}: {message.message}
             {message.user._id === this.props.currentUserID ? (
               <div>
-                <Button
-                  key={message.user}
-                  value={this.props.currentUserID}
-                  onClick={this.props.editMessage}
-                >
-                  Edit
-                </Button>{' '}
-                <Button
-                  value={this.props.currentUserID}
-                  onClick={this.props.deleteMessage}
-                >
+                <Button value={message._id} onClick={this.props.deleteMessage}>
                   Delete
                 </Button>
               </div>
-            ) : (
-              <div />
-            )}
+            ) : null}
           </Card>
         ))}
       </Row>
