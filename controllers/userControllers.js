@@ -1,19 +1,19 @@
 var passport = require('passport');
-var router = require('express').Router();
-const db = require('./../models');
+// var router = require('express').Router();
+const db = require("./../models");
 
-const UserControllers = (module.exports = {
-  findById: (req, res) => {
-    console.log(req.params.id);
-    db.User.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
 
-  beforeLogin(req, res, next) {
-    console.log(`inside the login function "userController.js" with req.body.email = ${
-      req.body.email
-    }, 
+const UserControllers = module.exports = {
+    findById: (req, res) => {
+        console.log(req.params.id);
+        db.User
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+
+    beforeLogin(req, res, next) {
+        console.log(`inside the login function "userController.js" with req.body.email = ${req.body.email}, 
     right before passport.authenticate`);
         next();
     },
@@ -77,35 +77,29 @@ const UserControllers = (module.exports = {
                 authenticated: false
             })
         }
-        req.session.user = user;
-        next();
-      }
-    )(req, res, next);
-  },
-  logout(req, res) {
-    console.log(req.user);
-    req.logout();
-    req.session.user = null;
-    console.log(req.user);
-    res.json({
-      redirect: '/',
-      logged_out: true
-    });
-  },
-  signup(req, res, next) {
-    console.log(`inside userControllers.js > login > returned from passport.authenticate, 
-        req.user = ${req.user}`);
-    // console.log(req.body);
-    passport.authenticate(
-      'local.signup',
-      {
-        session: true
-      },
-      function(err, user) {
-        if (err) {
-          return next(err);
-        }
+    },
 
+    isLoggedIn(req, res, next) {
+        if (req.session.user) {
+            return next();
+        }
+        console.log('must login first!')
+        const err = new Error("You have to log in first");
+        err.statusCode = 403;
+        next(err);
+    },
+
+    checkApiAuthentication(req, res, next) {
+        // Check for public routes (e.g. login/session etc)
+        // And then validate the authenticated routes
+        const publicRoutes = [
+            "/user/login",
+            "/user/signup",
+            "/user/session",
+        ]
+        if (publicRoutes.includes(req.url)) {
+            return next()
+        }
         UserControllers.isLoggedIn(req, res, next);
     },
 
@@ -121,25 +115,4 @@ const UserControllers = (module.exports = {
                 res.status(422).json(err)
             });
     }
-  },
-
-  isLoggedIn(req, res, next) {
-    if (req.session.user) {
-      return next();
-    }
-    console.log('must login first!');
-    const err = new Error('You have to log in first');
-    err.statusCode = 403;
-    next(err);
-  },
-
-  checkApiAuthentication(req, res, next) {
-    // Check for public routes (e.g. login/session etc)
-    // And then validate the authenticated routes
-    const publicRoutes = ['/user/login', '/user/signup', '/user/session'];
-    if (publicRoutes.includes(req.url)) {
-      return next();
-    }
-    UserControllers.isLoggedIn(req, res, next);
-  }
-});
+};

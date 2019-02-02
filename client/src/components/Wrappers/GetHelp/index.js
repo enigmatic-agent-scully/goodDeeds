@@ -149,6 +149,7 @@ class GetHelp extends Component {
             <Card>
               <h4>List of Needs</h4>
               <NeedList
+                currentUserID={this.props.user._id}
                 isModalOpen={this.state.isModalOpen}
                 markResolved={this.markResolved}
                 onHoverEvent={this.onHoverEvent}
@@ -160,6 +161,7 @@ class GetHelp extends Component {
             <Card>
               <h4>Resolved Needs</h4>
               <NeedList
+                currentUserID={this.props.user._id}
                 isModalOpen={this.state.isModalOpen}
                 markUnresolved={this.markUnresolved}
                 onHoverEvent={this.onHoverEvent}
