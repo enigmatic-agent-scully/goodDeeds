@@ -45,7 +45,14 @@ export default {
   },
 
   deleteNeed: id => {
-    return axios.delete(`/api/needs/${id}`);
+    return axios
+      .delete(`/api/needs/${id}`)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
 
   deleteMessage: id => {

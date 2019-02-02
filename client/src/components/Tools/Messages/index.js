@@ -14,6 +14,8 @@ class Messages extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitPost = this.submitPost.bind(this);
+    this.loadPosts = this.loadPosts.bind(this);
+    this.deleteMessage = this.deleteMessage.bind(this);
 
     //why does this get loaded twice???
     this.loadPosts();
@@ -36,6 +38,14 @@ class Messages extends Component {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  deleteMessage(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    API.deleteMessage(e.target.value)
+      .then(this.loadPosts())
+      .catch(err => console.log(err));
   }
 
   handleInputChange(event) {
@@ -75,18 +85,31 @@ class Messages extends Component {
           label='type your message'
           type='textarea'
         />
-        <Button onClick={this.submitPost}>Post Message</Button>
+        <Button onClick={this.submitPost}>Post</Button>
 
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
-            {message.user.userName}, {message.postdate}: {message.message}
-            {message.user._id === this.props.currentUserID ? (
-              <div>
-                <Button value={message._id} onClick={this.props.deleteMessage}>
-                  Delete
-                </Button>
+            <div>
+              <div id='message-body'>
+                <div id='author'>
+                  <strong>{message.user.userName}</strong> wrote:
+                </div>
+                <br />
+                {message.message}
+                <br />
+                <br />
+                <div id='datetime'>at {message.postdate}</div>
+                {message.user._id === this.props.currentUserID ? (
+                  <div>
+                    <small>
+                      <Button value={message._id} onClick={this.deleteMessage}>
+                        <i className='material-icons'>delete</i>
+                      </Button>
+                    </small>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
+            </div>
           </Card>
         ))}
       </Row>

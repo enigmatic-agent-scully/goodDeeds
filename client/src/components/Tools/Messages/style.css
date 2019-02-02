@@ -1,19 +1,27 @@
-.message-button{
-    width: 100%;
+.message-button {
+  width: 100%;
 }
 
-.user-name{
-    font: bold;
-    font-size: 20px;
-    color: blue;
+.user-name {
+  font: bold;
+  font-size: 20px;
+  color: blue;
 }
 
-
-.date-time{
-    font-size: 12px;
-    color: blue;
+.date-time {
+  font-size: 12px;
+  color: blue;
 }
 
-.message-txt{
-    font-size: 17px;
+.message-txt {
+  font-size: 17px;
+}
+
+#message-body {
+  overflow-wrap: break-word;
+}
+
+#author,
+#datetime {
+  color: grey;
 }
