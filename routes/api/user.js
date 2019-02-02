@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const router = require("express").Router();
+// var express = require('express');
+// var router = express.Router();
 var userController = require('./../../controllers/userControllers')
 
 //API call for signup
@@ -23,8 +24,11 @@ router.route('/signup')
     );
 
 
+
+
 //API call for login
-router.route('/login')
+router
+    .route('/login')
     .post(
         userController.beforeLogin,
         userController.login,
@@ -58,6 +62,8 @@ router.route('/logout')
 router.route("/:id")
     .get(userController.findById);
 
+router.route('/update')
+    .put(userController.update);
 
 
 module.exports = router;

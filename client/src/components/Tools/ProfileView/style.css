@@ -1,3 +1,11 @@
 img {
-    width: 100%
+    width: 100%;
+}
+.profile-input{
+    width: 100%;
+}
+
+.labels{
+    font-size: 25px;
+    font-weight: bold;
 }
