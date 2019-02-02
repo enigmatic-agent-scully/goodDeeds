@@ -5,9 +5,8 @@ import NeedView from '../NeedView';
 import Messages from './../Messages/index';
 // import NeedSearch from '../NeedSearch';
 
-
 function NeedList(props) {
-  console.log(props.currentUserID);
+  // console.log(props.currentUserID);
   return (
     <Row>
       {props.needs.length ? (
@@ -54,7 +53,11 @@ function NeedList(props) {
                   needUser={need.user}
                   currentUserID={props.currentUserID}
                 />
-                <Messages needId={need._id} />
+                <Messages
+                  needId={need._id}
+                  currentUserID={props.currentUserID}
+                  deleteMessage={props.deleteMessage}
+                />
               </Card>
             </Modal>
           ))}
@@ -65,8 +68,7 @@ function NeedList(props) {
         </Card>
       )}
     </Row>
-  );  
-
+  );
 }
 
 export default NeedList;

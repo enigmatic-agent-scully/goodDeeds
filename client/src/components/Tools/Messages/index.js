@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Card } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
-import moment from 'moment-timezone';
 
 class Messages extends Component {
   constructor(props) {
@@ -80,9 +79,14 @@ class Messages extends Component {
 
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
-            <span className='user-name'>{message.user.userName}@</span>
-            <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
-            <span className='message-txt'>{message.message}</span>
+            {message.user.userName}, {message.postdate}: {message.message}
+            {message.user._id === this.props.currentUserID ? (
+              <div>
+                <Button value={message._id} onClick={this.props.deleteMessage}>
+                  Delete
+                </Button>
+              </div>
+            ) : null}
           </Card>
         ))}
       </Row>
