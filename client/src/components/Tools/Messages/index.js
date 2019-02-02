@@ -27,9 +27,7 @@ class Messages extends Component {
 
   loadPosts() {
     // needId = '5c4cbb8533f08c086075a05c';
-    API.loadMessage({
-      need: this.props.needId
-    })
+    API.loadMessage(this.props.needId)
       .then(res => {
         this.setState({
           returnedMessageArray: res.data

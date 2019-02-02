@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
-import { Row, Input, Button, Autocomplete } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 import './style.css';
-
+// import { throws } from 'assert';
+// import { isNullOrUndefined } from 'util';
 
 class NeedSearch extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       keywords: {
-        'raking leaves': null,
-        'drive to doctor': null,
-        'used stroller': null
+        'raking leaves' : null,
+        'drive to doctor' : null,
+        'used stroller' : null
       },
-      searchtext: '',
-      searchcategory: '',
-      searchdate: ''
+      category: '',
+      needdate: '',
+      keyword: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleAutoCompChange = this.handleAutoCompChange.bind(this);
-    this.getNeedsbySearch = this.getNeedsbySearch.bind(this);
+    // this.handleAutoCompChange = this.handleAutoCompChange.bind(this);
+    // this.getNeedsbySearch = this.getNeedsbySearch.bind(this);
+    // this.handleAutoCompleteSelect = this.handleAutoCompleteSelect.bind(this);
+
   }
 
-  handleAutoCompChange(event) {
-    // console.log(name);
-    const value = event.target.value;
-    console.log(value);
-    this.setState({
-      searchtext: value
-    });
-  }
+  // handleAutoCompChange(event) {
+  //   // console.log(name);
+  //   const value = event.target.value;
+  //   console.log(value);
+  //   this.setState({
+  //     searchtext: value
+  //   });
+  // }
+
+  // handleAutoCompleteSelect(value) {
+  //   console.log(value)
+  //   this.setState({
+  //     searchtext: value
+  //   })
+  // }
 
   handleInputChange(event) {
     const { name, value } = event.target;
@@ -40,51 +49,56 @@ class NeedSearch extends Component {
     });
   }
 
-  getNeedsbySearch() {
-    console.log(this.state);
-  }
-  
+  // getNeedsbySearch() {
+  //   console.log(this.state);
+  // }
+
   render() {
-    return(
+    return (
       <Row>
-        <h5>Keyword</h5>
+        {/* <h5>Keyword</h5>
         <Autocomplete
           onChange={this.handleAutoCompChange}
-          name="searchtext"
-          s = {12}
+          name='keyword'
+          s={12}
           title='Type here'
-          data={this.state.keywords}/>
+          data={this.state.keywords}
+        /> */}
         <h5>Type</h5>
         <Input
           onChange={this.handleInputChange}
-          name="searchcategory" 
+          name="category" 
           s={12} 
           label="Select Need Type" 
-          type='select' 
+          type='select'
+          // value={this.props.category} 
           defaultValue='0'>
           <option value='0'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>
           <option value='Cleaning Up'>Cleaning Up</option>
           <option value='Fixing Something'>Fixing Something</option>
+          <option value='Financial Assistance'>Financial Assistance</option>
+          <option value='Moving'>Moving</option>
+          <option value='Professional Assistance'>
+            Professional Assistance
+          </option>        
         </Input>
-        <h5>Date</h5>
-        <Input 
-          name="searchdate" 
-          s={12} 
-          label="What's a preferred date?" 
-          type='date' 
-          onChange={this.handleInputChange} />
-        <Button 
+        {/* <h5>Date</h5>
+        <Input
+          name='needdate'
+          s={12}
+          label="What's a preferred date?"
+          type='date'
+          onChange={this.handleInputChange}
+        /> */}
+        <Button
           waves='light'
-          onClick={() => this.props.filterBySearch(this.state.searchcategory)}>
+          onClick={() => this.props.filterBySearch(this.state.category, this.state.keyword, this.state.needdate)}>
         Search
         </Button>
-        <Button 
-          waves='light'
-          onClick={this.props.getNeeds}>
-        Clear
+        <Button waves='light' onClick={this.props.getNeeds}>
+          Clear
         </Button>
-
       </Row>
     );
   }

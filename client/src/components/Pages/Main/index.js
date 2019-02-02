@@ -143,14 +143,25 @@ class Main extends Component {
         </div>
         <Router>
           <div>
-            <Route
-              exact
-              path='/main/get-help'
-              render={props => (
-                <GetHelp {...props} user={this.state.userInfo} />
-              )}
+          <Route
+            exact path='/main/get-help'
+            render={props => (
+              <GetHelp 
+              {...props} 
+              user={this.state.userInfo} />
+            )}
             />
-            <Route exact path='/main/give-help' component={GiveHelp} />
+          <Route
+            exact path='/main/give-help'
+            render={props => (
+              <GiveHelp 
+              {...props} 
+              user={this.state.userInfo} />
+            )}
+          />
+          {/* <Route 
+          exact path='/main/give-help' 
+          component={GiveHelp} /> */}
           </div>
         </Router>
       </div>

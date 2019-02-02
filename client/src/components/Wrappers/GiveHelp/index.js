@@ -8,13 +8,12 @@ import Collapsible from 'react-materialize/lib/Collapsible';
 import API from '../../../utils/API';
 
 class GiveHelp extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       needs: [],
       cntLat: 33.785,
-      cntLng: -84.385
+      cntLng: -84.385,
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -22,29 +21,36 @@ class GiveHelp extends Component {
     this.filterBySearch = this.filterBySearch.bind(this);
   }
 
-
   getNeeds() {
     API.getNeeds()
-      .then(res => this.setState({ needs: res.data}))
+      .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
   }
 
   setCenter(id) {
-    API.getNeed(id)
-      .then(res => {
-        this.setState({
-          cntLat: res.data.lat,
-          cntLng: res.data.lng
-        });
+    API.getNeed(id).then(res => {
+      this.setState({
+        cntLat: res.data.lat,
+        cntLng: res.data.lng
       });
+    });
   }
 
-  filterBySearch(category){
-    API.getNeeds()
-      .then(res => this.setState({ 
-        needs: res.data.filter(
-          need => need.category === category)
-      }));
+  filterBySearch(category, keyword, needdate){
+    console.log(category);
+    console.log(keyword);
+    console.log(needdate);
+
+
+    API.getNeedsBySearch(category, keyword, needdate)
+      .then(res => this.setState({ needs: res.data }))
+      .catch(err => console.log(err));
+
+    // API.getNeeds()
+    //   .then(res => this.setState({ 
+    //     needs: res.data.filter(
+    //       need => need.category === category)
+    //   }));
   }
 
   componentDidMount() {
@@ -52,30 +58,36 @@ class GiveHelp extends Component {
   }
 
   render() {
-    return(
+    console.log(this.props.user);
+    console.log(this.state.needs);
+    return (
       <div className='Give-Help-Wrapper'>
         <Row>
-          <Col id="left-column" s="4">
+          <Col id='left-column' s={4}>
             <Collapsible defaultActiveKey={0}>
-              <CollapsibleItem header="Search Needs" icon="search">
+              <CollapsibleItem header='Search Needs' icon='search'>
                 <NeedSearch
+                  category={this.state.category}
                   filterBySearch={this.filterBySearch}
-                  getNeeds={this.getNeeds} />
+                  getNeeds={this.getNeeds}
+                />
               </CollapsibleItem>
-              <CollapsibleItem header="List of Needs" icon="list">
+              <CollapsibleItem header='List of Needs' icon='list'>
                 <NeedList
-                  onHoverEvent={this.setCenter} 
-                  className="list-view" 
-                  needs={this.state.needs}/>
+                  onHoverEvent={this.setCenter}
+                  className='list-view'
+                  needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
+                />
               </CollapsibleItem>
             </Collapsible>
           </Col>
-          <Col s="8">
-            <MapView 
-              needs={this.state.needs}
+          <Col s={8}>
+            <MapView
+              needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
               cntLat={this.state.cntLat}
-              cntLng={this.state.cntLng}>
-              <Preloader flashing/>
+              cntLng={this.state.cntLng}
+            >
+              <Preloader flashing />
             </MapView>
           </Col>
         </Row>

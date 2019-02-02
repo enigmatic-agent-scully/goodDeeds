@@ -7,24 +7,27 @@ import './style.css';
 import { uploadFile } from 'react-s3';
 import API from '../../../utils/API';
 import { config } from '../../../config/Config';
+// import { timingSafeEqual } from 'crypto';
 
 class GetHelp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
+      category: '0',
       needdate: '',
       address: '',
       description: '',
       imageurl: '',
       lat: '',
       lng: '',
-      needs: []
+      needs: [],
+      isModalOpen: false
     };
 
     this.reactS3config = {
       bucketName: 'gooddeedsimages',
       region: 'us-east-1',
+      // dirName: `${this.prop}`
       accessKeyId: config.awsKey,
       secretAccessKey: config.awsSecret
     };
@@ -34,32 +37,59 @@ class GetHelp extends Component {
     this.uploadHandler = this.uploadHandler.bind(this);
     this.handleGeoCode = this.handleGeoCode.bind(this);
     this.SubmitHandler = this.SubmitHandler.bind(this);
-  
-    this.loadNeeds();
+    this.markResolved = this.markResolved.bind(this);
+    this.markUnresolved = this.markUnresolved.bind(this);
 
+    this.loadNeeds();
   }
 
   handleGeoCode(suggest) {
     // const addressInput = event.target.value
     // console.log(suggest.location);
-    if(suggest) {
+    if (suggest) {
       this.setState({
         lat: suggest.location.lat,
         lng: suggest.location.lng,
         address: ''
       });
     }
+  }
 
+  markResolved(e) {
+    e.preventDefault();
+    API.markResolved(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
+  }
+
+  markUnresolved(e) {
+    e.preventDefault();
+    API.markUnresolved(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
   }
 
   onHoverEvent(id) {
     console.log(id);
   }
 
+  handleCloseModal() {
+    this.setState({ 
+      isModalOpen: false 
+    });
+  }
+
   loadNeeds() {
-    API.getNeedsbyUser()
-      .then(res => this.setState({ needs: res.data }))
+    console.log(this.props.user);
+    API.getNeedsCurrentUser()
+      .then(res => this.setState({ 
+        category: '0',
+        description: '',
+        needdate: '',
+        address: '',
+        needs: res.data }))
       .catch(err => console.log(err));
+    this.handleCloseModal();
   }
 
   uploadHandler(event) {
@@ -93,7 +123,7 @@ class GetHelp extends Component {
       lat: NeedInfo.lat,
       lng: NeedInfo.lng,
       user: this.props.user._id
-    }).then(this.loadNeeds(this.props.user._id));
+    }).then(this.loadNeeds());
   }
 
   render() {
@@ -101,8 +131,9 @@ class GetHelp extends Component {
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
-          <Col m='12' l="4">
+          <Col s={12} m={4}>
             <NeedInput
+              imagefile={this.state.imagefile}
               category={this.state.category}
               address={this.state.address}
               needdate={this.state.needdate}
@@ -114,20 +145,26 @@ class GetHelp extends Component {
               handleGeoCode={this.handleGeoCode}
             />
           </Col>
-          <Col id='need-list' m='12' l="4">
+          <Col id='need-list' s={12} m={4}>
             <Card>
               <h4>List of Needs</h4>
               <NeedList
+                isModalOpen={this.state.isModalOpen}
+                markResolved={this.markResolved}
                 onHoverEvent={this.onHoverEvent}
-                needs={this.state.needs.filter(need =>!need.resolved)} />
+                needs={this.state.needs.filter(need => !need.resolved)}
+              />
             </Card>
           </Col>
-          <Col id='need-list' m='12' l="4">
+          <Col id='need-list' s={12} m={4}>
             <Card>
               <h4>Resolved Needs</h4>
               <NeedList
+                isModalOpen={this.state.isModalOpen}
+                markUnresolved={this.markUnresolved}
                 onHoverEvent={this.onHoverEvent}
-                needs={this.state.needs.filter(need => need.resolved)} />
+                needs={this.state.needs.filter(need => need.resolved)}
+              />
             </Card>
           </Col>
         </Row>
