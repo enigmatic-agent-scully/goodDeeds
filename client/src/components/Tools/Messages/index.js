@@ -57,6 +57,9 @@ class Messages extends Component {
       .then(res => {
         //upon completion of creating the post, we are
         //calling on the loadPosts func
+        this.setState({
+          message: ''
+        });
         this.loadPosts();
       })
       .catch(err => {
