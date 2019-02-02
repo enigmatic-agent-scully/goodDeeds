@@ -6,7 +6,7 @@ import Messages from './../Messages/index';
 // import NeedSearch from '../NeedSearch';
 
 function NeedList(props) {
-  // console.log(props.needs);
+  console.log(props.currentUserID);
   return (
     <Row>
       {props.needs.length ? (
@@ -50,7 +50,8 @@ function NeedList(props) {
                   imageurl={need.imageurl}
                   _id={need._id}
                   key={need._id}
-                  user={need.user}
+                  needUser={need.user}
+                  currentUserID={props.currentUserID}
                 />
                 <Messages
                   needId={need._id}

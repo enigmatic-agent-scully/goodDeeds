@@ -58,8 +58,8 @@ class GiveHelp extends Component {
   }
 
   render() {
-    console.log(this.props.user);
-    console.log(this.state.needs);
+    console.log(this.props.user._id);
+    // console.log(this.state.needs);
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
@@ -77,6 +77,7 @@ class GiveHelp extends Component {
                   onHoverEvent={this.setCenter}
                   className='list-view'
                   needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
+                  currentUserID={this.props.user._id}
                 />
               </CollapsibleItem>
             </Collapsible>
@@ -86,6 +87,7 @@ class GiveHelp extends Component {
               needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
+              currentUserID={this.props.user._id}
             >
               <Preloader flashing />
             </MapView>

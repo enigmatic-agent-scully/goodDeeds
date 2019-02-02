@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Card } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
-// import Input from 'react-materialize/lib/Input';
+import moment from 'moment-timezone';
 
 class Messages extends Component {
   constructor(props) {
@@ -55,6 +55,9 @@ class Messages extends Component {
       .then(res => {
         //upon completion of creating the post, we are
         //calling on the loadPosts func
+        this.setState({
+          message: ''
+        });
         this.loadPosts();
       })
       .catch(err => {
@@ -63,29 +66,6 @@ class Messages extends Component {
   }
 
   render() {
-    /*
-                    <Row>
-                      <Dropdown trigger={<button className="message-button">Messages </button>}>
-                        <Input
-                          name="message"
-                          value={this.state.message}
-                          onChange={this.handleInputChange}
-                          s={6}
-                          label="type your message"
-                          type="textarea"
-                        >
-                        </Input>
-                        <Button onClick={this.submitPost}>
-                                      Post Message
-                        </Button>
-              
-                        {this.state.returnedMessageArray.map((message) =>
-                          <p key={message._id}>
-                            {message.user}: {message.message}
-                          </p>)}
-                      </Dropdown>
-                    </Row>
-                    */
     return (
       <Row>
         <Input

@@ -11,6 +11,9 @@ export default {
     localStorage.removeItem('user_id');
     return axios.get('/api/user/logout');
   },
+  updateUserInfo: data => {
+    return axios.put('/api/user/update', data);
+  },
   session: function () {
     // A simple caching method to make it faster
     const cache = false;
