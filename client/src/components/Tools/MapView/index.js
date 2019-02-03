@@ -65,6 +65,7 @@ class MapView extends Component {
                       _id={need._id}
                       key={need._id}
                       needUser={need.user}
+                      offerHelp={this.props.offerHelp}
                     />
                     <Messages needId={need._id} />
                   </Card>

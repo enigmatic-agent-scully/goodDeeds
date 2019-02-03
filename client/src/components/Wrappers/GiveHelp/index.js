@@ -61,6 +61,10 @@ class GiveHelp extends Component {
     this.getNeeds();
   }
 
+  offerHelp() {
+    console.log('inside Offer help');
+  }
+
   render() {
     console.log(this.props.user._id);
     // console.log(this.state.needs);
@@ -82,6 +86,7 @@ class GiveHelp extends Component {
                   className='list-view'
                   needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
                   currentUserID={this.props.user._id}
+                  offerHelp={this.offerHelp}
                 />
               </CollapsibleItem>
             </Collapsible>
@@ -92,6 +97,7 @@ class GiveHelp extends Component {
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
+              offerHelp={this.offerHelp}
             >
               <Preloader flashing />
             </MapView>

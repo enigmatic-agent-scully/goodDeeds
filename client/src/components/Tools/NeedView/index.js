@@ -5,6 +5,9 @@ import './style.css';
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
 function NeedView(props) {
+
+
+
   return (
     <Row>
       <Col s={12} m={6}>
@@ -49,8 +52,11 @@ function NeedView(props) {
             )}
           </div>
         ) : (
+          <div>
+            <h5>{props.needUser.userName}</h5>
+            <Button onClick={props.offerHelp}>Offer help</Button>
+          </div>
 
-          <h5>{props.needUser.userName}</h5>
 
         //   {props.resolved ? (
         // //   <Icon key={props.key} value={props._id}>
