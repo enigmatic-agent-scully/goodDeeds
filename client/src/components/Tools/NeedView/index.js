@@ -69,28 +69,24 @@ class NeedView extends Component {
       <Row>
         <Col s={12} m={6}>
           <h4>{this.props.subject}</h4>
-
-          <h6>
-            {this.state.gettingAround ? (
-              <i className='material-icons'>directions_car</i>
-            ) : null}
-            {this.state.cleaningUp ? (
-              <i className='material-icons'>delete_sweep</i>
-            ) : null}
-            {this.state.fixingSomething ? (
-              <i className='material-icons'>settings</i>
-            ) : null}
-            {this.state.financialAssistance ? (
-              <i className='material-icons'>monitization_on</i>
-            ) : null}
-            {this.state.moving ? (
-              <i className='material-icons'>card_travel</i>
-            ) : null}
-            {this.state.professionalAssistance ? (
-              <i className='material-icons'>assignment_ind</i>
-            ) : null}
-            {this.props.category}
-          </h6>
+          {this.state.gettingAround ? (
+            <i className='material-icons'>directions_car</i>
+          ) : null}
+          {this.state.cleaningUp ? (
+            <i className='material-icons'>delete_sweep</i>
+          ) : null}
+          {this.state.fixingSomething ? (
+            <i className='material-icons'>settings</i>
+          ) : null}
+          {this.state.financialAssistance ? (
+            <i className='material-icons'>monitization_on</i>
+          ) : null}
+          {this.state.moving ? (
+            <i className='material-icons'>card_travel</i>
+          ) : null}
+          {this.state.professionalAssistance ? (
+            <i className='material-icons'>assignment_ind</i>
+          ) : null}{' '}
           <p>{this.props.description}</p>
           {this.props.needUser === this.props.currentUserID ? (
             <div>

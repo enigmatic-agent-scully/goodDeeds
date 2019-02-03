@@ -40,6 +40,7 @@ function NeedList(props) {
                   markUnresolved={props.markUnresolved}
                   deleteNeed={props.deleteNeed}
                   resolved={need.resolved}
+                  subject={need.subject}
                   category={need.category}
                   description={need.description}
                   imageurl={need.imageurl}
