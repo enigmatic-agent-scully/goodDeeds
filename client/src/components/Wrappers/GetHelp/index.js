@@ -21,7 +21,8 @@ class GetHelp extends Component {
       lat: '',
       lng: '',
       needs: [],
-      isModalOpen: false
+      isModalOpen: false,
+      clearGeoSuggest: false
     };
 
     this.reactS3config = {
@@ -44,11 +45,12 @@ class GetHelp extends Component {
   }
 
   handleGeoCode(suggest) {
+    console.log(suggest);
     if (suggest) {
       this.setState({
         lat: suggest.location.lat,
         lng: suggest.location.lng,
-        address: ''
+        address: suggest.location.description
       });
     }
   }
@@ -98,6 +100,13 @@ class GetHelp extends Component {
     this.handleCloseModal();
   }
 
+  handleClearGeoSuggest() {
+    this.setState({
+      clearGeoSuggest: true
+    });
+  }
+
+
   uploadHandler(event) {
     const imagefile = event.target.files[0];
     uploadFile(imagefile, this.reactS3config)
@@ -144,6 +153,7 @@ class GetHelp extends Component {
               handleInputChange={this.handleInputChange}
               SubmitHandler={this.SubmitHandler}
               handleGeoCode={this.handleGeoCode}
+              clearGeoSuggest={this.state.clearGeoSuggest}
             />
           </Col>
           <Col id='need-list' s={12} m={4}>
