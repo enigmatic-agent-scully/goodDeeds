@@ -1,4 +1,10 @@
 #need-list {
-    height: 90vh;
-    overflow: scroll;
+  height: 90vh;
+  overflow: scroll;
+}
+
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
 }
