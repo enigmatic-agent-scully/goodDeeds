@@ -23,7 +23,11 @@ class GiveHelp extends Component {
 
   getNeeds() {
     API.getNeeds()
-      .then(res => this.setState({ needs: res.data }))
+      .then(res => {
+        var returnedNeed = res.data;
+        var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
+        this.setState({ needs: unresolvedReturnedNeed });
+      })
       .catch(err => console.log(err));
   }
 
@@ -36,7 +40,7 @@ class GiveHelp extends Component {
     });
   }
 
-  filterBySearch(category, keyword, needdate){
+  filterBySearch(category, keyword, needdate) {
     console.log(category);
     console.log(keyword);
     console.log(needdate);
