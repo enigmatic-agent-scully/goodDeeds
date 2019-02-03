@@ -23,7 +23,7 @@ function Landing() {
   return (
     <div className='Landing-Page'>
       <Parallax bgImage={image2} strength={500}>
-        <div style={{ height: '50vh' }}>
+        <div style={{ height: '80vh' }}>
           <div style={insideStyles} id='logo-info-overlay'>
             <Card>
               <h1>goodDeeds</h1>
@@ -54,7 +54,7 @@ function Landing() {
           </div>
         )}
       >
-        <div style={{ height: '90vh' }}>
+        <div style={{ height: '50vh' }}>
           <div style={insideStyles} id='login-overlay'>
             <Login />
           </div>

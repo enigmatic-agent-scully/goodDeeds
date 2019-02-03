@@ -17,7 +17,7 @@ function NeedInput(props) {
           value={props.category}
           label='Select the type of need'
           type='select'
-        // defaultValue='0'
+          // defaultValue='0'
         >
           <option value='0'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>
@@ -34,7 +34,8 @@ function NeedInput(props) {
           name='address'
           onSuggestSelect={props.handleGeoCode}
           value={props.address}
-          clear={props.clearGeoSuggest} />
+          clear={props.clearGeoSuggest}
+        />
         <h5>Image</h5>
         <Input
           onChange={props.uploadHandler}
@@ -51,6 +52,15 @@ function NeedInput(props) {
           type='date'
           value={props.needdate}
           onChange={props.handleInputChange}
+        />
+        <h5>Subject</h5>
+        <Input
+          onChange={props.handleInputChange}
+          name='subject'
+          s={12}
+          type='textarea'
+          value={props.subject}
+          placeholder='Enter a subject for your need.'
         />
         <h5>Description</h5>
         <Input
