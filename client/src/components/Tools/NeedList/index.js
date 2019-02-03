@@ -44,6 +44,7 @@ function NeedList(props) {
                 <NeedView
                   markResolved={props.markResolved}
                   markUnresolved={props.markUnresolved}
+                  deleteNeed={props.deleteNeed}
                   resolved={need.resolved}
                   category={need.category}
                   description={need.description}

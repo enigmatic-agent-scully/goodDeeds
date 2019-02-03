@@ -39,7 +39,7 @@ class GetHelp extends Component {
     this.SubmitHandler = this.SubmitHandler.bind(this);
     this.markResolved = this.markResolved.bind(this);
     this.markUnresolved = this.markUnresolved.bind(this);
-    this.deleteMessage = this.deleteMessage.bind(this);
+    this.deleteNeed = this.deleteNeed.bind(this);
 
     this.loadNeeds();
   }
@@ -70,6 +70,13 @@ class GetHelp extends Component {
       .catch(err => console.log(err));
   }
 
+  deleteNeed(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    API.deleteNeed(e.target.value)
+      .then(this.loadNeeds())
+      .catch(err => console.log(err));
+  }
   onHoverEvent(id) {
     // console.log(id);
   }
@@ -78,14 +85,6 @@ class GetHelp extends Component {
     this.setState({
       isModalOpen: false
     });
-  }
-
-  deleteMessage(e) {
-    e.preventDefault();
-    console.log(e.target.value);
-    API.deleteMessage(e.target.value)
-      .then(this.loadNeeds())
-      .catch(err => console.log(err));
   }
 
   loadNeeds() {
@@ -161,7 +160,7 @@ class GetHelp extends Component {
             <Card>
               <h4>List of Needs</h4>
               <NeedList
-                deleteMessage={this.deleteMessage}
+                deleteNeed={this.deleteNeed}
                 currentUserID={this.props.user._id}
                 isModalOpen={this.state.isModalOpen}
                 markResolved={this.markResolved}
@@ -174,7 +173,7 @@ class GetHelp extends Component {
             <Card>
               <h4>Resolved Needs</h4>
               <NeedList
-                deleteMessage={this.deleteMessage}
+                deleteNeed={this.deleteNeed}
                 currentUserID={this.props.user._id}
                 isModalOpen={this.state.isModalOpen}
                 markUnresolved={this.markUnresolved}

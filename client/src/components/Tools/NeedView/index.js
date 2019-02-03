@@ -15,21 +15,39 @@ function NeedView(props) {
         {props.needUser === props.currentUserID ? (
           <div>
             {props.resolved ? (
-              <Button
-                key={props.key}
-                value={props._id}
-                onClick={props.markUnresolved}
-              >
-                Mark Unresolved
-              </Button>
+              <div>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.markUnresolved}
+                >
+                  Mark Unresolved
+                </Button>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.deleteNeed}
+                >
+                  <i className='material-icons'>delete</i>
+                </Button>
+              </div>
             ) : (
-              <Button
-                key={props.key}
-                value={props._id}
-                onClick={props.markResolved}
-              >
-                Mark Resolved
-              </Button>
+              <div>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.markResolved}
+                >
+                  Mark Resolved
+                </Button>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.deleteNeed}
+                >
+                  <i className='material-icons'>delete</i>
+                </Button>
+              </div>
             )}
           </div>
         ) : (
