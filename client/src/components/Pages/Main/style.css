@@ -12,3 +12,8 @@
 #sidenav-overlay {
   z-index: 1;
 }
+
+.hover-over-nav:hover{
+  text-decoration: underline;
+  font-weight: bolder;
+}

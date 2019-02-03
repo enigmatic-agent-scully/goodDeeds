@@ -11,7 +11,8 @@ module.exports = {
         _id: true,
         firstName: true,
         lastName: true,
-        userName: true
+        userName: true,
+        imageurl: true
       })
       .sort({ postdate: -1 })
       .then(dbModel => res.json(dbModel))

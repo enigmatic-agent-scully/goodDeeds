@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Row, Input, Button, Dropdown } from 'react-materialize';
-import { Row, Input, Button, Card } from 'react-materialize';
+import { Row, Input, Button, Card, Chip } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
 import moment from 'moment-timezone';
@@ -55,6 +55,7 @@ class Messages extends Component {
       .then(res => {
         //upon completion of creating the post, we are
         //calling on the loadPosts func
+        console.log(this.state);
         this.setState({
           message: ''
         });
@@ -80,7 +81,10 @@ class Messages extends Component {
 
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
-            <span className='user-name'>{message.user.userName}@</span>
+            <Chip>
+              <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
+            </Chip>
+            {/* <span className='user-name'>{message.user.userName}@</span> */}
             <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
             <span className='message-txt'>{message.message}</span>
           </Card>
