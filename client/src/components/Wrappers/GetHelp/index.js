@@ -27,7 +27,6 @@ class GetHelp extends Component {
     this.reactS3config = {
       bucketName: 'gooddeedsimages',
       region: 'us-east-1',
-      // dirName: `${this.prop}`
       accessKeyId: config.awsKey,
       secretAccessKey: config.awsSecret
     };
@@ -44,8 +43,6 @@ class GetHelp extends Component {
   }
 
   handleGeoCode(suggest) {
-    // const addressInput = event.target.value
-    // console.log(suggest.location);
     if (suggest) {
       this.setState({
         lat: suggest.location.lat,
@@ -74,30 +71,28 @@ class GetHelp extends Component {
   }
 
   handleCloseModal() {
-    this.setState({ 
-      isModalOpen: false 
+    this.setState({
+      isModalOpen: false
     });
   }
 
   loadNeeds() {
-    console.log(this.props.user);
     API.getNeedsCurrentUser()
-      .then(res => this.setState({ 
+      .then(res => this.setState({
         category: '0',
         description: '',
         needdate: '',
         address: '',
-        needs: res.data }))
+        needs: res.data
+      }))
       .catch(err => console.log(err));
     this.handleCloseModal();
   }
 
   uploadHandler(event) {
     const imagefile = event.target.files[0];
-    console.log(imagefile);
     uploadFile(imagefile, this.reactS3config)
       .then(data => {
-        console.log(data.location);
         this.setState({ imageurl: data.location });
       })
       .catch(err => console.error(err));
@@ -105,7 +100,6 @@ class GetHelp extends Component {
 
   handleInputChange(event) {
     const { name, value } = event.target;
-    // console.log(event.target);
     this.setState({
       [name]: value
     });
@@ -114,7 +108,6 @@ class GetHelp extends Component {
   SubmitHandler(event) {
     event.preventDefault();
     const NeedInfo = this.state;
-    console.log(this.props.user._id);
     API.postNeed({
       category: NeedInfo.category,
       needdate: NeedInfo.needdate,
@@ -127,7 +120,6 @@ class GetHelp extends Component {
   }
 
   render() {
-    // console.log(this.state.needs);
     return (
       <div className='Get-Help-Wrapper'>
         <Row>

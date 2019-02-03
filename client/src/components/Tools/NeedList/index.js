@@ -3,11 +3,9 @@ import { Card, Row, Col, Modal } from 'react-materialize';
 import './style.css';
 import NeedView from '../NeedView';
 import Messages from './../Messages/index';
-// import NeedSearch from '../NeedSearch';
 
 
 function NeedList(props) {
-  console.log(props.isModalOpen);
   return (
     <Row>
       {props.needs.length ? (
@@ -22,13 +20,11 @@ function NeedList(props) {
                     onMouseEnter={() => props.onHoverEvent(need._id)}
                     key={need._id}
                     value={need._id}
-                  // title={need.category}
                   >
                     <Row>
                       <Col s={6}>
                         <h5>{need.category}</h5>
                         <p>{need.description}</p>
-                        {/* <p>Posted by {need.user.username} ({need.user._id})</p> */}
                       </Col>
                       <Col s={6}>
                         <img src={need.imageurl} alt='need' />
@@ -40,7 +36,6 @@ function NeedList(props) {
             >
               <Card
                 key={need._id}
-              // title={need.category}
               >
                 <NeedView
                   markResolved={props.markResolved}

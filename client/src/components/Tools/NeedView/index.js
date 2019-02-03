@@ -5,8 +5,6 @@ import './style.css';
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
 function NeedView(props) {
-  // console.log(props.needUser);
-  // console.log(props.currentUserID);
   return (
     <Row>
       <Col s={12} m={6}>

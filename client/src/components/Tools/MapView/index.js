@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Modal } from 'react-materialize';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-// import API from '../../../utils/API';
 import './style.css';
 import NeedView from '../NeedView/index';
 import Messages from '../Messages/index';
@@ -15,25 +14,8 @@ class MapView extends Component {
       needs: [],
       showPopUp: false
     };
-    // this.onHoverEvent = this.onHoverEvent.bind(this);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
-  handleOpenModal(event) {
-    console.log(event);
-    console.log(this.state.showPopUp);
-
-    this.setState({
-      showPopUp: true
-    });
-  }
-
-  handleCloseModal() {
-    console.log('im in handleCloseModal');
-    this.setState({
-      showPopUp: false
-    });
-  }
 
   render() {
     return (
@@ -56,16 +38,13 @@ class MapView extends Component {
                     <div>
                       <Card
                         className='need-card'
-                        // onMouseEnter={() => this.props.onHoverEvent(need._id)}
                         key={need._id}
                         value={need._id}
-                      // title={need.category}
                       >
                         <Row>
                           <Col s={6}>
                             <h5>{need.category}</h5>
                             <p>{need.description}</p>
-                            {/* <p>Posted by {need.user.username} ({need.user._id})</p> */}
                           </Col>
                           <Col s={6}>
                             <img src={need.imageurl} alt='need' />
@@ -77,11 +56,8 @@ class MapView extends Component {
                 >
                   <Card
                     key={need._id}
-                  // title={need.category}
                   >
                     <NeedView
-                      // markResolved={props.markResolved}
-                      // markUnresolved={props.markUnresolved}
                       resolved={need.resolved}
                       category={need.category}
                       description={need.description}
@@ -89,7 +65,6 @@ class MapView extends Component {
                       _id={need._id}
                       key={need._id}
                       needUser={need.user}
-                    // currentUserID={props.currentUserID}
                     />
                     <Messages needId={need._id} />
                   </Card>

@@ -59,8 +59,6 @@ function ProfileView(props) {
           <Input className="profile-input" name="email" value={props.email} onChange={props.handleInputChange}></Input>
         </Col>
       </Row>
-
-
       <Button onClick={props.handleSaveToExistingProfile}>Save</Button>
     </Row >
   );

@@ -15,10 +15,6 @@ class Messages extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitPost = this.submitPost.bind(this);
-
-    //why does this get loaded twice???
-    this.loadPosts();
-    // this.props.foo(this.props.needId + '-fo');
   }
 
   componentDidMount() {
@@ -26,13 +22,11 @@ class Messages extends Component {
   }
 
   loadPosts() {
-    // needId = '5c4cbb8533f08c086075a05c';
     API.loadMessage(this.props.needId)
       .then(res => {
         this.setState({
           returnedMessageArray: res.data
         });
-        // console.log(this.state.returnedMessageArray);
       })
       .catch(err => {
         console.log(err);
@@ -53,9 +47,6 @@ class Messages extends Component {
       need: this.props.needId
     })
       .then(res => {
-        //upon completion of creating the post, we are
-        //calling on the loadPosts func
-        console.log(this.state);
         this.setState({
           message: ''
         });
@@ -78,13 +69,11 @@ class Messages extends Component {
           type='textarea'
         />
         <Button onClick={this.submitPost}>Post Message</Button>
-
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
             <Chip>
               <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
             </Chip>
-            {/* <span className='user-name'>{message.user.userName}@</span> */}
             <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
             <span className='message-txt'>{message.message}</span>
           </Card>
