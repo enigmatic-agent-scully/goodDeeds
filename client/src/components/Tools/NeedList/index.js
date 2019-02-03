@@ -22,7 +22,8 @@ function NeedList(props) {
                   >
                     <Row>
                       <Col s={6}>
-                        <h5>{need.category}</h5>
+                        <h5>{need.subject}</h5>
+                        <h6>{need.category}</h6>
                         <p>{need.description}</p>
                       </Col>
                       <Col s={6}>
@@ -33,9 +34,7 @@ function NeedList(props) {
                 </div>
               }
             >
-              <Card
-                key={need._id}
-              >
+              <Card key={need._id}>
                 <NeedView
                   markResolved={props.markResolved}
                   markUnresolved={props.markUnresolved}

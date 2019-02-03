@@ -14,6 +14,7 @@ class GetHelp extends Component {
     super(props);
     this.state = {
       category: '0',
+      subject: '',
       needdate: '',
       address: '',
       description: '',
@@ -55,16 +56,14 @@ class GetHelp extends Component {
     }
   }
 
-  markResolved(e) {
-    e.preventDefault();
-    API.markResolved(e.target.value)
+  markResolved(needId) {
+    API.markResolved(needId)
       .then(this.loadNeeds())
       .catch(err => console.log(err));
   }
 
-  markUnresolved(e) {
-    e.preventDefault();
-    API.markUnresolved(e.target.value)
+  markUnresolved(needId) {
+    API.markUnresolved(needId)
       .then(this.loadNeeds())
       .catch(err => console.log(err));
   }
@@ -90,9 +89,9 @@ class GetHelp extends Component {
       .then(res =>
         this.setState({
           category: '0',
+          subject: '',
           description: '',
           needdate: '',
-          address: '',
           needs: res.data
         })
       )
@@ -105,7 +104,6 @@ class GetHelp extends Component {
       clearGeoSuggest: true
     });
   }
-
 
   uploadHandler(event) {
     const imagefile = event.target.files[0];
@@ -128,6 +126,7 @@ class GetHelp extends Component {
     const NeedInfo = this.state;
     API.postNeed({
       category: NeedInfo.category,
+      subject: NeedInfo.subject,
       needdate: NeedInfo.needdate,
       description: NeedInfo.description,
       imageurl: NeedInfo.imageurl,
@@ -143,6 +142,7 @@ class GetHelp extends Component {
         <Row>
           <Col s={12} m={4}>
             <NeedInput
+              subject={this.state.subject}
               imagefile={this.state.imagefile}
               category={this.state.category}
               address={this.state.address}
