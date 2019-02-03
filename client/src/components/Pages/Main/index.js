@@ -137,29 +137,29 @@ class Main extends Component {
               </Modal>
               <NavItem onClick={this.logoutFunction}>Logout</NavItem>
             </Dropdown>
-            <NavItem href='/main/get-help'>Get Help</NavItem>
-            <NavItem href='/main/give-help'>Give Help</NavItem>
+            <NavItem href='/main/get-help' className="hover-over-nav">Get Help</NavItem>
+            <NavItem href='/main/give-help' className="hover-over-nav">Give Help</NavItem>
           </Navbar>
         </div>
         <Router>
           <div>
-          <Route
-            exact path='/main/get-help'
-            render={props => (
-              <GetHelp 
-              {...props} 
-              user={this.state.userInfo} />
-            )}
+            <Route
+              exact path='/main/get-help'
+              render={props => (
+                <GetHelp
+                  {...props}
+                  user={this.state.userInfo} />
+              )}
             />
-          <Route
-            exact path='/main/give-help'
-            render={props => (
-              <GiveHelp 
-              {...props} 
-              user={this.state.userInfo} />
-            )}
-          />
-          {/* <Route 
+            <Route
+              exact path='/main/give-help'
+              render={props => (
+                <GiveHelp
+                  {...props}
+                  user={this.state.userInfo} />
+              )}
+            />
+            {/* <Route 
           exact path='/main/give-help' 
           component={GiveHelp} /> */}
           </div>

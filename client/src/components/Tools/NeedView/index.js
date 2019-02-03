@@ -5,8 +5,9 @@ import './style.css';
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
 function NeedView(props) {
-  // console.log(props.needUser);
-  // console.log(props.currentUserID);
+
+
+
   return (
     <Row>
       <Col s={12} m={6}>
@@ -26,7 +27,7 @@ function NeedView(props) {
                 <Button
                   key={props.key}
                   value={props._id}
-                  onClick={props.deleteNeed}
+                  onClick={() => props.deleteNeed(props._id)}
                 >
                   <i className='material-icons'>delete</i>
                 </Button>
@@ -38,12 +39,12 @@ function NeedView(props) {
                   value={props._id}
                   onClick={props.markResolved}
                 >
-                  Mark Resolved
+                    Mark Resolved
                 </Button>
                 <Button
                   key={props.key}
                   value={props._id}
-                  onClick={props.deleteNeed}
+                  onClick={() => props.deleteNeed(props._id)}
                 >
                   <i className='material-icons'>delete</i>
                 </Button>
@@ -52,16 +53,21 @@ function NeedView(props) {
           </div>
         ) : (
           <div>
-            {props.resolved ? (
-              <Icon key={props.key} value={props._id}>
-                done_outline
-              </Icon>
-            ) : (
-              <Icon key={props.key} value={props._id}>
-                stars
-              </Icon>
-            )}
+            <h5>{props.needUser.userName}</h5>
+            <Button onClick={props.offerHelp}>Offer help</Button>
           </div>
+
+
+        //   {props.resolved ? (
+        // //   <Icon key={props.key} value={props._id}>
+        // //       done_outline
+        // //   </Icon>
+        // // ) : (
+        // //   <Icon key={props.key} value={props._id}>
+        // //         stars
+        // //   </Icon>
+        // )}
+        // </div>
         )}
       </Col>
       <Col s={12} m={6}>

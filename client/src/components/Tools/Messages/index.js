@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Row, Input, Button, Dropdown } from 'react-materialize';
-import { Row, Input, Button, Card } from 'react-materialize';
+import { Row, Input, Button, Card, Chip } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
 
@@ -27,23 +27,20 @@ class Messages extends Component {
   }
 
   loadPosts() {
-    // needId = '5c4cbb8533f08c086075a05c';
     API.loadMessage(this.props.needId)
       .then(res => {
         this.setState({
           returnedMessageArray: res.data
         });
-        // console.log(this.state.returnedMessageArray);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  deleteMessage(e) {
-    e.preventDefault();
-    console.log(e.target.value);
-    API.deleteMessage(e.target.value)
+  deleteMessage(messageId) {
+    console.log(messageId);
+    API.deleteMessage(messageId)
       .then(this.loadPosts())
       .catch(err => console.log(err));
   }
@@ -62,8 +59,6 @@ class Messages extends Component {
       need: this.props.needId
     })
       .then(res => {
-        //upon completion of creating the post, we are
-        //calling on the loadPosts func
         this.setState({
           message: ''
         });
@@ -85,14 +80,22 @@ class Messages extends Component {
           label='type your message'
           type='textarea'
         />
-        <Button onClick={this.submitPost}>Post</Button>
-
+        <Button onClick={this.submitPost}>Post Message</Button>
+        {/* {this.state.returnedMessageArray.map(message => (
+          <Card key={message._id}>
+         
+            <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
+            <span className='message-txt'>{message.message}</span>
+        <Button onClick={this.submitPost}>Post</Button> */}
         {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
             <div>
               <div id='message-body'>
                 <div id='author'>
-                  <strong>{message.user.userName}</strong> wrote:
+                  <Chip>
+                    <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
+                    <strong>{message.user.userName}</strong> wrote:
+                  </Chip>
                 </div>
                 <br />
                 {message.message}
@@ -102,7 +105,7 @@ class Messages extends Component {
                 {message.user._id === this.props.currentUserID ? (
                   <div>
                     <small>
-                      <Button value={message._id} onClick={this.deleteMessage}>
+                      <Button value={message._id} onClick={() => this.deleteMessage(message._id)}>
                         <i className='material-icons'>delete</i>
                       </Button>
                     </small>

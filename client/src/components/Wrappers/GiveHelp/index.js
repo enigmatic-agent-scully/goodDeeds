@@ -23,7 +23,11 @@ class GiveHelp extends Component {
 
   getNeeds() {
     API.getNeeds()
-      .then(res => this.setState({ needs: res.data }))
+      .then(res => {
+        var returnedNeed = res.data;
+        var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
+        this.setState({ needs: unresolvedReturnedNeed });
+      })
       .catch(err => console.log(err));
   }
 
@@ -36,7 +40,7 @@ class GiveHelp extends Component {
     });
   }
 
-  filterBySearch(category, keyword, needdate){
+  filterBySearch(category, keyword, needdate) {
     console.log(category);
     console.log(keyword);
     console.log(needdate);
@@ -55,6 +59,10 @@ class GiveHelp extends Component {
 
   componentDidMount() {
     this.getNeeds();
+  }
+
+  offerHelp() {
+    console.log('inside Offer help');
   }
 
   render() {
@@ -78,6 +86,7 @@ class GiveHelp extends Component {
                   className='list-view'
                   needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
                   currentUserID={this.props.user._id}
+                  offerHelp={this.offerHelp}
                 />
               </CollapsibleItem>
             </Collapsible>
@@ -88,6 +97,7 @@ class GiveHelp extends Component {
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
+              offerHelp={this.offerHelp}
             >
               <Preloader flashing />
             </MapView>
