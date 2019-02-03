@@ -26,20 +26,18 @@ module.exports = {
   },
   findByUser: (req, res) => {
     console.log(req.session.user._id);
-    db.Need
-    .find({
+    db.Need.find({
       user: req.session.user._id
     })
-    .sort({ date: 1 })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+      .sort({ date: 1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   create: (req, res) => {
-    console.log(req)
+    console.log(req);
     const newNeed = req.body;
-    newNeed.user = req.session.user._id
-    db.Need
-      .create(newNeed)
+    newNeed.user = req.session.user._id;
+    db.Need.create(newNeed)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
