@@ -4,7 +4,6 @@ import './style.css';
 import NeedView from '../NeedView';
 import Messages from './../Messages/index';
 
-
 function NeedList(props) {
   return (
     <Row>
@@ -40,6 +39,7 @@ function NeedList(props) {
                 <NeedView
                   markResolved={props.markResolved}
                   markUnresolved={props.markUnresolved}
+                  deleteNeed={props.deleteNeed}
                   resolved={need.resolved}
                   category={need.category}
                   description={need.description}
@@ -49,7 +49,11 @@ function NeedList(props) {
                   needUser={need.user}
                   currentUserID={props.currentUserID}
                 />
-                <Messages needId={need._id} />
+                <Messages
+                  needId={need._id}
+                  currentUserID={props.currentUserID}
+                  deleteMessage={props.deleteMessage}
+                />
               </Card>
             </Modal>
           ))}
@@ -61,7 +65,6 @@ function NeedList(props) {
       )}
     </Row>
   );
-
 }
 
 export default NeedList;

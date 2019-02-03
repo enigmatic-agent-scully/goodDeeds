@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Card, Chip } from 'react-materialize';
 import './style.css';
 import API from '../../../utils/API';
-import moment from 'moment-timezone';
 
 class Messages extends Component {
   constructor(props) {
@@ -15,6 +14,12 @@ class Messages extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitPost = this.submitPost.bind(this);
+    this.loadPosts = this.loadPosts.bind(this);
+    this.deleteMessage = this.deleteMessage.bind(this);
+
+    //why does this get loaded twice???
+    this.loadPosts();
+    // this.props.foo(this.props.needId + '-fo');
   }
 
   componentDidMount() {
@@ -31,6 +36,13 @@ class Messages extends Component {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  deleteMessage(messageId) {
+    console.log(messageId);
+    API.deleteMessage(messageId)
+      .then(this.loadPosts())
+      .catch(err => console.log(err));
   }
 
   handleInputChange(event) {
@@ -69,13 +81,38 @@ class Messages extends Component {
           type='textarea'
         />
         <Button onClick={this.submitPost}>Post Message</Button>
-        {this.state.returnedMessageArray.map(message => (
+        {/* {this.state.returnedMessageArray.map(message => (
           <Card key={message._id}>
-            <Chip>
-              <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
-            </Chip>
+         
             <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
             <span className='message-txt'>{message.message}</span>
+        <Button onClick={this.submitPost}>Post</Button> */}
+        {this.state.returnedMessageArray.map(message => (
+          <Card key={message._id}>
+            <div>
+              <div id='message-body'>
+                <div id='author'>
+                  <Chip>
+                    <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
+                    <strong>{message.user.userName}</strong> wrote:
+                  </Chip>
+                </div>
+                <br />
+                {message.message}
+                <br />
+                <br />
+                <div id='datetime'>at {message.postdate}</div>
+                {message.user._id === this.props.currentUserID ? (
+                  <div>
+                    <small>
+                      <Button value={message._id} onClick={() => this.deleteMessage(message._id)}>
+                        <i className='material-icons'>delete</i>
+                      </Button>
+                    </small>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </Card>
         ))}
       </Row>

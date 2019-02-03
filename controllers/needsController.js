@@ -4,6 +4,13 @@ const db = require('../models');
 module.exports = {
   findAll: (req, res) => {
     db.Need.find({})
+      .populate('user', {
+        _id: true,
+        firstName: true,
+        lastName: true,
+        userName: true,
+        imageurl: true
+      })
       .sort({ postdate: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -26,20 +33,18 @@ module.exports = {
   },
   findByUser: (req, res) => {
     console.log(req.session.user._id);
-    db.Need
-    .find({
+    db.Need.find({
       user: req.session.user._id
     })
-    .sort({ date: 1 })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+      .sort({ date: 1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   create: (req, res) => {
-    console.log(req)
+    console.log(req);
     const newNeed = req.body;
-    newNeed.user = req.session.user._id
-    db.Need
-      .create(newNeed)
+    newNeed.user = req.session.user._id;
+    db.Need.create(newNeed)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -49,8 +54,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: (req, res) => {
-    db.Need.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+    db.Need.findOneAndDelete({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

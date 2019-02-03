@@ -13,40 +13,55 @@ function NeedView(props) {
         {props.needUser === props.currentUserID ? (
           <div>
             {props.resolved ? (
-              <Button
-                key={props.key}
-                value={props._id}
-                onClick={props.markUnresolved}
-              >
-                Mark Unresolved
-              </Button>
+              <div>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.markUnresolved}
+                >
+                  Mark Unresolved
+                </Button>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={() => props.deleteNeed(props._id)}
+                >
+                  <i className='material-icons'>delete</i>
+                </Button>
+              </div>
             ) : (
-              <Button
-                key={props.key}
-                value={props._id}
-                onClick={props.markResolved}            >
-                  Mark Resolved
-              </Button>
+              <div>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={props.markResolved}
+                >
+                    Mark Resolved
+                </Button>
+                <Button
+                  key={props.key}
+                  value={props._id}
+                  onClick={() => props.deleteNeed(props._id)}
+                >
+                  <i className='material-icons'>delete</i>
+                </Button>
+              </div>
             )}
           </div>
         ) : (
-          <div>
-            {props.resolved ? (
-              <Icon
-                key={props.key}
-                value={props._id}
-              >
-                  done_outline
-              </Icon>
-            ) : (
-              <Icon
-                key={props.key}
-                value={props._id}
-              >
-                    stars
-              </Icon>
-            )}
-          </div>
+
+          <h5>{props.needUser.userName}</h5>
+
+        //   {props.resolved ? (
+        // //   <Icon key={props.key} value={props._id}>
+        // //       done_outline
+        // //   </Icon>
+        // // ) : (
+        // //   <Icon key={props.key} value={props._id}>
+        // //         stars
+        // //   </Icon>
+        // )}
+        // </div>
         )}
       </Col>
       <Col s={12} m={6}>
