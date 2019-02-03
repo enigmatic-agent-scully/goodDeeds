@@ -124,43 +124,47 @@ class Login extends Component {
     }
 
     return (
-      <Row>
-        <Card>
-          <Modal trigger={<Button>Create New User Account</Button>}>
-            <NewUser
-              header='New User'
-              handleInputChange={this.handleInputChange}
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              imageurl={this.state.imageurl}
-              userName={this.state.userName}
-              email={this.state.email}
-              password={this.state.password}
-              passwordConfirmed={this.state.passwordConfirmed}
-              handleModalFormSubmit={this.handleModalFormSubmit}
-              uploadHandler={this.uploadHandler}
-            />
-          </Modal>
-          <h2>Already a member?</h2>
-          <Input
-            name='email'
-            onChange={this.handleInputChange}
-            type='email'
-            label='Email'
-            s={12}
-          />
-          <Input
-            name='password'
-            onChange={this.handleInputChange}
-            type='password'
-            label='password'
-            s={12}
-          />
+      <Card id="login-card">
+
+        <Input
+          name='email'
+          onChange={this.handleInputChange}
+          type='email'
+          label='Email'
+          s={12}
+        />
+        <Input
+          name='password'
+          onChange={this.handleInputChange}
+          type='password'
+          label='password'
+          s={12}
+        />
+        <Row>
           <Button waves='light' onClick={this.LoginHandler}>
             Login
           </Button>
-        </Card>
-      </Row>
+        </Row>
+        <Modal trigger={
+          <Row>
+            <Button>Create New User Account</Button>
+          </Row>
+        }>
+          <NewUser
+            header='New User'
+            handleInputChange={this.handleInputChange}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            imageurl={this.state.imageurl}
+            userName={this.state.userName}
+            email={this.state.email}
+            password={this.state.password}
+            passwordConfirmed={this.state.passwordConfirmed}
+            handleModalFormSubmit={this.handleModalFormSubmit}
+            uploadHandler={this.uploadHandler}
+          />
+        </Modal>
+      </Card>
     );
   }
 }

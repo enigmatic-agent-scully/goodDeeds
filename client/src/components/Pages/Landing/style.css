@@ -1,6 +1,9 @@
-.Landing-Page {
-  margin-top: 3vh;
-}
+
 #title {
   font-size: 38px;
 }
+
+#login-overlay {
+  width: 50%;
+}
+
