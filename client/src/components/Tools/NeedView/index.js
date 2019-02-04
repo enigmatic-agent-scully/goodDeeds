@@ -19,45 +19,45 @@ class NeedView extends Component {
 
   setCategoryState() {
     switch (this.props.category) {
-      case 'Getting Around': {
-        this.setState({
-          gettingAround: true
-        });
-        break;
-      }
-      case 'Cleaning Up': {
-        this.setState({
-          cleaningUp: true
-        });
-        break;
-      }
-      case 'Fixing Something': {
-        this.setState({
-          fixingSomething: true
-        });
-        break;
-      }
-      case 'Financial Assistance': {
-        this.setState({
-          financialAssistance: true
-        });
-        break;
-      }
-      case 'Moving': {
-        this.setState({
-          moving: true
-        });
-        break;
-      }
-      case 'Professional Assistance': {
-        this.setState({
-          professionalAssistance: true
-        });
-        break;
-      }
-      default: {
-        break;
-      }
+    case 'Getting Around': {
+      this.setState({
+        gettingAround: true
+      });
+      break;
+    }
+    case 'Cleaning Up': {
+      this.setState({
+        cleaningUp: true
+      });
+      break;
+    }
+    case 'Fixing Something': {
+      this.setState({
+        fixingSomething: true
+      });
+      break;
+    }
+    case 'Financial Assistance': {
+      this.setState({
+        financialAssistance: true
+      });
+      break;
+    }
+    case 'Moving': {
+      this.setState({
+        moving: true
+      });
+      break;
+    }
+    case 'Professional Assistance': {
+      this.setState({
+        professionalAssistance: true
+      });
+      break;
+    }
+    default: {
+      break;
+    }
     }
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Input } from 'react-materialize';
+import { Row, Col, Button, Input, Card } from 'react-materialize';
 import './style.css';
 
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
@@ -7,60 +7,66 @@ import './style.css';
 
 function ProfileView(props) {
   return (
-    <Row>
+    <div>
       <Row>
-        <Col s={2}>
-          <img id="profile-picture" src={props.imageurl} alt='user-pic' />
+        <Col s="12" l="6">
+          <h2>Edit Profile</h2>
+          <Button 
+            onClick={props.handleSaveToExistingProfile}>
+            Save Edits
+          </Button>
+          <div id='profile-edit-form'>
+            <Input 
+              s= "12"
+              className="profile-input" 
+              name="firstName"
+              label="First Name"
+              placeholder={props.firstName} 
+              onChange={props.handleInputChange}/>
+            <Input 
+              s= "12"
+              className="profile-input" 
+              name="lastName" 
+              label='Last Name'
+              placeholder={props.lastName} 
+              onChange={props.handleInputChange}/>
+            <Input 
+              s="12"
+              className="profile-input" 
+              name="userName" 
+              label="Username"
+              placeholder={props.userName} 
+              onChange={props.handleInputChange}/>
+            <Input 
+              s="12"
+              className="profile-input" 
+              name="email"
+              label="Email" 
+              placeholder={props.email} 
+              onChange={props.handleInputChange}/>
+          </div>
         </Col>
-      </Row>
-      <Row>
-        <Col s={4}>
-          <div className="labels">Profile Pic: </div>
-        </Col>
-        <Col s={8}>
+        <Col s="12" l="6">
+          <Card>
+
+            <img 
+              id="profile-picture" 
+              src={props.imageurl} 
+              alt='user-pic' />
+          </Card>
           <Input
+            id='image-input'
             onChange={props.uploadHandler}
             name='imageurl'
             type="file"
-            label="Add Photo"
-            s={12}
+            label='Update Image'
+            s= "12"
             placeholder="JPG, PNG, or GIFs only" />
+            
         </Col>
       </Row>
-      <Row>
-        <Col s={4}>
-          <div className="labels">First Name: </div>
-        </Col>
-        <Col s={8}>
-          <Input className="profile-input" name="firstName" value={props.firstName} onChange={props.handleInputChange}></Input>
-        </Col>
-      </Row>
-      <Row>
-        <Col s={4}>
-          <div className="labels">Last Name: </div>
-        </Col>
-        <Col s={8}>
-          <Input className="profile-input" name="lastName" value={props.lastName} onChange={props.handleInputChange}></Input>
-        </Col>
-      </Row>
-      <Row>
-        <Col s={4}>
-          <div className="labels">Username: </div>
-        </Col>
-        <Col s={8}>
-          <Input className="profile-input" name="userName" value={props.userName} onChange={props.handleInputChange}></Input>
-        </Col>
-      </Row>
-      <Row>
-        <Col s={4}>
-          <div className="labels">Email: </div>
-        </Col>
-        <Col s={8}>
-          <Input className="profile-input" name="email" value={props.email} onChange={props.handleInputChange}></Input>
-        </Col>
-      </Row>
-      <Button onClick={props.handleSaveToExistingProfile}>Save</Button>
-    </Row >
+    </div>
+    
   );
 }
 

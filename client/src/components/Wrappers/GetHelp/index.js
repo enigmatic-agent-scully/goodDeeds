@@ -9,6 +9,7 @@ import API from '../../../utils/API';
 import { config } from '../../../config/Config';
 // import { timingSafeEqual } from 'crypto';
 
+
 class GetHelp extends Component {
   constructor(props) {
     super(props);
@@ -140,7 +141,7 @@ class GetHelp extends Component {
     return (
       <div className='Get-Help-Wrapper'>
         <Row>
-          <Col s={12} m={4}>
+          <Col s={12} l={4}>
             <NeedInput
               subject={this.state.subject}
               imagefile={this.state.imagefile}
@@ -156,7 +157,7 @@ class GetHelp extends Component {
               clearGeoSuggest={this.state.clearGeoSuggest}
             />
           </Col>
-          <Col id='need-list' s={12} m={4}>
+          <Col id='need-list' s={12} l={4}>
             <Card>
               <h4>List of Needs</h4>
               <NeedList
@@ -169,7 +170,7 @@ class GetHelp extends Component {
               />
             </Card>
           </Col>
-          <Col id='need-list' s={12} m={4}>
+          <Col id='need-list' s={12} l={4}>
             <Card>
               <h4>Resolved Needs</h4>
               <NeedList

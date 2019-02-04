@@ -124,8 +124,9 @@ class Login extends Component {
     }
 
     return (
-      <Card id="login-card">
-
+      <Card 
+        id="login-card">
+        <h3>Login</h3>
         <Input
           name='email'
           onChange={this.handleInputChange}

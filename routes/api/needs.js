@@ -7,7 +7,7 @@ router.route("/")
   .post(needsController.create);
 
 router.route("/user")
-  .get(needsController.findByUser);
+  .get(needsController.findByCurrentUser);
 
 router.route("/search")
   .get(needsController.findBySearch);

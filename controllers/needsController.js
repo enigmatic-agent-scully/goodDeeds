@@ -31,7 +31,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByUser: (req, res) => {
+  findByCurrentUser: (req, res) => {
     console.log(req.session.user._id);
     db.Need.find({
       user: req.session.user._id

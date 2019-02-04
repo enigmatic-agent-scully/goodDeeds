@@ -24,6 +24,7 @@ class GiveHelp extends Component {
   getNeeds() {
     API.getNeeds()
       .then(res => {
+        console.log(res.data);
         var returnedNeed = res.data;
         var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
         this.setState({ needs: unresolvedReturnedNeed });
@@ -71,7 +72,7 @@ class GiveHelp extends Component {
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
-          <Col id='left-column' s={4}>
+          <Col id='left-column' m='12' l='4'>
             <Collapsible defaultActiveKey={0}>
               <CollapsibleItem header='Search Needs' icon='search'>
                 <NeedSearch
@@ -84,16 +85,16 @@ class GiveHelp extends Component {
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
-                  needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
+                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
                 />
               </CollapsibleItem>
             </Collapsible>
           </Col>
-          <Col s={8}>
+          <Col m='12' l='8'>
             <MapView
-              needs={this.state.needs.filter(need => need.user !== this.props.user._id)}
+              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}

@@ -19,7 +19,7 @@ class Main extends Component {
 
     this.state = {
       user: {},
-      userInfo: []
+      userInfo: [],
     };
 
     this.reactS3config = {
@@ -32,6 +32,8 @@ class Main extends Component {
     this.uploadHandler = this.uploadHandler.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSaveToExistingProfile = this.handleSaveToExistingProfile.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+
 
     Auth.session().then(user => {
       this.setState({
@@ -42,13 +44,21 @@ class Main extends Component {
     });
   }
 
+  handleCloseModal() {
+    this.setState({
+      isModalOpen: false
+    });
+    
+  }
+
   handleInputChange(event) {
     const { name, value } = event.target;
     const userInfo = this.state.userInfo;
     userInfo[name] = value;
     // console.log(userInfo);
     this.setState({
-      userInfo
+      userInfo,
+      isModalOpen: ''
     });
   }
 
@@ -62,7 +72,10 @@ class Main extends Component {
         userInfo.imageurl = res.location;
         console.log('res.location after returning from uploadHandler promise' + res.location);
         console.log('userInfo before the state is set' + userInfo);
-        this.setState({ userInfo });
+        this.setState({ 
+          userInfo,
+          isModalOpen: ''
+        });
       })
       .catch(err => console.error(err));
   }
@@ -79,7 +92,7 @@ class Main extends Component {
       }).catch(err => {
         console.log(err);
       });
-
+    this.handleCloseModal();
   }
 
 
@@ -119,11 +132,13 @@ class Main extends Component {
             <Dropdown
               trigger={
                 <Button>
-                  {this.state.userInfo.firstName} {this.state.userInfo.lastName}
+                  {this.state.userInfo.userName}
                 </Button>
               }
             >
-              <Modal trigger={<NavItem>View Profile</NavItem>}>
+              <Modal 
+                open={this.state.isModalOpen}
+                trigger={<NavItem onClick={this.getProfileInfo}>Edit Profile</NavItem>}>
                 <ProfileView
                   firstName={this.state.userInfo.firstName}
                   lastName={this.state.userInfo.lastName}

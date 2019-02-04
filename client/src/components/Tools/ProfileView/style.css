@@ -9,3 +9,7 @@ img {
     font-size: 25px;
     font-weight: bold;
 }
+
+#profile-edit-form {
+    margin-top: 25px;
+}
