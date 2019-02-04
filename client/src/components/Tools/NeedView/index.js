@@ -156,9 +156,9 @@ class NeedView extends Component {
                     >
                       <i className='material-icons'>delete</i>
                     </Button>
+                    <p className="good-Samaritins">good Samaritins</p>
                     {this.props.goodSamaritins.map(helper => (
-
-                      <p>Good Samariting: {helper.userName}</p>
+                      <Chip>{helper.userName}</Chip>
                     ))}
                   </div>
                 )}
