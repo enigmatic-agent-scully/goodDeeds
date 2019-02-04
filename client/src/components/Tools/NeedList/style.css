@@ -5,3 +5,9 @@ img {
 .need-card :hover {
     background-color: #ebd9d9;
 }
+
+@media screen and (max-width:768px) {
+    .need-modal {
+        width: 100%;
+    }
+}

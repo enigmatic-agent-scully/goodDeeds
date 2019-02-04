@@ -63,11 +63,11 @@ class GiveHelp extends Component {
   }
 
   offerHelp() {
-    console.log('inside Offer help');
+    alert('Email Sent!');
   }
 
   render() {
-    console.log(this.props.user._id);
+    // console.log(this.props.user._id);
     // console.log(this.state.needs);
     return (
       <div className='Give-Help-Wrapper'>
@@ -81,7 +81,7 @@ class GiveHelp extends Component {
                   getNeeds={this.getNeeds}
                 />
               </CollapsibleItem>
-              <CollapsibleItem header='List of Needs' icon='list'>
+              <CollapsibleItem id='list-collapsible' header='List of Needs' icon='list'>
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
@@ -92,7 +92,7 @@ class GiveHelp extends Component {
               </CollapsibleItem>
             </Collapsible>
           </Col>
-          <Col m='12' l='8'>
+          <Col s={12} l={8}>
             <MapView
               needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
               cntLat={this.state.cntLat}

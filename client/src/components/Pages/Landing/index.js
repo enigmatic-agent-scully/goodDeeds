@@ -49,14 +49,14 @@ function Landing() {
                 top: '50%',
                 borderRadius: '50%',
                 transform: 'translate(-50%,-50%)',
-                width: percentage * 1500,
-                height: percentage * 1500
+                width: percentage * 2000,
+                height: percentage * 2000
               }}
             />
           </div>
         )}
       >
-        <div style={{ height: '70vh' }}>
+        <div style={{ height: '80vh' }}>
           <div style={insideStyles} id='login-overlay'>
             <Login />
           </div>

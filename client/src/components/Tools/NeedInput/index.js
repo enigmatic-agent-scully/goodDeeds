@@ -7,7 +7,7 @@ import './style.css';
 
 function NeedInput(props) {
   return (
-    <Card>
+    <Card id='need-input-card'>
       <Row>
         <h5>Type</h5>
         <Input

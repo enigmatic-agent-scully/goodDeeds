@@ -101,11 +101,11 @@ class Messages extends Component {
                 {message.message}
                 <br />
                 <br />
-                <div id='datetime'>at {message.postdate}</div>
+                <div id='datetime'>@{message.postdate}</div>
                 {message.user._id === this.props.currentUserID ? (
                   <div>
                     <small>
-                      <Button value={message._id} onClick={() => this.deleteMessage(message._id)}>
+                      <Button className='delete-button' value={message._id} onClick={() => this.deleteMessage(message._id)}>
                         <i className='material-icons'>delete</i>
                       </Button>
                     </small>

@@ -12,11 +12,12 @@
 }
 
 #motto {
-  /* font-size: 8em; */
+  margin-top: 20vh;
   color: whitesmoke;
 }
 
 #login-overlay {
+  text-align: center;
   width: 40%;
   /* transform: 'translate(-50%,-50%)', */
 }
@@ -38,6 +39,7 @@
 @media screen and (max-width:768px) {
   #login-overlay {
     width: 100%;
+    margin-top: 5vh;
   }
 
   #logo {

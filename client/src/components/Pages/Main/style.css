@@ -18,8 +18,27 @@
   font-weight: bolder;
 }
 
-/* @media screen and (max-width:768px) {
-  #navbar {
-    height: 20vh;
+.main-body {
+  position: fixed;
+  height: 85%;
+  width: 80%;
+}
+
+@media screen and (max-width:768px) {
+  .Main-Page {
+    padding-left: 1px;
+    padding-right: 1px; 
   }
-} */
+
+  .main-body {
+    height: 85%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  #navbar {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

@@ -14,14 +14,14 @@ function NewUser(props) {
       <Row>
         <Input
           name='firstName'
-          s={6}
+          s={12} l={6}
           label='First Name'
           onChange={props.handleInputChange}
           required
         />
         <Input
           name='lastName'
-          s={6}
+          s={12} l={6}
           label='Last Name'
           onChange={props.handleInputChange}
           required

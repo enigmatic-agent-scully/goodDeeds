@@ -157,7 +157,7 @@ class Main extends Component {
           </Navbar>
         </div>
         <Router>
-          <div>
+          <div className='main-body'>
             <Route
               exact path='/main/get-help'
               render={props => (
@@ -174,9 +174,6 @@ class Main extends Component {
                   user={this.state.userInfo} />
               )}
             />
-            {/* <Route 
-          exact path='/main/give-help' 
-          component={GiveHelp} /> */}
           </div>
         </Router>
       </div>

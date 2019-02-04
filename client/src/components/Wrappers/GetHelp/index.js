@@ -157,9 +157,11 @@ class GetHelp extends Component {
               clearGeoSuggest={this.state.clearGeoSuggest}
             />
           </Col>
-          <Col id='need-list' s={12} l={4}>
-            <Card>
-              <h4>List of Needs</h4>
+          <Col  s={12} l={4}>
+            <Card className='list-headers'>
+              <h4>Unresolved Needs</h4>
+            </Card>
+            <Card id='need-list'>
               <NeedList
                 deleteNeed={this.deleteNeed}
                 currentUserID={this.props.user._id}
@@ -170,9 +172,11 @@ class GetHelp extends Component {
               />
             </Card>
           </Col>
-          <Col id='need-list' s={12} l={4}>
-            <Card>
+          <Col  s={12} l={4}>
+            <Card className='list-headers'>
               <h4>Resolved Needs</h4>
+            </Card>
+            <Card id='resolved-list'>
               <NeedList
                 deleteNeed={this.deleteNeed}
                 currentUserID={this.props.user._id}
