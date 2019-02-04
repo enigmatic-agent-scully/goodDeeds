@@ -156,9 +156,12 @@ class NeedView extends Component {
                     >
                       <i className='material-icons'>delete</i>
                     </Button>
-                    <p className="good-Samaritins">good Samaritins</p>
+                    {/* <p className="good-Samaritins">good Samaritins</p> */}
                     {this.props.goodSamaritins.map(helper => (
-                      <Chip>{helper.userName}</Chip>
+                      <Chip>
+                        <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
+                        {helper.userName}
+                      </Chip>
                     ))}
                   </div>
                 )}
