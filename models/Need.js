@@ -12,7 +12,8 @@ const NeedSchema = new Schema({
   lat: { type: Number, default: 0 },
   lng: { type: Number, default: 0 },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  message: { type: Schema.Types.ObjectId, ref: 'Message' }
+  message: { type: Schema.Types.ObjectId, ref: 'Message' },
+  contributor: { type: [Object], required: false }
 });
 
 // This creates our model from the above schema, using mongoose's model method

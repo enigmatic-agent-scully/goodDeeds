@@ -13,9 +13,33 @@ class NeedView extends Component {
       fixingSomething: false,
       financialAssistance: false,
       moving: false,
-      professionalAssistance: false
+      professionalAssistance: false,
+      // scrolled: false
     };
   }
+
+
+
+
+
+  componentDidMount() {
+    // window.addEventListener('scroll', () => {
+    //   const istop = window.scrollY < 100;
+    //   console.log(istop);
+    //   if (istop) {
+    //     this.setState = ({
+    //       scrolled: true
+    //     });
+    //   }
+    //   else {
+    //     this.setState = ({
+    //       scrolled: false
+    //     });
+    //   }
+    // });
+    this.setCategoryState();
+  }
+
 
   setCategoryState() {
     switch (this.props.category) {
@@ -61,110 +85,113 @@ class NeedView extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setCategoryState();
-  }
+
   render() {
     return (
-      <div>
-        <Row>
-          <Col s={12} m={6}>
-            <h4>{this.props.subject}</h4>
-            {this.state.gettingAround ? (
-              <i className='material-icons'>directions_car</i>
-            ) : null}
-            {this.state.cleaningUp ? (
-              <i className='material-icons'>delete_sweep</i>
-            ) : null}
-            {this.state.fixingSomething ? (
-              <i className='material-icons'>settings</i>
-            ) : null}
-            {this.state.financialAssistance ? (
-              <i className='material-icons'>monitization_on</i>
-            ) : null}
-            {this.state.moving ? (
-              <i className='material-icons'>card_travel</i>
-            ) : null}
-            {this.state.professionalAssistance ? (
-              <i className='material-icons'>assignment_ind</i>
-            ) : null}{' '}
-            <p>{this.props.description}</p>
-          </Col>
-          <Col s={12} m={6}>
-            <img src={this.props.imageurl} alt='need' />
-            <Row>
-              {this.props.needUser === this.props.currentUserID ? (
-                <div>
-                  {this.props.resolved ? (
-                    <div>
-                      <Button
-                        className='needview-button'
-                        key={this.props.key}
-                        value={this.props._id}
-                        onClick={() => this.props.markUnresolved(this.props._id)}
-                      >
-                        Mark Unresolved
-                      </Button>
-                      <Button
-                        className='delete-button'
-                        key={this.props.key}
-                        value={this.props._id}
-                        onClick={() => this.props.deleteNeed(this.props._id)}
-                      >
-                        <i className='material-icons'>delete</i>
-                      </Button>
-                    </div>
-                  ) : (
-                    <div>
-                      <Button
-                        className='needview-button'
-                        key={this.props.key}
-                        value={this.props._id}
-                        onClick={() => this.props.markResolved(this.props._id)}
-                      >
+      // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
+      <Row>
+        <Col s={12} m={6}>
+          <h4>{this.props.subject}</h4>
+          {this.state.gettingAround ? (
+            <i className='material-icons'>directions_car</i>
+          ) : null}
+          {this.state.cleaningUp ? (
+            <i className='material-icons'>delete_sweep</i>
+          ) : null}
+          {this.state.fixingSomething ? (
+            <i className='material-icons'>settings</i>
+          ) : null}
+          {this.state.financialAssistance ? (
+            <i className='material-icons'>monitization_on</i>
+          ) : null}
+          {this.state.moving ? (
+            <i className='material-icons'>card_travel</i>
+          ) : null}
+          {this.state.professionalAssistance ? (
+            <i className='material-icons'>assignment_ind</i>
+          ) : null}{' '}
+          <p>{this.props.description}</p>
+        </Col>
+        <Col s={12} m={6}>
+          <img src={this.props.imageurl} alt='need' />
+          <Row>
+            {this.props.needUser === this.props.currentUserID ? (
+              <div>
+                {this.props.resolved ? (
+                  <div>
+                    <Button
+                      className='needview-button'
+                      key={this.props.key}
+                      value={this.props._id}
+                      onClick={() => this.props.markUnresolved(this.props._id)}
+                    >
+                      Mark Unresolved
+                    </Button>
+                    <Button
+                      className='delete-button'
+                      key={this.props.key}
+                      value={this.props._id}
+                      onClick={() => this.props.deleteNeed(this.props._id)}
+                    >
+                      <i className='material-icons'>delete</i>
+                    </Button>
+
+
+                  </div>
+                ) : (
+                  <div>
+                    <Button
+                      className='needview-button'
+                      key={this.props.key}
+                      value={this.props._id}
+                      onClick={() => this.props.markResolved(this.props._id)}
+                    >
                         Mark Resolved
-                      </Button>
-                      <Button
-                        className='delete-button'
-                        key={this.props.key}
-                        value={this.props._id}
-                        onClick={() => this.props.deleteNeed(this.props._id)}
-                      >
-                        <i className='material-icons'>delete</i>
-                      </Button>
-                    </div>
-                  )}
+                    </Button>
+                    <Button
+                      className='delete-button'
+                      key={this.props.key}
+                      value={this.props._id}
+                      onClick={() => this.props.deleteNeed(this.props._id)}
+                    >
+                      <i className='material-icons'>delete</i>
+                    </Button>
+                    {this.props.goodSamaritins.map(helper => (
+
+                      <p>Good Samariting: {helper.userName}</p>
+                    ))}
+                  </div>
+                )}
 
 
-                </div>
-              ) : (
-                <div>
-                  <Button id='offer-help-button' onClick={this.props.offerHelp}>Offer Help  
-                  </Button>
-                  <Chip className='chip'>
-                    <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
-                    
-                    <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
-                    
-                  </Chip> 
+              </div>
+            ) : (
+              <div>
+                <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
+                <Chip className='chip'>
+                  <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
 
-                </div>
+                  <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
 
-              //   {this.props.resolved ? (
-              // //   <Icon key={this.props.key} value={this.props._id}>
-              // //       done_outline
-              // //   </Icon>
-              // // ) : (
-              // //   <Icon key={this.props.key} value={this.props._id}>
-              // //         stars
-              // //   </Icon>
-              // )}
-              // </div>
-              )}
-            </Row>
-          </Col>
-        </Row>
-      </div>
+                </Chip>
+
+              </div>
+
+            //   {this.props.resolved ? (
+            // //   <Icon key={this.props.key} value={this.props._id}>
+            // //       done_outline
+            // //   </Icon>
+            // // ) : (
+            // //   <Icon key={this.props.key} value={this.props._id}>
+            // //         stars
+            // //   </Icon>
+            // )}
+            // </div>
+            )}
+          </Row>
+        </Col>
+      </Row>
+      // </div>
     );
   }
 }

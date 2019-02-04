@@ -62,7 +62,13 @@ class GiveHelp extends Component {
     this.getNeeds();
   }
 
-  offerHelp() {
+  offerHelp(id) {
+    console.log('need id: ' + id);
+    API.donateHelp({ needId: id })
+      .then(res => {
+        console.log(res);
+        this.getNeeds();
+      }).catch(err => console.log(err));
     alert('Email Sent!');
   }
 

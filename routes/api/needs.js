@@ -18,5 +18,7 @@ router.route("/:id")
   .put(needsController.update)
   .delete(needsController.remove);
 
+router.route("/donate")
+  .post(needsController.donateToANeed)
 
 module.exports = router;

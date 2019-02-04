@@ -10,6 +10,8 @@ const userSchema = mongoose.Schema({
     userName: { type: String },
     email: { type: String },
     password: { type: String },
+    deeds: { type: [String], require: false },
+    userRequests: { type: [String], require: false }
 });
 
 userSchema.methods.encryptPassword = function (password) {

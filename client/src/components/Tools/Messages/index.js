@@ -71,6 +71,7 @@ class Messages extends Component {
 
   render() {
     return (
+
       <Row>
         <Input
           name='message'
@@ -116,6 +117,7 @@ class Messages extends Component {
           </Card>
         ))}
       </Row>
+
     );
   }
 }
