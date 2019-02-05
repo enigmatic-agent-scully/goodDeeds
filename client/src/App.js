@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/Pages/Landing';
 import Main from './components/Pages/Main';
 
+
 class App extends Component {
+
   render() {
     return (
       <Router>
@@ -15,5 +17,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

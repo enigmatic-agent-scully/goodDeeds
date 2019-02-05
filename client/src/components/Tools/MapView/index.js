@@ -4,6 +4,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import './style.css';
 import NeedView from '../NeedView/index';
 import Messages from '../Messages/index';
+// import { StickyContainer, Sticky } from 'react-sticky';
 
 class MapView extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class MapView extends Component {
           {this.props.needs.map(need => (
             <Marker position={[need.lat, need.lng]}>
               <Popup>
+                {/* <StickyContainer> */}
                 <Modal
                   open={this.props.isModalOpen}
                   trigger={
@@ -57,6 +59,9 @@ class MapView extends Component {
                   <Card
                     key={need._id}
                   >
+                    {/* <Sticky>
+                        {({ wasSticky,calculatedHeight   }) => {
+                          <div style={{   }}> */}
                     <NeedView
                       resolved={need.resolved}
                       category={need.category}
@@ -67,9 +72,13 @@ class MapView extends Component {
                       needUser={need.user}
                       offerHelp={this.props.offerHelp}
                     />
+                    {/* </div>;
+                        }}
+                      </Sticky> */}
                     <Messages needId={need._id} />
                   </Card>
                 </Modal>
+                {/* </StickyContainer> */}
               </Popup>
             </Marker>
           ))}

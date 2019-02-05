@@ -51,6 +51,7 @@ function NeedList(props) {
                   needUser={need.user}
                   currentUserID={props.currentUserID}
                   offerHelp={props.offerHelp}
+                  goodSamaritins={need.contributor}
                 />
                 <Messages
                   needId={need._id}
