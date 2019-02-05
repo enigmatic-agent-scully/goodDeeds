@@ -88,6 +88,7 @@ class GetHelp extends Component {
   loadNeeds() {
     API.getNeedsCurrentUser()
       .then(res => {
+        this.handleCloseModal();
         this.setState({
           category: '0',
           subject: '',
@@ -95,7 +96,6 @@ class GetHelp extends Component {
           needdate: '',
           needs: res.data
         });
-        this.handleCloseModal();
       })
       .catch(err => console.log(err));
   }
