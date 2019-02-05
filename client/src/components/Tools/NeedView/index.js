@@ -23,20 +23,6 @@ class NeedView extends Component {
 
 
   componentDidMount() {
-    // window.addEventListener('scroll', () => {
-    //   const istop = window.scrollY < 100;
-    //   console.log(istop);
-    //   if (istop) {
-    //     this.setState = ({
-    //       scrolled: true
-    //     });
-    //   }
-    //   else {
-    //     this.setState = ({
-    //       scrolled: false
-    //     });
-    //   }
-    // });
     this.setCategoryState();
   }
 
@@ -111,7 +97,7 @@ class NeedView extends Component {
           {this.state.professionalAssistance ? (
             <i className='material-icons'>assignment_ind</i>
           ) : null}{' '}
-          <p>{this.props.description}</p>
+          <div className='need-description'>{this.props.description}</div>
         </Col>
         <Col s={12} m={6}>
           <img src={this.props.imageurl} alt='need' />

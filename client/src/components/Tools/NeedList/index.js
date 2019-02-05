@@ -24,8 +24,6 @@ function NeedList(props) {
                     <Row>
                       <Col s={6}>
                         <h5>{need.subject}</h5>
-                        {/* <h6>{need.category}</h6>
-                        <p>{need.description}</p> */}
                       </Col>
                       <Col s={6}>
                         <img src={need.imageurl} alt='need' />
@@ -35,7 +33,7 @@ function NeedList(props) {
                 </div>
               }
             >
-              <Card key={need._id}>
+              <Card id='need-box' key={need._id}>
                 <NeedView
                   markResolved={props.markResolved}
                   markUnresolved={props.markUnresolved}
@@ -53,6 +51,8 @@ function NeedList(props) {
                   offerHelp={props.offerHelp}
                   goodSamaritins={need.contributor}
                 />
+              </Card>
+              <Card id='message-box'>
                 <Messages
                   needId={need._id}
                   currentUserID={props.currentUserID}

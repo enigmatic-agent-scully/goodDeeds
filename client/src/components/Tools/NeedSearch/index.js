@@ -91,12 +91,19 @@ class NeedSearch extends Component {
           type='date'
           onChange={this.handleInputChange}
         /> */}
+        <Row>
         <Button
+          className='search-button'
           waves='light'
           onClick={() => this.props.filterBySearch(this.state.category, this.state.keyword, this.state.needdate)}>
         Search
         </Button>
-        <Button waves='light' onClick={this.props.getNeeds}>
+        </Row>
+
+        <Button
+          className='cancel-button' 
+          waves='light' 
+          onClick={this.props.getNeeds}>
           Clear
         </Button>
       </Row>
