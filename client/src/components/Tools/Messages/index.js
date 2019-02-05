@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { Row, Input, Button, Dropdown } from 'react-materialize';
 import { Row, Input, Button, Card, Chip } from 'react-materialize';
+import moment from 'moment-timezone';
 import './style.css';
 import API from '../../../utils/API';
 
@@ -71,6 +71,7 @@ class Messages extends Component {
 
   render() {
     return (
+
       <Row>
         <Input
           name='message'
@@ -101,7 +102,7 @@ class Messages extends Component {
                 {message.message}
                 <br />
                 <br />
-                <div id='datetime'>@{message.postdate}</div>
+                <div id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}</div>
                 {message.user._id === this.props.currentUserID ? (
                   <div>
                     <small>
@@ -116,6 +117,7 @@ class Messages extends Component {
           </Card>
         ))}
       </Row>
+
     );
   }
 }

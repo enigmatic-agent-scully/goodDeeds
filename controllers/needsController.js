@@ -27,6 +27,13 @@ module.exports = {
     db.Need.find({
       category: req.query.category
     })
+      .populate('user', {
+        _id: true,
+        firstName: true,
+        lastName: true,
+        userName: true,
+        imageurl: true
+      })
       .sort({ postdate: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -57,5 +64,21 @@ module.exports = {
     db.Need.findOneAndDelete({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  donateToANeed: (req, res) => {
+    const goodSamaritin = {
+      id: req.session.user._id,
+      userName: req.session.user.userName
+    }
+    db.Need.findOneAndUpdate({ _id: req.body.needId },
+      { $push: { contributor: goodSamaritin } })
+      .then(dbModel => {
+        // console.log(dbModel)
+        res.json(dbModel)
+      })
+      .catch(err => res.status(422).json(err));
   }
+
+
 };

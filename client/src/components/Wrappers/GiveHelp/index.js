@@ -14,11 +14,14 @@ class GiveHelp extends Component {
       needs: [],
       cntLat: 33.785,
       cntLng: -84.385,
+      goodSamaritinButton: '',
     };
 
     this.getNeeds = this.getNeeds.bind(this);
     this.setCenter = this.setCenter.bind(this);
     this.filterBySearch = this.filterBySearch.bind(this);
+    this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
+    this.offerHelp = this.offerHelp.bind(this);
   }
 
   getNeeds() {
@@ -32,43 +35,43 @@ class GiveHelp extends Component {
       .catch(err => console.log(err));
   }
 
-  setCenter(id) {
-    API.getNeed(id).then(res => {
-      this.setState({
-        cntLat: res.data.lat,
-        cntLng: res.data.lng
-      });
+  setCenter(lat, lng) {
+    this.setState({
+      cntLat: lat,
+      cntLng: lng
     });
   }
 
   filterBySearch(category, keyword, needdate) {
-    console.log(category);
-    console.log(keyword);
-    console.log(needdate);
-
-
     API.getNeedsBySearch(category, keyword, needdate)
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
-
-    // API.getNeeds()
-    //   .then(res => this.setState({ 
-    //     needs: res.data.filter(
-    //       need => need.category === category)
-    //   }));
   }
 
   componentDidMount() {
     this.getNeeds();
   }
 
-  offerHelp() {
-    alert('Email Sent!');
+  offerHelp(id) {
+    API.donateHelp({ needId: id })
+      .then(res => {
+        const needId = res.data._id;
+        const needCategory = res.data.category;
+        this.GoodSamaratinRecordUpdate(needId, needCategory);
+      }).catch(err => console.log(err));
+
+  }
+
+
+  GoodSamaratinRecordUpdate(needId, needCategory) {
+    API.updateGoodSamaratinRecord({ needId, needCategory })
+      .then(() => {
+        alert('Email Sent!');
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
-    // console.log(this.props.user._id);
-    // console.log(this.state.needs);
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
@@ -99,6 +102,8 @@ class GiveHelp extends Component {
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
+              GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
+              goodSamaritinButton={this.state.goodSamaritinButton}
             >
               <Preloader flashing />
             </MapView>

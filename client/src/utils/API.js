@@ -76,5 +76,17 @@ export default {
 
   getUserInfo: id => {
     return axios.get(`/api/user/${id}`);
+  },
+
+  donateHelp: (id) => {
+    return axios.post('/api/needs/donate', id);
+  },
+
+  updateGoodSamaratinRecord: (data) => {
+    return axios.post('/api/user/goodsamaratin', data);
   }
+
+
+
+
 };
