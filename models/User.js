@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
-// var Schema = 
+
 
 
 const userSchema = mongoose.Schema({
@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
     email: { type: String },
     password: { type: String },
     deed: { type: [Object], require: false },
+    rating: { type: Number, require: false },
 });
 
 userSchema.methods.encryptPassword = function (password) {

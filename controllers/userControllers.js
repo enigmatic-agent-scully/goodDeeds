@@ -117,10 +117,8 @@ const UserControllers = module.exports = {
     },
 
     updateUserDeedsArray: (req, res) => {
-
         console.log(req.body)
         console.log(req.session.user._id)
-
         db.User.findOneAndUpdate({ _id: req.session.user._id },
             { $push: { deed: req.body } })
             .then(dbModel => res.json(dbModel))

@@ -14,6 +14,7 @@ class GiveHelp extends Component {
       needs: [],
       cntLat: 33.785,
       cntLng: -84.385,
+      goodSamaritinButton: '',
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -44,20 +45,9 @@ class GiveHelp extends Component {
   }
 
   filterBySearch(category, keyword, needdate) {
-    console.log(category);
-    console.log(keyword);
-    console.log(needdate);
-
-
     API.getNeedsBySearch(category, keyword, needdate)
       .then(res => this.setState({ needs: res.data }))
       .catch(err => console.log(err));
-
-    // API.getNeeds()
-    //   .then(res => this.setState({ 
-    //     needs: res.data.filter(
-    //       need => need.category === category)
-    //   }));
   }
 
   componentDidMount() {
@@ -65,31 +55,25 @@ class GiveHelp extends Component {
   }
 
   offerHelp(id) {
-    console.log('need id: ' + id);
     API.donateHelp({ needId: id })
       .then(res => {
-        console.log(res);
-
-
         const needId = res.data._id;
         const needCategory = res.data.category;
-
         this.GoodSamaratinRecordUpdate(needId, needCategory);
-        // this.getNeeds();
       }).catch(err => console.log(err));
-    alert('Email Sent!');
+
   }
 
 
   GoodSamaratinRecordUpdate(needId, needCategory) {
     API.updateGoodSamaratinRecord({ needId, needCategory })
-      .then(res => console.log(res))
+      .then(() => {
+        alert('Email Sent!');
+      })
       .catch(err => console.log(err));
   }
 
   render() {
-    // console.log(this.props.user._id);
-    // console.log(this.state.needs);
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
@@ -121,6 +105,7 @@ class GiveHelp extends Component {
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
               GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
+              goodSamaritinButton={this.state.goodSamaritinButton}
             >
               <Preloader flashing />
             </MapView>

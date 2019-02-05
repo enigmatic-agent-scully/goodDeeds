@@ -87,6 +87,7 @@ class NeedView extends Component {
 
 
   render() {
+
     return (
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
@@ -135,8 +136,6 @@ class NeedView extends Component {
                     >
                       <i className='material-icons'>delete</i>
                     </Button>
-
-
                   </div>
                 ) : (
                   <div>
@@ -156,7 +155,6 @@ class NeedView extends Component {
                     >
                       <i className='material-icons'>delete</i>
                     </Button>
-                    {/* <p className="good-Samaritins">good Samaritins</p> */}
                     {this.props.goodSamaritins.map(helper => (
                       <Chip>
                         <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
@@ -165,31 +163,25 @@ class NeedView extends Component {
                     ))}
                   </div>
                 )}
-
-
               </div>
             ) : (
               <div>
-                <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
+                {
+                  this.props.goodSamaritins.find(
+                    currentGoodSamaritin => currentGoodSamaritin.id === this.props.currentUserID
+                  ) ? (
+                      <Button id='offer-help-button' disabled>Already Contributing</Button>
+                  //need to change this to a state so button becomes disabled on set state
+                  // <Button id='offer-help-button' {this.props.goodSamaritinButton}>Already Contributing</Button>
+                    ) : (
+                      <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
+                    )
+                }
                 <Chip className='chip'>
                   <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
-
                   <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
-
                 </Chip>
-
               </div>
-
-            //   {this.props.resolved ? (
-            // //   <Icon key={this.props.key} value={this.props._id}>
-            // //       done_outline
-            // //   </Icon>
-            // // ) : (
-            // //   <Icon key={this.props.key} value={this.props._id}>
-            // //         stars
-            // //   </Icon>
-            // )}
-            // </div>
             )}
           </Row>
         </Col>
