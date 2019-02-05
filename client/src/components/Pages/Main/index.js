@@ -86,13 +86,13 @@ class Main extends Component {
     console.log(SignUpInfo);
     Auth.updateUserInfo(SignUpInfo)
       .then(res => {
+        this.handleCloseModal();
         // this.getProfileInfo(this.state.user);
         console.log('res after returning from hadnleSavetoExistingProfile promise' + res);
 
       }).catch(err => {
         console.log(err);
       });
-    this.handleCloseModal();
   }
 
 

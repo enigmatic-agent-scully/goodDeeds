@@ -29,7 +29,7 @@ function Landing() {
           <div id='info-overlay'>
             {/* <Card> */}
             <h3 id='motto'>
-              "Where goods deeds meet real needs"
+              "Where good deeds meet real needs"
             </h3>
             {/* </Card> */}
           </div>
