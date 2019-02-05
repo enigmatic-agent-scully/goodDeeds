@@ -87,17 +87,17 @@ class GetHelp extends Component {
 
   loadNeeds() {
     API.getNeedsCurrentUser()
-      .then(res =>
+      .then(res => {
+        this.handleCloseModal();
         this.setState({
           category: '0',
           subject: '',
           description: '',
           needdate: '',
           needs: res.data
-        })
-      )
+        });
+      })
       .catch(err => console.log(err));
-    this.handleCloseModal();
   }
 
   handleClearGeoSuggest() {

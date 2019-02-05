@@ -35,12 +35,10 @@ class GiveHelp extends Component {
       .catch(err => console.log(err));
   }
 
-  setCenter(id) {
-    API.getNeed(id).then(res => {
-      this.setState({
-        cntLat: res.data.lat,
-        cntLng: res.data.lng
-      });
+  setCenter(lat, lng) {
+    this.setState({
+      cntLat: lat,
+      cntLng: lng
     });
   }
 

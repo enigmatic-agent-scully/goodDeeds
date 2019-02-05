@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Modal } from 'react-materialize';
+import { Row, Card, Modal } from 'react-materialize';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import './style.css';
 import NeedView from '../NeedView/index';
@@ -37,23 +37,17 @@ class MapView extends Component {
                 <Modal
                   open={this.props.isModalOpen}
                   trigger={
-                    <div>
-                      <Card
-                        className='need-card'
-                        key={need._id}
-                        value={need._id}
-                      >
-                        <Row>
-                          <Col s={6}>
-                            <h5>{need.category}</h5>
-                            <p>{need.description}</p>
-                          </Col>
-                          <Col s={6}>
-                            <img src={need.imageurl} alt='need' />
-                          </Col>
-                        </Row>
-                      </Card>
-                    </div>
+                    <Card
+                      className='need-card'
+                      key={need._id}
+                      value={need._id}
+                    >
+                      <Row>
+                        <h5>{need.subject}</h5>
+                        <div className='description-text'>{need.description}</div>
+                        <img src={need.imageurl} alt='need' />
+                      </Row>
+                    </Card>
                   }
                 >
                   <Card

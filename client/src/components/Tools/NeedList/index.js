@@ -17,7 +17,7 @@ function NeedList(props) {
                 <div>
                   <Card
                     className='need-card'
-                    onMouseEnter={() => props.onHoverEvent(need._id)}
+                    onMouseEnter={() => props.onHoverEvent(need.lat, need.lng)}
                     key={need._id}
                     value={need._id}
                   >

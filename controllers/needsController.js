@@ -27,6 +27,13 @@ module.exports = {
     db.Need.find({
       category: req.query.category
     })
+      .populate('user', {
+        _id: true,
+        firstName: true,
+        lastName: true,
+        userName: true,
+        imageurl: true
+      })
       .sort({ postdate: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
