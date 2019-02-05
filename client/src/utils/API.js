@@ -80,5 +80,13 @@ export default {
 
   donateHelp: (id) => {
     return axios.post('/api/needs/donate', id);
+  },
+
+  updateGoodSamaratinRecord: (data) => {
+    return axios.post('/api/user/goodsamaratin', data);
   }
+
+
+
+
 };

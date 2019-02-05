@@ -66,8 +66,20 @@ module.exports = {
     }
     db.Need.findOneAndUpdate({ _id: req.body.needId },
       { $push: { contributor: goodSamaritin } })
-      .then(dbModel => res.json(dbModel))
+      // .then(dbModel => {
+      // const deedsObj = {
+      //   deedId: dbModel._id,
+      //   deedCategory: dbModel.category
+      // }
+      // console.log(deedsObj)
+      // db.User.findOneAndUpdate({ _id: goodSamaritin.id },
+      //   { $push: { deeds: deedsObj } })
+      .then(dbModel => {
+        // console.log(dbModel)
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   }
+
 
 };

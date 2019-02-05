@@ -19,6 +19,8 @@ class GiveHelp extends Component {
     this.getNeeds = this.getNeeds.bind(this);
     this.setCenter = this.setCenter.bind(this);
     this.filterBySearch = this.filterBySearch.bind(this);
+    this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
+    this.offerHelp = this.offerHelp.bind(this);
   }
 
   getNeeds() {
@@ -67,9 +69,22 @@ class GiveHelp extends Component {
     API.donateHelp({ needId: id })
       .then(res => {
         console.log(res);
-        this.getNeeds();
+
+
+        const needId = res.data._id;
+        const needCategory = res.data.category;
+
+        this.GoodSamaratinRecordUpdate(needId, needCategory);
+        // this.getNeeds();
       }).catch(err => console.log(err));
     alert('Email Sent!');
+  }
+
+
+  GoodSamaratinRecordUpdate(needId, needCategory) {
+    API.updateGoodSamaratinRecord({ needId, needCategory })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -105,6 +120,7 @@ class GiveHelp extends Component {
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
+              GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
             >
               <Preloader flashing />
             </MapView>
