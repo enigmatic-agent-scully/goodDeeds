@@ -1,13 +1,18 @@
 img {
-    width: 100%;
+  width: 100%;
 }
 
 .need-card :hover {
-    background-color: #ebd9d9;
+  background-color: #ebd9d9;
 }
 
-@media screen and (max-width:768px) {
-    .need-modal {
-        width: 100%;
-    }
+.modal {
+  max-height: 90% !important;
+  top: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .need-modal {
+    width: 100%;
+  }
 }
