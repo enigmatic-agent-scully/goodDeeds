@@ -18,14 +18,9 @@ class NeedView extends Component {
     };
   }
 
-
-
-
-
   componentDidMount() {
     this.setCategoryState();
   }
-
 
   setCategoryState() {
     switch (this.props.category) {
@@ -142,10 +137,12 @@ class NeedView extends Component {
                       <i className='material-icons'>delete</i>
                     </Button>
                     {this.props.goodSamaritins.map(helper => (
-                      <Chip>
-                        <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
-                        {helper.userName}
-                      </Chip>
+                      <Row>
+                        <Chip>
+                          <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
+                          {helper.userName}
+                        </Chip>
+                      </Row>
                     ))}
                   </div>
                 )}
@@ -163,10 +160,12 @@ class NeedView extends Component {
                       <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
                     )
                 }
-                <Chip className='chip'>
-                  <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
-                  <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
-                </Chip>
+                <div>
+                  <Chip className='chip'>
+                    <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
+                    <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
+                  </Chip>
+                </div>
               </div>
             )}
           </Row>

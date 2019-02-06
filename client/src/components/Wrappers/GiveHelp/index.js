@@ -103,7 +103,7 @@ class GiveHelp extends Component {
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
               GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
-              goodSamaritinButton={this.state.goodSamaritinButton}
+              // goodSamaritinButton={this.state.goodSamaritinButton}
             >
               <Preloader flashing />
             </MapView>

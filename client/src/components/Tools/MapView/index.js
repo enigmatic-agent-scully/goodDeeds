@@ -61,10 +61,12 @@ class MapView extends Component {
                       category={need.category}
                       description={need.description}
                       imageurl={need.imageurl}
+                      subject={need.subject}
                       _id={need._id}
                       key={need._id}
                       needUser={need.user}
                       offerHelp={this.props.offerHelp}
+                      goodSamaritins={need.contributor}
                     />
                     {/* </div>;
                         }}
