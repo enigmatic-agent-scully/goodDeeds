@@ -1,7 +1,6 @@
-
-
 #list-collapsible {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 @media screen and (min-width:768px) {

@@ -140,7 +140,7 @@ class NeedView extends Component {
                       <Row>
                         <Chip>
                           <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
-                          {helper.userName}
+                          {helper.userName} has offered to help.
                         </Chip>
                       </Row>
                     ))}

@@ -136,7 +136,8 @@ class Main extends Component {
                 </Button>
               }
             >
-              <Modal 
+              <Modal
+                id='profile-modal'
                 open={this.state.isModalOpen}
                 trigger={<NavItem onClick={this.getProfileInfo}>Edit Profile</NavItem>}>
                 <ProfileView

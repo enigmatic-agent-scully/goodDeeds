@@ -26,7 +26,7 @@ function NeedList(props) {
                         <h5>{need.subject}</h5>
                       </Col>
                       <Col s={6}>
-                        <img src={need.imageurl} alt='need' />
+                        <img src={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl } alt='need' />
                       </Col>
                     </Row>
                   </Card>
@@ -43,7 +43,7 @@ function NeedList(props) {
                   category={need.category}
                   description={need.description}
                   postdate={need.postdate}
-                  imageurl={need.imageurl}
+                  imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
                   _id={need._id}
                   key={need._id}
                   needUser={need.user}

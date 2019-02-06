@@ -4,6 +4,7 @@
 }
 
 #navbar {
+  background-color: orange;
   width: 80%;
   padding-left: 60px;
   padding-right: 60px;
@@ -24,6 +25,14 @@
   width: 80%;
 }
 
+/* .input-field input:focus + label {
+  color:  rgb(46, 163, 231) !important;
+}
+.row .input-field input:focus {
+  border-bottom: 1px solid  rgb(46, 163, 231) !important;
+  box-shadow: 0 1px 0 0  rgb(46, 163, 231) !important
+} */
+
 @media screen and (max-width:768px) {
   .Main-Page {
     padding-left: 1px;
@@ -40,5 +49,9 @@
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  #profile-modal {
+    width: 100%;
   }
 }

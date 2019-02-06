@@ -124,31 +124,12 @@ class Login extends Component {
     }
 
     return (
+
       <Card 
         id="login-card">
-        <h3>Login</h3>
-        <Input
-          name='email'
-          onChange={this.handleInputChange}
-          type='email'
-          label='Email'
-          s={12}
-        />
-        <Input
-          name='password'
-          onChange={this.handleInputChange}
-          type='password'
-          label='password'
-          s={12}
-        />
-        <Row>
-          <Button waves='light' onClick={this.LoginHandler}>
-            Login
-          </Button>
-        </Row>
         <Modal id='new-user-modal' trigger={
           <Row>
-            <Button>Create New User Account</Button>
+            <Button id='new-user-button'>Create New User Account</Button>
           </Row>
         }>
           <NewUser
@@ -165,6 +146,23 @@ class Login extends Component {
             uploadHandler={this.uploadHandler}
           />
         </Modal>
+        <Input
+          name='email'
+          onChange={this.handleInputChange}
+          type='email'
+          label='Email'
+          s={12}
+        />
+        <Input
+          name='password'
+          onChange={this.handleInputChange}
+          type='password'
+          label='password'
+          s={12}
+        />
+        <Button id='login-button' waves='light' onClick={this.LoginHandler}>
+          Login
+        </Button>
       </Card>
     );
   }

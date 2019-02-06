@@ -13,10 +13,9 @@ class MapView extends Component {
       cntLat: props.cntLat,
       cntLng: props.cntLng,
       needs: [],
-      showPopUp: false
+      showPopUp: false,
     };
   }
-
 
   render() {
     return (
@@ -34,10 +33,12 @@ class MapView extends Component {
             <Marker position={[need.lat, need.lng]}>
               <Popup>
                 {/* <StickyContainer> */}
-                <Modal
+                <Modal 
+                  className='need-modal'
+                  id='need-box'
                   open={this.props.isModalOpen}
                   trigger={
-                    <Card
+                    <div onClick={this.props.handleOpenModal}
                       className='need-card'
                       key={need._id}
                       value={need._id}
@@ -45,22 +46,23 @@ class MapView extends Component {
                       <Row>
                         <h5>{need.subject}</h5>
                         <div className='description-text'>{need.description}</div>
-                        <img src={need.imageurl} alt='need' />
+                        { !need.imageurl ? null : <img src={need.imageurl} alt='need'/> }
                       </Row>
-                    </Card>
+                    </div>
                   }
                 >
-                  <Card
+                  <div
                     key={need._id}
                   >
                     {/* <Sticky>
                         {({ wasSticky,calculatedHeight   }) => {
                           <div style={{   }}> */}
                     <NeedView
+                      id='need-box'
                       resolved={need.resolved}
                       category={need.category}
                       description={need.description}
-                      imageurl={need.imageurl}
+                      imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
                       subject={need.subject}
                       _id={need._id}
                       key={need._id}
@@ -72,7 +74,7 @@ class MapView extends Component {
                         }}
                       </Sticky> */}
                     <Messages needId={need._id} />
-                  </Card>
+                  </div>
                 </Modal>
                 {/* </StickyContainer> */}
               </Popup>
