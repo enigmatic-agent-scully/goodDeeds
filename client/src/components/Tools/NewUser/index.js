@@ -27,6 +27,7 @@ function NewUser(props) {
           required
         />
         <Input
+          validate
           name='email'
           type='email'
           label='Email'
@@ -63,7 +64,7 @@ function NewUser(props) {
           onChange={props.handleInputChange}
         />
       </Row>
-      <Button id='submit-new-user-button' className='blue' waves='light' onClick={props.handleModalFormSubmit} type='submit'>
+      <Button id='submit-new-user-button' waves='light' onClick={props.handleModalFormSubmit} type='submit'>
         Submit
       </Button>
     </div>

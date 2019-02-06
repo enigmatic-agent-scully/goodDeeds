@@ -15,7 +15,8 @@ class GiveHelp extends Component {
       cntLat: 33.785,
       cntLng: -84.385,
       goodSamaritinButton: '',
-      isModalOpen: ''
+      // isModalOpen: '',
+      // isMapModalOpen: ''
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -23,7 +24,7 @@ class GiveHelp extends Component {
     this.filterBySearch = this.filterBySearch.bind(this);
     this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
     this.offerHelp = this.offerHelp.bind(this);
-    // this.handleCloseModal=this.handleCloseModal.bind(this);
+    this.handleOpenModal=this.handleOpenModal.bind(this);
   }
 
   getNeeds() {
@@ -72,7 +73,7 @@ class GiveHelp extends Component {
 
   handleOpenModal() {
     this.setState({
-      isModalOpen: true
+      isMapModalOpen: true
     });
   }
 
@@ -118,8 +119,8 @@ class GiveHelp extends Component {
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
               GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
-              isModalOpen={this.state.isModalOpen}
-              handleOpenModal={this.state.handleOpenModal}
+              isMapModalOpen={this.state.isMapModalOpen}
+              handleOpenModal={this.handleOpenModal}
             >
               <Preloader flashing />
             </MapView>
