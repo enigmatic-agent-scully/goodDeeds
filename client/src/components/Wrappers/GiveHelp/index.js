@@ -14,7 +14,7 @@ class GiveHelp extends Component {
       needs: [],
       cntLat: 33.785,
       cntLng: -84.385,
-      goodSamaritinButton: '',
+      goodSamaritinButton: ''
     };
 
     this.getNeeds = this.getNeeds.bind(this);

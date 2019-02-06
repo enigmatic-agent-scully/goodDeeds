@@ -92,7 +92,7 @@ class NeedView extends Component {
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
         <Col s={12} m={6}>
-          <h4>{this.props.subject}</h4>
+          <h4 className='subject'>{this.props.subject}</h4>
           {this.state.gettingAround ? (
             <i className='material-icons'>directions_car</i>
           ) : null}
