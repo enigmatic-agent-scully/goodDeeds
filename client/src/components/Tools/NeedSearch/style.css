@@ -1,0 +1,9 @@
+.search-button, .cancel-button {
+    float: right;
+    width: 100%;
+}
+
+.cancel-button {
+    background-color: #ee6e73;
+
+}

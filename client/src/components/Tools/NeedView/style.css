@@ -10,13 +10,19 @@
 .needview-button {
     width: 70%;
     margin-top: 10px;
+    float: left;
+}
+
+.need-description {
+    height: 20vh;
+    overflow: scroll;
 }
 
 .delete-button {
     margin-top: 10px;
     margin-left: 10px;
     background-color: #ee6e73;
-
+    float: right;
 }
 
 .good-Samaritins{
@@ -28,4 +34,16 @@
 
 .needview-fixed{
 position: fixed;
+}
+
+
+@media screen and (max-width:768px) {
+    .needview-button {
+        width: 100%;
+        float: right;
+    }
+
+    .delete-button {
+        float: right;
+    }
 }

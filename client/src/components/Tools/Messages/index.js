@@ -82,40 +82,31 @@ class Messages extends Component {
           type='textarea'
         />
         <Button onClick={this.submitPost}>Post Message</Button>
-        {/* {this.state.returnedMessageArray.map(message => (
-          <Card key={message._id}>
-         
-            <span className='date-time'>{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}:</span>
-            <span className='message-txt'>{message.message}</span>
-        <Button onClick={this.submitPost}>Post</Button> */}
-        {this.state.returnedMessageArray.map(message => (
-          <Card key={message._id}>
-            <div>
-              <div id='message-body'>
-                <div id='author'>
-                  <Chip>
+        <div id='message-scroll-box'>
+          {this.state.returnedMessageArray.map(message => (
+            <Card key={message._id}>
+              <div>
+                <div id='message-body'>
+                  <Chip id='author'>
                     <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
-                    <strong>{message.user.userName}</strong> wrote:
+                    <strong>{message.user.userName}</strong> wrote 
+                    <span id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm')}</span>
                   </Chip>
-                </div>
-                <br />
-                {message.message}
-                <br />
-                <br />
-                <div id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm:ss')}</div>
-                {message.user._id === this.props.currentUserID ? (
-                  <div>
-                    <small>
+                  <div className='message-text'>
+                    {message.message}
+                  </div>
+                  <Row>
+                    {message.user._id === this.props.currentUserID ? (
                       <Button className='delete-button' value={message._id} onClick={() => this.deleteMessage(message._id)}>
                         <i className='material-icons'>delete</i>
                       </Button>
-                    </small>
-                  </div>
-                ) : null}
+                    ) : null}
+                  </Row>
+                </div>
               </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))}
+        </div>
       </Row>
 
     );

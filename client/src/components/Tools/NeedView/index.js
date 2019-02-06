@@ -18,28 +18,9 @@ class NeedView extends Component {
     };
   }
 
-
-
-
-
   componentDidMount() {
-    // window.addEventListener('scroll', () => {
-    //   const istop = window.scrollY < 100;
-    //   console.log(istop);
-    //   if (istop) {
-    //     this.setState = ({
-    //       scrolled: true
-    //     });
-    //   }
-    //   else {
-    //     this.setState = ({
-    //       scrolled: false
-    //     });
-    //   }
-    // });
     this.setCategoryState();
   }
-
 
   setCategoryState() {
     switch (this.props.category) {
@@ -111,7 +92,7 @@ class NeedView extends Component {
           {this.state.professionalAssistance ? (
             <i className='material-icons'>assignment_ind</i>
           ) : null}{' '}
-          <p>{this.props.description}</p>
+          <div className='need-description'>{this.props.description}</div>
         </Col>
         <Col s={12} m={6}>
           <img src={this.props.imageurl} alt='need' />
@@ -156,10 +137,12 @@ class NeedView extends Component {
                       <i className='material-icons'>delete</i>
                     </Button>
                     {this.props.goodSamaritins.map(helper => (
-                      <Chip>
-                        <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
-                        {helper.userName}
-                      </Chip>
+                      <Row>
+                        <Chip>
+                          <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
+                          {helper.userName}
+                        </Chip>
+                      </Row>
                     ))}
                   </div>
                 )}
@@ -177,10 +160,12 @@ class NeedView extends Component {
                       <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
                     )
                 }
-                <Chip className='chip'>
-                  <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
-                  <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
-                </Chip>
+                <div>
+                  <Chip className='chip'>
+                    <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
+                    <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
+                  </Chip>
+                </div>
               </div>
             )}
           </Row>
