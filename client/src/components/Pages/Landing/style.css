@@ -1,0 +1,62 @@
+#header {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+}
+
+#logo {
+  font-size: 8em;
+  color: whitesmoke;
+}
+
+#motto {
+  margin-top: 20vh;
+  color: whitesmoke;
+}
+
+#login-overlay {
+  text-align: center;
+  width: 40%;
+}
+
+#info-overlay {
+  margin-top: 5vh;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+#top-buffer {
+  height: 20vh;
+}
+
+@media screen and (min-width: 1300px) {
+  #login-overlay {
+    width: 30%;
+  }
+
+}
+ 
+@media screen and (max-width:768px) {
+  #login-overlay {
+    width: 100%;
+    margin-top: 5vh;
+    padding: 10px;
+  }
+
+  #logo {
+    font-size: 5em;
+  }
+
+  #info-overlay {
+    width: 100%;
+    height: 25vh;
+    /* overflow: scroll; */
+  }
+
+  #top-buffer {
+    height: 15vh;
+  }
+}
+
+

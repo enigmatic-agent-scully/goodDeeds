@@ -1,0 +1,7 @@
+
+@media screen and (max-width:768px) {
+    #new-user-modal {
+        width: 100%;
+        height: 90vh;
+    }
+}

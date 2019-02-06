@@ -1,0 +1,16 @@
+#need-list, #resolved-list {
+  height: 76vh;
+  overflow: scroll;
+}
+
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+.list-headers {
+  text-align: center;
+  background-color: #ee6e73;
+  color: whitesmoke;
+}

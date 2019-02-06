@@ -1,0 +1,15 @@
+img {
+    width: 100%;
+}
+.profile-input{
+    width: 100%;
+}
+
+.labels{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#profile-edit-form {
+    margin-top: 25px;
+}

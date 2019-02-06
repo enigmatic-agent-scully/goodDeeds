@@ -1,0 +1,36 @@
+img {
+  width: 100%;
+}
+
+.need-card :hover {
+  background-color: #ebd9d9;
+}
+
+.modal {
+<<<<<<< HEAD
+  max-height: 90% !important;
+  top: 5% !important;
+=======
+  max-height: 80% !important;
+  top: 5%;
+>>>>>>> c631443669e5951a623ac274cec622b291bdc695
+}
+
+/* #need-box {
+    height: 0vh;
+} */
+
+#message-box {
+    height: 75vh;
+}
+
+
+@media screen and (max-width:768px) {
+    .need-modal {
+        width: 100%;
+    }
+
+    #need-box {
+        height: 80vh;
+    }
+}

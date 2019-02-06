@@ -1,0 +1,12 @@
+
+
+#list-collapsible {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width:768px) {
+    #left-column {
+        height: 90vh;
+        overflow: scroll;
+    }
+}

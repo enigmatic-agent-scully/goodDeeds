@@ -1,0 +1,44 @@
+.Main-Page {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#navbar {
+  width: 80%;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+#sidenav-overlay {
+  z-index: 1;
+}
+
+.hover-over-nav:hover{
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.main-body {
+  position: fixed;
+  height: 85%;
+  width: 80%;
+}
+
+@media screen and (max-width:768px) {
+  .Main-Page {
+    padding-left: 1px;
+    padding-right: 1px; 
+  }
+
+  .main-body {
+    height: 85%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  #navbar {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

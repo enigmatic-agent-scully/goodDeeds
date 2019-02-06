@@ -1,0 +1,22 @@
+.map-on-card {
+    width: 100%;
+    height: 85vh;
+}
+
+img {
+    width: 100%;
+}
+
+
+.pic-style{
+    border-radius: 10px;
+}
+
+.map-popup-icon-hover:hover{
+    transform: scale(1.1); 
+    box-shadow: 5px 10px #888888;
+ }
+
+ .description-text {
+     margin-bottom: 10px;
+ }
