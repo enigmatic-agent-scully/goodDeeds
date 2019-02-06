@@ -7,7 +7,10 @@ const NeedSchema = new Schema({
   description: { type: String, required: false },
   postdate: { type: Date, default: Date.now },
   needdate: { type: Date, default: Date.now },
-  imageurl: { type: String, required: false },
+  imageurl: { 
+    type: String, 
+    required: false,  
+  },
   resolved: { type: Boolean, default: false },
   lat: { type: Number, default: 0 },
   lng: { type: Number, default: 0 },

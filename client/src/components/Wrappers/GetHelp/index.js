@@ -76,7 +76,7 @@ class GetHelp extends Component {
       .catch(err => console.log(err));
   }
   onHoverEvent(id) {
-    // console.log(id);
+    console.log(id);
   }
 
   handleCloseModal() {

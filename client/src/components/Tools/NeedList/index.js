@@ -24,18 +24,16 @@ function NeedList(props) {
                     <Row>
                       <Col s={6}>
                         <h5>{need.subject}</h5>
-                        {/* <h6>{need.category}</h6>
-                        <p>{need.description}</p> */}
                       </Col>
                       <Col s={6}>
-                        <img src={need.imageurl} alt='need' />
+                        <img src={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl } alt='need' />
                       </Col>
                     </Row>
                   </Card>
                 </div>
               }
             >
-              <Card key={need._id}>
+              <Card id='need-box' key={need._id}>
                 <NeedView
                   markResolved={props.markResolved}
                   markUnresolved={props.markUnresolved}
@@ -45,7 +43,7 @@ function NeedList(props) {
                   category={need.category}
                   description={need.description}
                   postdate={need.postdate}
-                  imageurl={need.imageurl}
+                  imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
                   _id={need._id}
                   key={need._id}
                   needUser={need.user}
@@ -53,6 +51,8 @@ function NeedList(props) {
                   offerHelp={props.offerHelp}
                   goodSamaritins={need.contributor}
                 />
+              </Card>
+              <Card id='message-box'>
                 <Messages
                   needId={need._id}
                   currentUserID={props.currentUserID}

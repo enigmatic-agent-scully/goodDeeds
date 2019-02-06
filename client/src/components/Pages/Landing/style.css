@@ -2,6 +2,7 @@
   text-align: center;
   width: 100%;
   position: fixed;
+  z-index: 999;
 }
 
 #logo {
@@ -29,6 +30,29 @@
 #top-buffer {
   height: 20vh;
 }
+
+#scroll-button {
+  text-align: center;
+  height: 100px;
+  width: 100px;
+}
+
+#scroll-button-row {
+  text-align: center;
+  position: fixed;
+  bottom: 3%;
+  width: 100%
+}
+
+
+/* .input-field input:focus + label {
+  color:  rgb(46, 163, 231) !important;
+}
+
+.input-field input:focus {
+  border-bottom: 1px solid  rgb(46, 163, 231) !important;
+  box-shadow: 0 1px 0 0  rgb(46, 163, 231) !important
+} */
 
 @media screen and (min-width: 1300px) {
   #login-overlay {

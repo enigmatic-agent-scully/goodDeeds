@@ -1,4 +1,14 @@
 #need-input-card {
     height: 90vh;
     overflow: scroll;
+    width: 100%;
+  }
+
+  .input-field input:focus + label {
+    color:  rgb(46, 163, 231) !important;
+  }
+  /* label underline focus color */
+  .row .input-field input:focus {
+    border-bottom: 1px solid  rgb(46, 163, 231) !important;
+    box-shadow: 0 1px 0 0  rgb(46, 163, 231) !important
   }

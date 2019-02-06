@@ -14,7 +14,12 @@ class GiveHelp extends Component {
       needs: [],
       cntLat: 33.785,
       cntLng: -84.385,
+<<<<<<< HEAD
       goodSamaritinButton: ''
+=======
+      goodSamaritinButton: '',
+      isModalOpen: ''
+>>>>>>> 4c051a2ba1d935778032fb8c4484ce3054421f20
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -22,6 +27,7 @@ class GiveHelp extends Component {
     this.filterBySearch = this.filterBySearch.bind(this);
     this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
     this.offerHelp = this.offerHelp.bind(this);
+    // this.handleCloseModal=this.handleCloseModal.bind(this);
   }
 
   getNeeds() {
@@ -38,7 +44,7 @@ class GiveHelp extends Component {
   setCenter(lat, lng) {
     this.setState({
       cntLat: lat,
-      cntLng: lng
+      cntLng: lng,
     });
   }
 
@@ -62,6 +68,18 @@ class GiveHelp extends Component {
 
   }
 
+  handleCloseModal() {
+    this.setState({
+      isModalOpen: false
+    });
+  }
+
+  handleOpenModal() {
+    this.setState({
+      isModalOpen: true
+    });
+  }
+
 
   GoodSamaratinRecordUpdate(needId, needCategory) {
     API.updateGoodSamaratinRecord({ needId, needCategory })
@@ -75,7 +93,7 @@ class GiveHelp extends Component {
     return (
       <div className='Give-Help-Wrapper'>
         <Row>
-          <Col id='left-column' m='12' l='4'>
+          <Col id='left-column' s='12' l='4'>
             <Collapsible defaultActiveKey={0}>
               <CollapsibleItem header='Search Needs' icon='search'>
                 <NeedSearch
@@ -91,6 +109,7 @@ class GiveHelp extends Component {
                   needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
+                  isModalOpen={this.state.isModalOpen}
                 />
               </CollapsibleItem>
             </Collapsible>
@@ -103,7 +122,8 @@ class GiveHelp extends Component {
               currentUserID={this.props.user._id}
               offerHelp={this.offerHelp}
               GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
-              goodSamaritinButton={this.state.goodSamaritinButton}
+              isModalOpen={this.state.isModalOpen}
+              handleOpenModal={this.state.handleOpenModal}
             >
               <Preloader flashing />
             </MapView>

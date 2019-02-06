@@ -13,10 +13,9 @@ class MapView extends Component {
       cntLat: props.cntLat,
       cntLng: props.cntLng,
       needs: [],
-      showPopUp: false
+      showPopUp: false,
     };
   }
-
 
   render() {
     return (
@@ -33,10 +32,17 @@ class MapView extends Component {
           {this.props.needs.map(need => (
             <Marker position={[need.lat, need.lng]}>
               <Popup>
+<<<<<<< HEAD
                 <Modal
+=======
+                {/* <StickyContainer> */}
+                <Modal 
+                  className='need-modal'
+                  id='need-box'
+>>>>>>> 4c051a2ba1d935778032fb8c4484ce3054421f20
                   open={this.props.isModalOpen}
                   trigger={
-                    <Card
+                    <div onClick={this.props.handleOpenModal}
                       className='need-card'
                       key={need._id}
                       value={need._id}
@@ -44,19 +50,21 @@ class MapView extends Component {
                       <Row>
                         <h5>{need.subject}</h5>
                         <div className='description-text'>{need.description}</div>
-                        <img src={need.imageurl} alt='need' />
+                        { !need.imageurl ? null : <img src={need.imageurl} alt='need'/> }
                       </Row>
-                    </Card>
+                    </div>
                   }
                 >
-                  <Card
+                  <div
                     key={need._id}
                   >
                     <NeedView
+                      id='need-box'
                       resolved={need.resolved}
                       category={need.category}
                       description={need.description}
-                      imageurl={need.imageurl}
+                      imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
+                      subject={need.subject}
                       _id={need._id}
                       key={need._id}
                       needUser={need.user}
@@ -64,7 +72,7 @@ class MapView extends Component {
                       goodSamaritins={need.contributor}
                     />
                     <Messages needId={need._id} />
-                  </Card>
+                  </div>
                 </Modal>
               </Popup>
             </Marker>

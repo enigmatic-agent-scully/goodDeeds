@@ -3,14 +3,14 @@
 // Name, Address, Username, Password, Income, Date of Birth, Race, Ethnicity
 
 import React from 'react';
-import { Card, Row, Input, Button } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 import './style.css';
 
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
 function NewUser(props) {
   return (
-    <Card>
+    <div>
       <Row>
         <Input
           name='firstName'
@@ -63,10 +63,10 @@ function NewUser(props) {
           onChange={props.handleInputChange}
         />
       </Row>
-      <Button waves='light' onClick={props.handleModalFormSubmit} type='submit'>
-        submit
+      <Button id='submit-new-user-button' className='blue' waves='light' onClick={props.handleModalFormSubmit} type='submit'>
+        Submit
       </Button>
-    </Card>
+    </div>
   );
 }
 
