@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Chip } from 'react-materialize';
+import { Row, Col, Button, Chip, Icon } from 'react-materialize';
 // , Collapsible, CollapsibleItem
 import './style.css';
 // import { debug } from 'util';
@@ -75,11 +75,10 @@ class NeedView extends Component {
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
         <Col s={12} m={6}>
+          <h4 className='category'>{this.props.category}</h4>
+          <h6 className='subject'>{this.props.subject}</h6>
           <Col m={12}>
-            <h4 className='subject'>{this.props.subject}</h4>
-          </Col>
-          <Col m={12}>
-
+            {/* 
             {this.state.gettingAround ? (
               <i className='material-icons'>directions_car</i>
             ) : null}
@@ -98,7 +97,7 @@ class NeedView extends Component {
             {this.state.professionalAssistance ? (
               <i className='material-icons'>assignment_ind</i>
             ) : null}{' '}
-            <div className='need-description'>{this.props.description}</div>
+            <div className='need-description'>{this.props.description}</div> */}
           </Col>
         </Col>
         <Col s={12} m={6}>
@@ -116,42 +115,52 @@ class NeedView extends Component {
                     >
                       Mark Unresolved
                     </Button>
-                    <Button
-                      className='delete-button'
+
+                    <span className="delete-icon"
                       key={this.props.key}
                       value={this.props._id}
-                      onClick={() => this.props.deleteNeed(this.props._id)}
-                    >
-                      <i className='material-icons'>delete</i>
-                    </Button>
+                      onClick={() => this.props.deleteNeed(this.props._id)}>
+                      <Icon small >
+                        delete
+                      </Icon>
+                    </span>
+
                   </div>
                 ) : (
                   <div>
+                    <Row>
+                      <Col className="needview-button-divs" s={11}>
+                        <Button
+                          className='needview-button'
+                          key={this.props.key}
+                          value={this.props._id}
+                          onClick={() => this.props.markResolved(this.props._id)}
+                        >
+                            Resolved
+                        </Button>
+                      </Col>
 
-                    <Button
-                      className='needview-button'
-                      key={this.props.key}
-                      value={this.props._id}
-                      onClick={() => this.props.markResolved(this.props._id)}
-                    >
-                        Resolved
-                    </Button>
-                    <Button
-                      className='delete-button'
-                      key={this.props.key}
-                      value={this.props._id}
-                      onClick={() => this.props.deleteNeed(this.props._id)}
-                    >
-                      <i className='material-icons'>delete</i>
-                    </Button>
+                      <Col s={1}>
+                        <span className="delete-icon"
+                          key={this.props.key}
+                          value={this.props._id}
+                          onClick={() => this.props.deleteNeed(this.props._id)}>
+                          <Icon small >
+                              delete
+                          </Icon>
+                        </span>
+                      </Col>
+                    </Row>
 
                     {this.props.goodSamaritins.map(helper => (
-                      <Row>
-                        <Chip>
-                          <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
-                          {helper.userName} has offered to help.
-                        </Chip>
-                      </Row>
+                      <div>
+                        <Row>
+                          <Chip>
+                            <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
+                            {helper.userName} has offered to help.
+                          </Chip>
+                        </Row>
+                      </div>
                     ))}
 
                   </div>
@@ -183,7 +192,7 @@ class NeedView extends Component {
           </Row>
         </Col>
       </Row>
-      // </div>
+
     );
   }
 }

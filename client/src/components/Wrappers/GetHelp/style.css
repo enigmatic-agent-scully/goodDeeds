@@ -18,6 +18,7 @@
   text-align: center;
   background-color: orange;
   color: whitesmoke;
+  padding: 25px 2px 2px 2px;
   
 }
 
@@ -30,3 +31,11 @@ h4 {
 }
 
 
+@media screen and (max-width:450px) {
+  .list-headers {
+
+    padding: 7px 2px 2px 2px;
+    
+  }
+
+}

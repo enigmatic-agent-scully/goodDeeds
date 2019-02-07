@@ -74,7 +74,6 @@ class Messages extends Component {
 
       <Row id="row-above-message-input">
         <Input
-          className="message-input-txt-box"
           name='message'
           value={this.state.message}
           onChange={this.handleInputChange}
@@ -82,39 +81,35 @@ class Messages extends Component {
           label='type your message'
           type='textarea'
         />
-        <Button onClick={this.submitPost}>Post Message</Button>
-        <div id='message-scroll-box'>
-          {this.state.returnedMessageArray.map(message => (
-            <Card key={message._id}>
-              <div>
-                <div id='message-body'>
-                  <Chip className="chip-length" id='author'>
-                    <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
-                    <strong>{message.user.userName}</strong> wrote
-                    <span id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm')}</span>
-                  </Chip>
+        <Button className="message-button" onClick={this.submitPost}>Post Message</Button>
 
-                  {message.user._id === this.props.currentUserID ? (
-                    <span className="delete-icon"
-                      value={message._id} onClick={() => this.deleteMessage(message._id)}>
-                      <Icon small >
-                        delete
-                      </Icon>
-                    </span>
-                  ) : null}
+        {this.state.returnedMessageArray.map(message => (
+          <Card key={message._id}>
+            <div>
+              <div id='message-body'>
+                <Chip className="chip-length" id='author'>
+                  <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
+                  <strong>{message.user.userName}</strong> wrote
+                  <span id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm')}</span>
+                </Chip>
+                {message.user._id === this.props.currentUserID ? (
+                  <span className="delete-icon"
+                    value={message._id} onClick={() => this.deleteMessage(message._id)}>
+                    <Icon small >
+                      delete
+                    </Icon>
+                  </span>
+                ) : null}
 
 
-                  <div className='message-text'>
-                    {message.message}
-                  </div>
-                  <Row>
-
-                  </Row>
+                <div className='message-text'>
+                  {message.message}
                 </div>
               </div>
-            </Card>
-          ))}
-        </div>
+            </div>
+          </Card>
+        ))}
+
       </Row>
 
     );
