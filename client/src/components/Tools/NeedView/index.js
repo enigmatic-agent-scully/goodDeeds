@@ -70,7 +70,7 @@ class NeedView extends Component {
 
 
   render() {
-
+    // debugger;
     return (
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
