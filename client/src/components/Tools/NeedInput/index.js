@@ -31,7 +31,7 @@ function NeedInput(props) {
             Professional Assistance
           </option>
         </Input>
-        <h5 className='address-header'>Address</h5>
+        <h5 className='need-input-headers'>Address</h5>
         <Geosuggest
           className='test'
           name='address'
