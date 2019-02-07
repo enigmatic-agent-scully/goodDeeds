@@ -60,6 +60,15 @@ class Login extends Component {
     });
   }
 
+  // handlePasswordConfirmed(event) {
+  //   if (event.target.passwordConfirmed.value === this.state.password) {
+  //     this.setState({
+  //       passwordIsConfirmed: true
+  //     });
+  //     console.log(this.state.passwordIsConfirmed);
+  //   }
+  // }
+
   //login/authentication function
   LoginHandler(event) {
     event.preventDefault();
@@ -112,7 +121,7 @@ class Login extends Component {
           }
         });
     } else {
-      return console.log('please confirm passwrod');
+      return console.log('please confirm password');
     }
   }
 
@@ -147,6 +156,7 @@ class Login extends Component {
           />
         </Modal>
         <Input
+          // style={{textAlig: 'left'}}
           name='email'
           onChange={this.handleInputChange}
           type='email'
