@@ -9,7 +9,7 @@ function NeedInput(props) {
   return (
     <Card id='need-input-card'>
       <Row>
-        <h5>Type</h5>
+        <h5 className='need-input-headers'>Type</h5>
         <Input
           name='category'
           onChange={props.handleInputChange}
@@ -17,7 +17,7 @@ function NeedInput(props) {
           value={props.category}
           label='Select the type of need'
           type='select'
-          className='browser-defualt'
+          className='browser-default'
 
           defaultValue='No Category'
         >
@@ -31,7 +31,7 @@ function NeedInput(props) {
             Professional Assistance
           </option>
         </Input>
-        <h5>Address</h5>
+        <h5 className='address-header'>Address</h5>
         <Geosuggest
           className="test"
           name='address'
@@ -39,7 +39,7 @@ function NeedInput(props) {
           value={props.address}
           clear={props.clearGeoSuggest}
         />
-        <h5>Image</h5>
+        <h5 className='need-input-headers'>Image</h5>
         <Input
           onChange={props.uploadHandler}
           type='file'
@@ -47,7 +47,7 @@ function NeedInput(props) {
           s={12}
           placeholder={props.imagefile}
         />
-        <h5>Date</h5>
+        <h5 className='need-input-headers'>Date</h5>
         <Input
           name='needdate'
           s={12}
@@ -56,7 +56,7 @@ function NeedInput(props) {
           value={props.needdate}
           onChange={props.handleInputChange}
         />
-        <h5>Subject</h5>
+        <h5 className='need-input-headers'>Subject</h5>
         <Input
           onChange={props.handleInputChange}
           name='subject'
@@ -65,7 +65,7 @@ function NeedInput(props) {
           value={props.subject}
           placeholder='Enter a subject for your need.'
         />
-        <h5>Description</h5>
+        <h5 className='need-input-headers'>Description</h5>
         <Input
           onChange={props.handleInputChange}
           name='description'

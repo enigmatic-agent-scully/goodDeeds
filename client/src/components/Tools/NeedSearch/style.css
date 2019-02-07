@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.search-button {
+    margin-top: 20px;
+}
+
 .cancel-button {
     background-color: orange;
 

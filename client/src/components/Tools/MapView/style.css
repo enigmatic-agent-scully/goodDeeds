@@ -11,6 +11,10 @@ img {
     border-radius: 10px;
 }
 
+.need-modal {
+    padding: 1px;
+}
+
 /* .map-popup-icon-hover :hover{
     transform: scale(1.1); 
     box-shadow: 5px 10px #888888;
@@ -18,6 +22,11 @@ img {
 
  .description-text {
      margin-bottom: 10px;
+ }
+
+ h5 {
+     width: 100%;
+     text-align: center;
  }
 
  @media screen and (max-width:768px) {

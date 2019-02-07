@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Modal, Tab, Tabs } from 'react-materialize';
+import { Row, Card, Modal, Tab, Tabs } from 'react-materialize';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import './style.css';
 import NeedView from '../NeedView/index';
@@ -42,7 +42,7 @@ class MapView extends Component {
                       value={need._id}
                     >
                       <Row>
-                        <h5>{need.category}</h5>
+                        <h5>{need.subject}</h5>
                         <p>{need.description}</p>
                         <img src={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl} alt='need' />
                       </Row>
@@ -58,6 +58,7 @@ class MapView extends Component {
                           category={need.category}
                           description={need.description}
                           imageurl={need.imageurl}
+                          subject={need.subject}
                           _id={need._id}
                           key={need._id}
                           needUser={need.user}
