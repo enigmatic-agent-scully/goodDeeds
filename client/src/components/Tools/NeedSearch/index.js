@@ -70,7 +70,7 @@ class NeedSearch extends Component {
           s={12}
           label="Select Need Type"
           type='select'
-          className='browser-default'
+          // className='browser-default'
           // value={this.props.category} 
           defaultValue='No Category'>
           <option value='No Category'>-Pick One-</option>
