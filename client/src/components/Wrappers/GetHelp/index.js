@@ -9,7 +9,6 @@ import API from '../../../utils/API';
 import { config } from '../../../config/Config';
 // import { timingSafeEqual } from 'crypto';
 
-
 class GetHelp extends Component {
   constructor(props) {
     super(props);
@@ -133,9 +132,11 @@ class GetHelp extends Component {
       lat: NeedInfo.lat,
       lng: NeedInfo.lng,
       user: this.props.user._id
-    }).then(() => {
-      this.loadNeeds();
-    }).catch(err => console.log(err));
+    })
+      .then(() => {
+        this.loadNeeds();
+      })
+      .catch(err => console.log(err));
   }
 
   render() {

@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'pacificoregular';
+  src: url('pacifico-webfont.woff2') format('woff2'),
+    url('pacifico-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('GeosansLight.woff2') format('woff2'),
+    url('GeosansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
 #header {
   text-align: center;
   width: 100%;
@@ -6,11 +22,13 @@
 }
 
 #logo {
-  font-size: 8em;
+  font-family: 'pacificoregular';
+  font-size: 9em;
   color: whitesmoke;
 }
 
 #motto {
+  font-family: 'GeosansLight';
   margin-top: 20vh;
   color: whitesmoke;
 }
@@ -34,17 +52,16 @@
 
 #scroll-button {
   text-align: center;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
 }
 
 #scroll-button-row {
   text-align: center;
   position: fixed;
   bottom: 3%;
-  width: 100%
+  width: 100%;
 }
-
 
 /* .input-field input:focus + label {
   color:  rgb(46, 163, 231) !important;
@@ -59,10 +76,10 @@
   #login-overlay {
     width: 30%;
   }
-
 }
- 
-@media screen and (max-width:768px) {
+
+@media screen and (max-width: 768px) {
+
   #login-overlay {
     width: 100%;
     margin-top: 5vh;
@@ -70,7 +87,7 @@
   }
 
   #logo {
-    font-size: 5em;
+    font-size: 6em;
   }
 
   #info-overlay {
@@ -83,5 +100,3 @@
     height: 15vh;
   }
 }
-
-
