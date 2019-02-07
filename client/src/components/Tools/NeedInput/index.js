@@ -17,9 +17,11 @@ function NeedInput(props) {
           value={props.category}
           label='Select the type of need'
           type='select'
-          // defaultValue='0'
+          className='browser-defualt'
+
+          defaultValue='No Category'
         >
-          <option value='0'>-Pick One-</option>
+          <option value='No Category'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>
           <option value='Cleaning Up'>Cleaning Up</option>
           <option value='Fixing Something'>Fixing Something</option>
@@ -31,6 +33,7 @@ function NeedInput(props) {
         </Input>
         <h5>Address</h5>
         <Geosuggest
+          className="test"
           name='address'
           onSuggestSelect={props.handleGeoCode}
           value={props.address}
@@ -71,7 +74,7 @@ function NeedInput(props) {
           value={props.description}
           placeholder='Describe your need.'
         />
-        <Button onClick={props.SubmitHandler} waves='light'>
+        <Button onClick={props.SubmitHandler} waves='light' id="needinput-form-submit-btn">
           submit
         </Button>
       </Row>

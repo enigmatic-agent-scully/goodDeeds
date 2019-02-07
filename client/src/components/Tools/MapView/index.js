@@ -31,22 +31,22 @@ function MapView(props) {
         />
         {props.needs.map(need => (
           <Marker position={[need.lat, need.lng]}>
-            <Popup>         
+            <Popup>
               {/* <StickyContainer> */}
-              <Modal 
+              <Modal
                 className='need-modal'
                 id='need-box'
                 // open={props.isMapModalOpen}
                 trigger={
                   <div
-                  // onClick={props.handleOpenModal}
+                    // onClick={props.handleOpenModal}
                     className='need-popup-card'
                     key={need._id}
                     value={need._id}>
                     <Row>
                       <h5>{need.subject}</h5>
                       <div className='description-text'>{need.description}</div>
-                      { !need.imageurl ? null : <img src={need.imageurl} alt='need'/> }
+                      {!need.imageurl ? null : <img src={need.imageurl} alt='need' />}
                     </Row>
                   </div>
                 }>
@@ -60,7 +60,7 @@ function MapView(props) {
                     resolved={need.resolved}
                     category={need.category}
                     description={need.description}
-                    imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
+                    imageurl={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl}
                     subject={need.subject}
                     _id={need._id}
                     key={need._id}

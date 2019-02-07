@@ -15,7 +15,7 @@ class GiveHelp extends Component {
       cntLat: 33.785,
       cntLng: -84.385,
       goodSamaritinButton: '',
-      // isModalOpen: '',
+      isModalOpen: ''
       // isMapModalOpen: ''
     };
 
@@ -24,13 +24,12 @@ class GiveHelp extends Component {
     this.filterBySearch = this.filterBySearch.bind(this);
     this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
     this.offerHelp = this.offerHelp.bind(this);
-    this.handleOpenModal=this.handleOpenModal.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   getNeeds() {
     API.getNeeds()
       .then(res => {
-        console.log(res.data);
         var returnedNeed = res.data;
         var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
         this.setState({ needs: unresolvedReturnedNeed });
@@ -56,6 +55,7 @@ class GiveHelp extends Component {
   }
 
   offerHelp(id) {
+    // this.setState({ offerHelp: true})
     API.donateHelp({ needId: id })
       .then(res => {
         const needId = res.data._id;
@@ -106,7 +106,8 @@ class GiveHelp extends Component {
                   needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
-                  isModalOpen={this.state.isModalOpen}
+                  // isModalOpen={this.state.isModalOpen}
+                  goodSamaritinButton={this.props.goodSamaritinButton}
                 />
               </CollapsibleItem>
             </Collapsible>

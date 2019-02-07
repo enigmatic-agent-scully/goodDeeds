@@ -108,7 +108,6 @@ const UserControllers = module.exports = {
         const updatedUserInfo = req.body;
         db.User.findOneAndUpdate({ _id: updatedUserInfo._id }, updatedUserInfo)
             .then(dbModel => {
-                console.log('this is the response post findOneANdUPdate promise' + dbModel);
                 res.json(dbModel)
             })
             .catch(err => {

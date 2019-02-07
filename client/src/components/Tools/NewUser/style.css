@@ -2,3 +2,9 @@
     float: left;
     width: 25%;
 }
+
+@media screen and (max-width:768px) {
+    #submit-new-user-button {
+        width: 100%;
+    }
+}
