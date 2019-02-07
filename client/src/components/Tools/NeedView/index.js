@@ -73,7 +73,7 @@ class NeedView extends Component {
 
     return (
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
-      <div>
+      <Row>
         <Col s={12} m={6}>
           {/* <h4 className='category'>{this.props.category}</h4> */}
 
@@ -199,7 +199,7 @@ class NeedView extends Component {
             </Row>
           </div>
         </Col>
-      </div>
+      </Row>
 
     );
   }
