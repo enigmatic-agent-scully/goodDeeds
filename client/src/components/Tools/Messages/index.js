@@ -84,7 +84,7 @@ class Messages extends Component {
         <Button className="message-button" onClick={this.submitPost}>Post Message</Button>
 
         {this.state.returnedMessageArray.map(message => (
-          <Card key={message._id}>
+          <Card className='message-cards' key={message._id}>
             <div>
               <div id='message-body'>
                 <Chip className="chip-length" id='author'>

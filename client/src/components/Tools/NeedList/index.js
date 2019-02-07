@@ -58,13 +58,13 @@ function NeedList(props) {
                 </Tab>
 
                 <Tab title='Messages'>
-                  <Card id='message-box'>
+                  <div id='message-box'>
                     <Messages
                       needId={need._id}
                       currentUserID={props.currentUserID}
                       deleteMessage={props.deleteMessage}
                     />
-                  </Card>
+                  </div>
                 </Tab>
 
                 {/* <Tab title='Details'>
