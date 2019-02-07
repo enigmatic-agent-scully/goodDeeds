@@ -19,7 +19,7 @@
   background-color: #0270eb;
 } */
 
-#new-user-button {
+.new-user-button {
   background-color: orange;
   opacity: 80%;
   margin-bottom: 30px;

@@ -30,7 +30,7 @@ img {
  }
 
  @media screen and (max-width:768px) {
-    .need-modal {
+    .need-modal-map {
         width: 100%;
     }
 

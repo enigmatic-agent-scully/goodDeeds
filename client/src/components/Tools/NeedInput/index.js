@@ -33,7 +33,7 @@ function NeedInput(props) {
         </Input>
         <h5 className='address-header'>Address</h5>
         <Geosuggest
-          className="test"
+          className='test'
           name='address'
           onSuggestSelect={props.handleGeoCode}
           value={props.address}
@@ -74,7 +74,11 @@ function NeedInput(props) {
           value={props.description}
           placeholder='Describe your need.'
         />
-        <Button onClick={props.SubmitHandler} waves='light' id="needinput-form-submit-btn">
+        <Button
+          onClick={props.SubmitHandler}
+          waves='light'
+          id='needinput-form-submit-btn'
+        >
           submit
         </Button>
       </Row>

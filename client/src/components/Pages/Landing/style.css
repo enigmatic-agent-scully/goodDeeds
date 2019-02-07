@@ -14,10 +14,6 @@
   font-style: normal;
 }
 
-button {
-  background-color: #0270eb;
-}
-
 #header {
   text-align: center;
   width: 100%;
@@ -55,7 +51,6 @@ button {
 }
 
 #scroll-button {
-  background-color: #0270eb;
   text-align: center;
   height: 75px;
   width: 75px;
@@ -84,6 +79,7 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+
   #login-overlay {
     width: 100%;
     margin-top: 5vh;
@@ -91,7 +87,7 @@ button {
   }
 
   #logo {
-    font-size: 7em;
+    font-size: 6em;
   }
 
   #info-overlay {

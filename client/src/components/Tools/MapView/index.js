@@ -33,10 +33,10 @@ class MapView extends Component {
             <Marker position={[need.lat, need.lng]}>
               <Popup>
                 <Modal
+                  className='need-modal-map'
                   open={this.props.isModalOpen}
                   trigger={
                     <div
-
                       className='need-card'
                       key={need._id}
                       value={need._id}
