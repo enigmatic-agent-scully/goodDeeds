@@ -15,8 +15,8 @@ class GiveHelp extends Component {
       cntLat: 33.785,
       cntLng: -84.385,
       goodSamaritinButton: '',
-      isModalOpen: ''
-      // isMapModalOpen: ''
+      // isModalOpen: false
+      isMapModalOpen: false
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -25,6 +25,7 @@ class GiveHelp extends Component {
     this.GoodSamaratinRecordUpdate = this.GoodSamaratinRecordUpdate.bind(this);
     this.offerHelp = this.offerHelp.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   getNeeds() {
@@ -67,7 +68,7 @@ class GiveHelp extends Component {
 
   handleCloseModal() {
     this.setState({
-      isModalOpen: false
+      isMapModalOpen: false
     });
   }
 
@@ -103,7 +104,7 @@ class GiveHelp extends Component {
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
-                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
+                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
                   // isModalOpen={this.state.isModalOpen}
@@ -114,7 +115,7 @@ class GiveHelp extends Component {
           </Col>
           <Col s={12} l={8}>
             <MapView
-              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
+              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
@@ -122,6 +123,7 @@ class GiveHelp extends Component {
               GoodSamaratinRecordUpdate={this.GoodSamaratinRecordUpdate}
               isMapModalOpen={this.state.isMapModalOpen}
               handleOpenModal={this.handleOpenModal}
+              handleClosenModal={this.handleClosenModal}
             >
               <Preloader flashing />
             </MapView>

@@ -37,6 +37,11 @@
   width: 80%;
 }
 
+#profile-modal {
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .input-field input:focus + label {
   color: rgb(35, 192, 197) !important;
 }
