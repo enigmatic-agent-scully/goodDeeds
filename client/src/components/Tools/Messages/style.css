@@ -1,5 +1,7 @@
 .message-button {
-  width: 100%;
+  width: 95%;
+  margin: 0 5px;
+
 }
 
 .message-txt {
@@ -16,20 +18,49 @@
 
 }
 
+.chip-length{
+  width: 90%;
+}
+
+#message-scroll-box {
+  overflow-y: auto;
+}
+
 #datetime {
   float: right;
   margin-bottom: 10px;
 }
 
 .message-text {
-  margin-top: 25px;
+  margin:5px;
 }
 
 .delete-button {
-  /* margin-top: 10px;
-  margin-left: 10px; */
+  margin-top: 10px;
+  margin-left: 10px;
   background-color: #ee6e73;
   float: right;
-
 }
 
+#message-scroll-box .card-content{
+  padding: 2px;
+}
+
+.delete-icon{
+  position: relative;
+  top: 12px;
+  float: right;
+  padding: 0;
+}
+
+.message-input-txt-box{
+  padding: 50px;
+}
+
+.card .card-content {
+  padding: 2px;
+}
+
+.card{
+  margin:5px 1px;
+}

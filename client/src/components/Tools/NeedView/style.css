@@ -3,20 +3,28 @@
     margin-top: 10px;
 }
 
+.goodsamaritin-chip-div{
+    margin: 0;
+}
+
 #offer-help-button {
     width: 100%;
 }
 
 .needview-button {
-    width: 70%;
+
+    width: 100%;
     margin-top: 10px;
-    float: left;
+   
 }
 
 .need-description {
     height: 20vh;
-    overflow: scroll;
+    overflow: auto;
 }
+
+
+
 
 .delete-button {
     margin-top: 10px;
@@ -32,12 +40,35 @@
 
 }
 
+.needview-button-divs{
+    padding: 0;
+    margin: 0;
+}
+
+.material-icons{
+    padding: 0;
+    margin: 0;
+}
 .needview-fixed{
 position: fixed;
 }
 
+.collapsible-body{
+    height: auto;
+}
 
-@media screen and (max-width:768px) {
+.delete-icon{
+    position: relative;
+    top: 5px;
+    padding: 0;
+  }
+
+  .category{
+      text-decoration: underline;
+      /* text-align: center; */
+      margin: 0 0 20px 0;
+  }
+/* @media screen and (max-width:768px) {
     .needview-button {
         width: 100%;
         float: right;
@@ -46,4 +77,4 @@ position: fixed;
     .delete-button {
         float: right;
     }
-}
+} */

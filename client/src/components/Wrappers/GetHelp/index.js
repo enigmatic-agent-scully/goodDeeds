@@ -47,7 +47,6 @@ class GetHelp extends Component {
   }
 
   handleGeoCode(suggest) {
-    console.log(suggest);
     if (suggest) {
       this.setState({
         lat: suggest.location.lat,
@@ -70,13 +69,12 @@ class GetHelp extends Component {
   }
 
   deleteNeed(needId) {
-    console.log(needId);
     API.deleteNeed(needId)
       .then(this.loadNeeds())
       .catch(err => console.log(err));
   }
   onHoverEvent(id) {
-    // console.log(id);
+    console.log(id);
   }
 
   handleCloseModal() {
@@ -94,7 +92,8 @@ class GetHelp extends Component {
           subject: '',
           description: '',
           needdate: '',
-          needs: res.data
+          needs: res.data,
+          address: 'what'
         });
       })
       .catch(err => console.log(err));
@@ -134,7 +133,9 @@ class GetHelp extends Component {
       lat: NeedInfo.lat,
       lng: NeedInfo.lng,
       user: this.props.user._id
-    }).then(this.loadNeeds());
+    }).then(() => {
+      this.loadNeeds();
+    }).catch(err => console.log(err));
   }
 
   render() {
@@ -157,7 +158,7 @@ class GetHelp extends Component {
               clearGeoSuggest={this.state.clearGeoSuggest}
             />
           </Col>
-          <Col  s={12} l={4}>
+          <Col s={12} l={4}>
             <Card className='list-headers'>
               <h4>Unresolved Needs</h4>
             </Card>
@@ -172,7 +173,7 @@ class GetHelp extends Component {
               />
             </Card>
           </Col>
-          <Col  s={12} l={4}>
+          <Col s={12} l={4}>
             <Card className='list-headers'>
               <h4>Resolved Needs</h4>
             </Card>

@@ -9,9 +9,9 @@ class NeedSearch extends Component {
     super(props);
     this.state = {
       keywords: {
-        'raking leaves' : null,
-        'drive to doctor' : null,
-        'used stroller' : null
+        'raking leaves': null,
+        'drive to doctor': null,
+        'used stroller': null
       },
       category: '',
       needdate: '',
@@ -67,11 +67,11 @@ class NeedSearch extends Component {
         <h5>Type</h5>
         <Input
           onChange={this.handleInputChange}
-          name="category" 
-          s={12} 
-          label="Select Need Type" 
+          name="category"
+          s={12}
+          label="Select Need Type"
           type='select'
-          // className='browser-default'
+          className='browser-default'
           // value={this.props.category} 
           defaultValue='No Category'>
           <option value='No Category'>-Pick One-</option>
@@ -82,7 +82,7 @@ class NeedSearch extends Component {
           <option value='Moving'>Moving</option>
           <option value='Professional Assistance'>
             Professional Assistance
-          </option>        
+          </option>
         </Input>
         {/* <h5>Date</h5>
         <Input
@@ -97,13 +97,13 @@ class NeedSearch extends Component {
             className='search-button'
             waves='light'
             onClick={() => this.props.filterBySearch(this.state.category, this.state.keyword, this.state.needdate)}>
-          Search
+            Search
           </Button>
         </Row>
 
         <Button
-          className='cancel-button' 
-          waves='light' 
+          className='cancel-button'
+          waves='light'
           onClick={this.props.getNeeds}>
           Clear
         </Button>

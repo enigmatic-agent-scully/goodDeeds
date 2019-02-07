@@ -8,24 +8,61 @@ img {
 
 .modal {
   max-height: 80% !important;
+  max-width: 50%;
   top: 5%;
 }
+
+.modal .modal-content{
+    padding:0;
+}
+
 
 /* #need-box {
     height: 0vh;
 } */
 
-#message-box {
+/* #message-box {
     height: 75vh;
+} */
+
+.tab-demo{
+    margin: 5px 0 0 0;
+    background-color: orange;
+    color: black !important;
 }
 
+.tabs .tab a{
+    color: #fff;
+    font-weight: bold;
+}
+
+.tabs .tab a.active{
+    color: #fff;
+}
+
+@media screen and (min-width:1150px) {
+    .modal{
+        max-width: 40%;
+    }
+
+}
 
 @media screen and (max-width:768px) {
     .need-modal {
         width: 100%;
     }
+    .modal{
+        max-width: 100%;
+    }
+
+    
+.need-modal .open{
+    width: 100%;
+}
 
     #need-box {
         height: 80vh;
     }
 }
+
+

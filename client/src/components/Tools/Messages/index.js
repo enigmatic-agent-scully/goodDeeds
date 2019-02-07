@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Input, Button, Card, Chip } from 'react-materialize';
+import { Row, Input, Button, Card, Chip, Icon } from 'react-materialize';
 import moment from 'moment-timezone';
 import './style.css';
 import API from '../../../utils/API';
@@ -72,7 +72,7 @@ class Messages extends Component {
   render() {
     return (
 
-      <Row>
+      <Row id="row-above-message-input">
         <Input
           name='message'
           value={this.state.message}
@@ -81,32 +81,35 @@ class Messages extends Component {
           label='type your message'
           type='textarea'
         />
-        <Button onClick={this.submitPost}>Post Message</Button>
-        <div id='message-scroll-box'>
-          {this.state.returnedMessageArray.map(message => (
-            <Card key={message._id}>
-              <div>
-                <div id='message-body'>
-                  <Chip id='author'>
-                    <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
-                    <strong>{message.user.userName}</strong> wrote 
-                    <span id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm')}</span>
-                  </Chip>
-                  <div className='message-text'>
-                    {message.message}
-                  </div>
-                  <Row>
-                    {message.user._id === this.props.currentUserID ? (
-                      <Button className='delete-button' value={message._id} onClick={() => this.deleteMessage(message._id)}>
-                        <i className='material-icons'>delete</i>
-                      </Button>
-                    ) : null}
-                  </Row>
+        <Button className="message-button" onClick={this.submitPost}>Post Message</Button>
+
+        {this.state.returnedMessageArray.map(message => (
+          <Card key={message._id}>
+            <div>
+              <div id='message-body'>
+                <Chip className="chip-length" id='author'>
+                  <img className='messageicon' src={message.user.imageurl} alt={message.user.userName} />
+                  <strong>{message.user.userName}</strong> wrote
+                  <span id='datetime'>@{moment(message.postdate).format('YYYY-MM-DD hh:mm')}</span>
+                </Chip>
+                {message.user._id === this.props.currentUserID ? (
+                  <span className="delete-icon"
+                    value={message._id} onClick={() => this.deleteMessage(message._id)}>
+                    <Icon small >
+                      delete
+                    </Icon>
+                  </span>
+                ) : null}
+
+
+                <div className='message-text'>
+                  {message.message}
                 </div>
               </div>
-            </Card>
-          ))}
-        </div>
+            </div>
+          </Card>
+        ))}
+
       </Row>
 
     );
