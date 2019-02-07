@@ -62,9 +62,9 @@ img {
     }
 
     
-.need-modal .open{
-    width: 100%;
-}
+    .need-modal .open{
+        width: 100%;
+    }
 
     #need-box {
         height: 80vh;
