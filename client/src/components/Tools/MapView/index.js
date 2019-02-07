@@ -42,13 +42,9 @@ class MapView extends Component {
                       value={need._id}
                     >
                       <Row>
-                        <Col s={6}>
-                          <h5>{need.category}</h5>
-                          <p>{need.description}</p>
-                        </Col>
-                        <Col s={6}>
-                          <img src={need.imageurl} alt='need' />
-                        </Col>
+                        <h5>{need.category}</h5>
+                        <p>{need.description}</p>
+                        <img src={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl} alt='need' />
                       </Row>
 
                     </div>

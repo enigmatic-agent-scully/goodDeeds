@@ -70,7 +70,7 @@ class NeedView extends Component {
 
 
   render() {
-    // debugger;
+
     return (
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
@@ -108,8 +108,7 @@ class NeedView extends Component {
         
         <Col s={12} m={6}>
           <div>
-            <img src={this.props.imageurl} alt='need' />
-            <Row>
+            <img src={!this.props.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : this.props.imageurl} alt='need' />            <Row>
               {this.props.needUser === this.props.currentUserID ? (
                 <div>
                   {this.props.resolved ? (

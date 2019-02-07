@@ -104,7 +104,7 @@ class GiveHelp extends Component {
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
-                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
+                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
                   // isModalOpen={this.state.isModalOpen}
@@ -115,7 +115,7 @@ class GiveHelp extends Component {
           </Col>
           <Col s={12} l={8}>
             <MapView
-              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
+              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}
