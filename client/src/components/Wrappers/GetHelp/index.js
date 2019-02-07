@@ -160,9 +160,7 @@ class GetHelp extends Component {
             />
           </Col>
           <Col s={12} l={4}>
-            <Card className='list-headers'>
-              <h4>Unresolved Needs</h4>
-            </Card>
+            <Card className='list-headers' title='Unresolved Needs' />
             <div id='need-list'>
               <NeedList
                 deleteNeed={this.deleteNeed}
@@ -175,9 +173,7 @@ class GetHelp extends Component {
             </div>
           </Col>
           <Col s={12} l={4}>
-            <Card className='list-headers'>
-              <h4>Resolved Needs</h4>
-            </Card>
+            <Card className='list-headers ' title='Resolved Needs' />
             <div id='resolved-list'>
               <NeedList
                 deleteNeed={this.deleteNeed}

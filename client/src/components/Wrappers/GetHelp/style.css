@@ -1,4 +1,5 @@
-#need-list, #resolved-list {
+#need-list,
+#resolved-list {
   /* max-height: 0;
   height: 76vh;
   overflow: hidden;
@@ -14,28 +15,29 @@
 }
 
 .list-headers {
+  color: whitesmoke !important;
+  font-family: 'GeosansLight';
   height: 8vh;
   text-align: center;
   background-color: orange;
-  color: whitesmoke;
-  padding: 25px 2px 2px 2px;
-  
+  padding: 2px 2px 2px 2px;
+}
+
+.grey-text.text-darken-4 {
+  color: whitesmoke !important;
+  font-weight: 600;
 }
 
 h4 {
-  margin: 0px;  
+  margin: 0px;
 }
 
-.card-content .list-headers {
+.card-content {
   padding: 10px 0px 10px 0px !important;
 }
 
-
-@media screen and (max-width:450px) {
+@media screen and (max-width: 450px) {
   .list-headers {
-
     padding: 7px 2px 2px 2px;
-    
   }
-
 }

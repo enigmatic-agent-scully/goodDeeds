@@ -6,8 +6,26 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('./../Landing/GeosansLight.woff2') format('woff2'),
+    url('./../Landing/GeosansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+h4,
+h5 {
+  font-family: 'GeosansLight';
+}
+
+h4 {
+  padding-bottom: 10px;
+}
+
 .brand-logo {
   size: 9em;
+  font-family: 'pacificoregular';
 }
 
 .Main-Page {
