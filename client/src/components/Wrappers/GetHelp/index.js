@@ -13,7 +13,7 @@ class GetHelp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '0',
+      category: 'No Category',
       subject: '',
       needdate: '',
       address: '',
@@ -87,7 +87,7 @@ class GetHelp extends Component {
       .then(res => {
         this.handleCloseModal();
         this.setState({
-          category: '0',
+          category: 'No Category',
           subject: '',
           description: '',
           needdate: '',
