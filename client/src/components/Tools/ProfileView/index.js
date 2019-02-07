@@ -12,6 +12,7 @@ function ProfileView(props) {
         <Col s="12" l="6">
           <h2>Edit Profile</h2>
           <Button 
+            id='save-edits-button' 
             onClick={props.handleSaveToExistingProfile}>
             Save Edits
           </Button>

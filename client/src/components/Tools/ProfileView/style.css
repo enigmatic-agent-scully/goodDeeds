@@ -13,3 +13,10 @@ img {
 #profile-edit-form {
     margin-top: 25px;
 }
+
+
+@media screen and (min-width:1150px) {
+    #save-edits-button {
+        width: 100%;
+    }
+}

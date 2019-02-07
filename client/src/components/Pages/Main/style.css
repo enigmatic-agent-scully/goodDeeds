@@ -33,6 +33,12 @@
   box-shadow: 0 1px 0 0  rgb(35, 192, 197) !important
 }
 
+
+#profile-modal {
+  padding: 10px;
+  border-radius: 5px;
+}
+
 @media screen and (max-width:768px) {
   .Main-Page {
     padding-left: 1px;

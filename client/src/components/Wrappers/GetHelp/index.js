@@ -160,7 +160,7 @@ class GetHelp extends Component {
           </Col>
           <Col s={12} l={4}>
             <Card className='list-headers'>
-              <h4>Unresolved Needs</h4>
+              <h5>Unresolved Needs</h5>
             </Card>
             <div id='need-list'>
               <NeedList
@@ -175,7 +175,7 @@ class GetHelp extends Component {
           </Col>
           <Col s={12} l={4}>
             <Card className='list-headers'>
-              <h4>Resolved Needs</h4>
+              <h5>Resolved Needs</h5>
             </Card>
             <div id='resolved-list'>
               <NeedList
