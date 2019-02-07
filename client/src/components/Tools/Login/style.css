@@ -1,35 +1,38 @@
-
-#new-user-button, #login-button {
-    float: center;
-    /* background-color: rgb(46, 163, 231); */
-    width: 60%;
+#new-user-button,
+#login-button {
+  float: center;
+  /* background-color: rgb(46, 163, 231); */
+  width: 60%;
 }
 
 #login-card {
-    padding: 10px;
-    border-radius: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #new-user-modal {
-    padding: 10px;
-    border-radius: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
+#login-button {
+  background-color: #0270eb;
+}
 
 #new-user-button {
-    background-color: orange;
-    opacity: 80%;
-    margin-bottom: 30px;
+  background-color: orange;
+  opacity: 80%;
+  margin-bottom: 30px;
 }
 
-@media screen and (max-width:768px) {
-    #new-user-modal {
-        width: 100%;
-        height: 90vh;
-    }
+@media screen and (max-width: 768px) {
+  #new-user-modal {
+    width: 100%;
+    height: 90vh;
+  }
 
-    #new-user-button, #login-button {
-        width: 90%
-    }
+  #new-user-button,
+  #login-button {
+    width: 90%;
+  }
 }
-

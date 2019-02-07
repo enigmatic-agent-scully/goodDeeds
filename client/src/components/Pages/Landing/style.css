@@ -6,6 +6,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('GeosansLight.woff2') format('woff2'),
+    url('GeosansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
 button {
   background-color: #0270eb;
 }
@@ -24,6 +32,7 @@ button {
 }
 
 #motto {
+  font-family: 'GeosansLight';
   margin-top: 20vh;
   color: whitesmoke;
 }
@@ -46,9 +55,10 @@ button {
 }
 
 #scroll-button {
+  background-color: #0270eb;
   text-align: center;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
 }
 
 #scroll-button-row {
@@ -81,7 +91,7 @@ button {
   }
 
   #logo {
-    font-size: 5em;
+    font-size: 7em;
   }
 
   #info-overlay {
