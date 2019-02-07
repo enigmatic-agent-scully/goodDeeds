@@ -6,16 +6,20 @@
 }
 
 #login-card {
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
 }
 
 #new-user-modal {
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
 }
 
-#new-user-button {
+/* #login-button {
+  background-color: #0270eb;
+} */
+
+.new-user-button {
   background-color: orange;
   opacity: 80%;
   margin-bottom: 30px;

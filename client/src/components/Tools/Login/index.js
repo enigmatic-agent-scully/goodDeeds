@@ -138,7 +138,7 @@ class Login extends Component {
         id="login-card">
         <Modal id='new-user-modal' trigger={
           <Row>
-            <Button id='new-user-button'>Create New User Account</Button>
+            <Button className='new-user-button'>Create New User Account</Button>
           </Row>
         }>
           <NewUser

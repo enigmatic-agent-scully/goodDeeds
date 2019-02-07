@@ -64,7 +64,6 @@ class NeedSearch extends Component {
           title='Type here'
           data={this.state.keywords}
         /> */}
-        <h5>Type</h5>
         <Input
           onChange={this.handleInputChange}
           name="category"
