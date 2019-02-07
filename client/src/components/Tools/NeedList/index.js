@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Modal } from 'react-materialize';
+import { Card, Row, Col, Modal, Tabs, Tab } from 'react-materialize';
 import './style.css';
 import NeedView from '../NeedView';
 import Messages from './../Messages/index';
@@ -26,39 +26,47 @@ function NeedList(props) {
                         <h5>{need.subject}</h5>
                       </Col>
                       <Col s={6}>
-                        <img src={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl } alt='need' />
+                        <img src={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl} alt='need' />
                       </Col>
                     </Row>
                   </Card>
                 </div>
               }
             >
-              <Card id='need-box' key={need._id}>
-                <NeedView
-                  markResolved={props.markResolved}
-                  markUnresolved={props.markUnresolved}
-                  deleteNeed={props.deleteNeed}
-                  resolved={need.resolved}
-                  subject={need.subject}
-                  category={need.category}
-                  description={need.description}
-                  postdate={need.postdate}
-                  imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
-                  _id={need._id}
-                  key={need._id}
-                  needUser={need.user}
-                  currentUserID={props.currentUserID}
-                  offerHelp={props.offerHelp}
-                  goodSamaritins={need.contributor}
-                />
-              </Card>
-              <Card id='message-box'>
-                <Messages
-                  needId={need._id}
-                  currentUserID={props.currentUserID}
-                  deleteMessage={props.deleteMessage}
-                />
-              </Card>
+              <Tabs className='tab-demo z-depth-1'>
+                <Tab title="need" active>
+                  <Card id='need-box' key={need._id}>
+                    <NeedView
+                      markResolved={props.markResolved}
+                      markUnresolved={props.markUnresolved}
+                      deleteNeed={props.deleteNeed}
+                      resolved={need.resolved}
+                      subject={need.subject}
+                      category={need.category}
+                      description={need.description}
+                      postdate={need.postdate}
+                      imageurl={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl}
+                      _id={need._id}
+                      key={need._id}
+                      needUser={need.user}
+                      currentUserID={props.currentUserID}
+                      offerHelp={props.offerHelp}
+                      goodSamaritins={need.contributor}
+                    />
+                  </Card>
+                </Tab>
+
+                <Tab title="Messages">
+                  <Card id='message-box'>
+                    <Messages
+                      needId={need._id}
+                      currentUserID={props.currentUserID}
+                      deleteMessage={props.deleteMessage}
+                    />
+                  </Card>
+                </Tab>
+
+              </Tabs>
             </Modal>
           ))}
         </Row>

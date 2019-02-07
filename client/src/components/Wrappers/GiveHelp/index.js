@@ -14,12 +14,8 @@ class GiveHelp extends Component {
       needs: [],
       cntLat: 33.785,
       cntLng: -84.385,
-<<<<<<< HEAD
-      goodSamaritinButton: ''
-=======
       goodSamaritinButton: '',
-      isModalOpen: ''
->>>>>>> 4c051a2ba1d935778032fb8c4484ce3054421f20
+      isModalOpen: '',
     };
 
     this.getNeeds = this.getNeeds.bind(this);
@@ -33,7 +29,6 @@ class GiveHelp extends Component {
   getNeeds() {
     API.getNeeds()
       .then(res => {
-        console.log(res.data);
         var returnedNeed = res.data;
         var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
         this.setState({ needs: unresolvedReturnedNeed });
@@ -59,6 +54,7 @@ class GiveHelp extends Component {
   }
 
   offerHelp(id) {
+    // this.setState({ offerHelp: true})
     API.donateHelp({ needId: id })
       .then(res => {
         const needId = res.data._id;
@@ -109,7 +105,8 @@ class GiveHelp extends Component {
                   needs={this.state.needs.filter(need => need.user._id !== this.props.user._id)}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
-                  isModalOpen={this.state.isModalOpen}
+                  // isModalOpen={this.state.isModalOpen}
+                  goodSamaritinButton={this.props.goodSamaritinButton}
                 />
               </CollapsibleItem>
             </Collapsible>

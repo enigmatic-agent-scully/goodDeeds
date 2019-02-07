@@ -18,6 +18,7 @@ class MapView extends Component {
   }
 
   render() {
+    // debugger;
     return (
       <Card>
         <Map
@@ -32,14 +33,9 @@ class MapView extends Component {
           {this.props.needs.map(need => (
             <Marker position={[need.lat, need.lng]}>
               <Popup>
-<<<<<<< HEAD
                 <Modal
-=======
-                {/* <StickyContainer> */}
-                <Modal 
                   className='need-modal'
                   id='need-box'
->>>>>>> 4c051a2ba1d935778032fb8c4484ce3054421f20
                   open={this.props.isModalOpen}
                   trigger={
                     <div onClick={this.props.handleOpenModal}
@@ -50,7 +46,7 @@ class MapView extends Component {
                       <Row>
                         <h5>{need.subject}</h5>
                         <div className='description-text'>{need.description}</div>
-                        { !need.imageurl ? null : <img src={need.imageurl} alt='need'/> }
+                        {!need.imageurl ? null : <img src={need.imageurl} alt='need' />}
                       </Row>
                     </div>
                   }
@@ -63,7 +59,7 @@ class MapView extends Component {
                       resolved={need.resolved}
                       category={need.category}
                       description={need.description}
-                      imageurl={ !need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl }
+                      imageurl={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl}
                       subject={need.subject}
                       _id={need._id}
                       key={need._id}

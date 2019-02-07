@@ -15,8 +15,11 @@
 
 .need-description {
     height: 20vh;
-    overflow: scroll;
+    overflow: auto;
 }
+
+
+
 
 .delete-button {
     margin-top: 10px;
@@ -36,10 +39,13 @@
 position: fixed;
 }
 
+.collapsible-body{
+    height: auto;
+}
 
 @media screen and (max-width:768px) {
     .needview-button {
-        width: 100%;
+        width: 70%;
         float: right;
     }
 

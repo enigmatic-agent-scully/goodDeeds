@@ -1,6 +1,10 @@
 #need-list, #resolved-list {
+  /* max-height: 0;
   height: 76vh;
-  overflow: scroll;
+  overflow: hidden;
+  overflow: scroll; */
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .geosuggest__suggests--hidden {
@@ -10,7 +14,19 @@
 }
 
 .list-headers {
+  height: 8vh;
   text-align: center;
   background-color: orange;
   color: whitesmoke;
+  
 }
+
+h4 {
+  margin: 0px;  
+}
+
+.card-content .list-headers {
+  padding: 10px 0px 10px 0px !important;
+}
+
+

@@ -17,7 +17,9 @@ function NeedInput(props) {
           value={props.category}
           label='Select the type of need'
           type='select'
-          // defaultValue='0'
+          className='browser-defualt'
+
+        // defaultValue='0'
         >
           <option value='0'>-Pick One-</option>
           <option value='Getting Around'>Getting Around</option>

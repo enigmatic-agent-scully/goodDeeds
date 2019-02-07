@@ -47,7 +47,6 @@ class GetHelp extends Component {
   }
 
   handleGeoCode(suggest) {
-    console.log(suggest);
     if (suggest) {
       this.setState({
         lat: suggest.location.lat,
@@ -70,7 +69,6 @@ class GetHelp extends Component {
   }
 
   deleteNeed(needId) {
-    console.log(needId);
     API.deleteNeed(needId)
       .then(this.loadNeeds())
       .catch(err => console.log(err));

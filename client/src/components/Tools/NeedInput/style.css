@@ -1,7 +1,7 @@
 #need-input-card {
     height: 90vh;
-    overflow: scroll;
-    width: 100%;
+    overflow-y: auto;
+    width: 100%;  
   }
 
   .input-field input:focus + label {

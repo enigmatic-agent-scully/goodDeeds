@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Chip } from 'react-materialize';
+// , Collapsible, CollapsibleItem
 import './style.css';
+// import { debug } from 'util';
 
 // Rewrite as Class with State passing using ID and Handler with calls /api/needs/ POST request
 
@@ -73,26 +75,31 @@ class NeedView extends Component {
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
         <Col s={12} m={6}>
-          <h4 className='subject'>{this.props.subject}</h4>
-          {this.state.gettingAround ? (
-            <i className='material-icons'>directions_car</i>
-          ) : null}
-          {this.state.cleaningUp ? (
-            <i className='material-icons'>delete_sweep</i>
-          ) : null}
-          {this.state.fixingSomething ? (
-            <i className='material-icons'>settings</i>
-          ) : null}
-          {this.state.financialAssistance ? (
-            <i className='material-icons'>monitization_on</i>
-          ) : null}
-          {this.state.moving ? (
-            <i className='material-icons'>card_travel</i>
-          ) : null}
-          {this.state.professionalAssistance ? (
-            <i className='material-icons'>assignment_ind</i>
-          ) : null}{' '}
-          <div className='need-description'>{this.props.description}</div>
+          <Col m={12}>
+            <h4 className='subject'>{this.props.subject}</h4>
+          </Col>
+          <Col m={12}>
+
+            {this.state.gettingAround ? (
+              <i className='material-icons'>directions_car</i>
+            ) : null}
+            {this.state.cleaningUp ? (
+              <i className='material-icons'>delete_sweep</i>
+            ) : null}
+            {this.state.fixingSomething ? (
+              <i className='material-icons'>settings</i>
+            ) : null}
+            {this.state.financialAssistance ? (
+              <i className='material-icons'>monitization_on</i>
+            ) : null}
+            {this.state.moving ? (
+              <i className='material-icons'>card_travel</i>
+            ) : null}
+            {this.state.professionalAssistance ? (
+              <i className='material-icons'>assignment_ind</i>
+            ) : null}{' '}
+            <div className='need-description'>{this.props.description}</div>
+          </Col>
         </Col>
         <Col s={12} m={6}>
           <img src={this.props.imageurl} alt='need' />
@@ -120,13 +127,14 @@ class NeedView extends Component {
                   </div>
                 ) : (
                   <div>
+
                     <Button
                       className='needview-button'
                       key={this.props.key}
                       value={this.props._id}
                       onClick={() => this.props.markResolved(this.props._id)}
                     >
-                        Mark Resolved
+                        Resolved
                     </Button>
                     <Button
                       className='delete-button'
@@ -136,6 +144,7 @@ class NeedView extends Component {
                     >
                       <i className='material-icons'>delete</i>
                     </Button>
+
                     {this.props.goodSamaritins.map(helper => (
                       <Row>
                         <Chip>
@@ -144,7 +153,10 @@ class NeedView extends Component {
                         </Chip>
                       </Row>
                     ))}
+
                   </div>
+
+
                 )}
               </div>
             ) : (

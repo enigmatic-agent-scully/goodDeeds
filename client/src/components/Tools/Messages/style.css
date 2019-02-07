@@ -16,13 +16,17 @@
 
 }
 
+.chip-length{
+  width: 96%;
+}
+
 #datetime {
   float: right;
   margin-bottom: 10px;
 }
 
 .message-text {
-  margin-top: 25px;
+  margin:5px;
 }
 
 .delete-button {
@@ -30,6 +34,18 @@
   margin-left: 10px; */
   background-color: #ee6e73;
   float: right;
-
 }
 
+#message-scroll-box .card-content{
+  padding: 2px;
+}
+
+.delete-icon{
+position: relative;
+top: 12px;
+ padding: 0;
+}
+
+.message-input-txt-box{
+  padding: 50px;
+}
