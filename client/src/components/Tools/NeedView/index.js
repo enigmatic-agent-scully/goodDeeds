@@ -107,101 +107,103 @@ class NeedView extends Component {
         </Col>
         
         <Col s={12} m={6}>
-          <img src={this.props.imageurl} alt='need' />
-          <Row>
-            {this.props.needUser === this.props.currentUserID ? (
-              <div>
-                {this.props.resolved ? (
-                  <div>
-                    <Row>
-                      <Col  className="needview-button-divs" s={12} l={9}>
-                        <Button
-                          className='needview-button'
-                          key={this.props.key}
-                          value={this.props._id}
-                          onClick={() => this.props.markUnresolved(this.props._id)}
-                        >
-                          Mark Unresolved
-                        </Button>
-                      </Col>                   
-                      <Col s={12} l={2}>
-                        <span className="delete-icon"
-                          key={this.props.key}
-                          value={this.props._id}
-                          onClick={() => this.props.deleteNeed(this.props._id)}>
-                          <Icon small red>
-                            delete
-                          </Icon>
-                        </span>
-                      </Col>
-                    </Row>
-
-
-                  </div>
-                ) : (
-                  <div>
-                    <Row>
-                      <Col className="needview-button-divs" s={12} l={9}>
-                        <Button
-                          className='needview-button'
-                          key={this.props.key}
-                          value={this.props._id}
-                          onClick={() => this.props.markResolved(this.props._id)}
-                        >
-                            Mark Resolved
-                        </Button>
-                      </Col>
-
-                      <Col s={12} l={2}>
-                        <span className="delete-icon"
-                          key={this.props.key}
-                          value={this.props._id}
-                          onClick={() => this.props.deleteNeed(this.props._id)}>
-                          <Icon small red >
-                              delete
-                          </Icon>
-                        </span>
-                      </Col>
-                    </Row>
-
-                    {this.props.goodSamaritins.map(helper => (
-                      <div>
-                        <Row>
-                          <Chip>
-                            <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
-                            {helper.userName} has offered to help.
-                          </Chip>
-                        </Row>
-                      </div>
-                    ))}
-
-                  </div>
-
-
-                )}
-              </div>
-            ) : (
-              <div>
-                {
-                  this.props.goodSamaritins.find(
-                    currentGoodSamaritin => currentGoodSamaritin.id === this.props.currentUserID
-                  ) ? (
-                      <Button id='offer-help-button' disabled>Already Contributing</Button>
-                  //need to change this to a state so button becomes disabled on set state
-                  // <Button id='offer-help-button' {this.props.goodSamaritinButton}>Already Contributing</Button>
-                    ) : (
-                      <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
-                    )
-                }
+          <div>
+            <img src={this.props.imageurl} alt='need' />
+            <Row>
+              {this.props.needUser === this.props.currentUserID ? (
                 <div>
-                  <Chip className='chip'>
-                    <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
-                    <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
-                  </Chip>
+                  {this.props.resolved ? (
+                    <div>
+                      <Row>
+                        <Col  className="needview-button-divs" s={12} l={9}>
+                          <Button
+                            className='needview-button'
+                            key={this.props.key}
+                            value={this.props._id}
+                            onClick={() => this.props.markUnresolved(this.props._id)}
+                          >
+                            Mark Unresolved
+                          </Button>
+                        </Col>                   
+                        <Col s={12} l={2}>
+                          <span className="delete-icon"
+                            key={this.props.key}
+                            value={this.props._id}
+                            onClick={() => this.props.deleteNeed(this.props._id)}>
+                            <Icon small red>
+                              delete
+                            </Icon>
+                          </span>
+                        </Col>
+                      </Row>
+
+
+                    </div>
+                  ) : (
+                    <div>
+                      <Row>
+                        <Col className="needview-button-divs" s={12} l={9}>
+                          <Button
+                            className='needview-button'
+                            key={this.props.key}
+                            value={this.props._id}
+                            onClick={() => this.props.markResolved(this.props._id)}
+                          >
+                              Mark Resolved
+                          </Button>
+                        </Col>
+
+                        <Col s={12} l={2}>
+                          <span className="delete-icon"
+                            key={this.props.key}
+                            value={this.props._id}
+                            onClick={() => this.props.deleteNeed(this.props._id)}>
+                            <Icon small red >
+                                delete
+                            </Icon>
+                          </span>
+                        </Col>
+                      </Row>
+
+                      {this.props.goodSamaritins.map(helper => (
+                        <div>
+                          <Row>
+                            <Chip>
+                              <img src='https://gooddeedsimages.s3.amazonaws.com/goodsamaritin.PNG' alt='good samaritin badge' />
+                              {helper.userName} has offered to help.
+                            </Chip>
+                          </Row>
+                        </div>
+                      ))}
+
+                    </div>
+
+
+                  )}
                 </div>
-              </div>
-            )}
-          </Row>
+              ) : (
+                <div>
+                  {
+                    this.props.goodSamaritins.find(
+                      currentGoodSamaritin => currentGoodSamaritin.id === this.props.currentUserID
+                    ) ? (
+                        <Button id='offer-help-button' disabled>Already Contributing</Button>
+                    //need to change this to a state so button becomes disabled on set state
+                    // <Button id='offer-help-button' {this.props.goodSamaritinButton}>Already Contributing</Button>
+                      ) : (
+                        <Button id='offer-help-button' onClick={() => this.props.offerHelp(this.props._id)}>Offer Help</Button>
+                      )
+                  }
+                  <div>
+                    <Chip className='chip'>
+                      <img className='needusericon' src={this.props.needUser.imageurl} alt={this.props.needUser.userName} />
+                      <strong>Need posted by {this.props.needUser.userName}</strong> @<small>{this.props.postdate}</small>
+                    </Chip>
+                  </div>
+                </div>
+              )}
+            </Row>
+          </div>
         </Col>
       </Row>
 
