@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'pacificoregular';
+  src: url('./../Landing/pacifico-webfont.woff2') format('woff2'),
+    url('./../Landing/pacifico-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.brand-logo {
+  size: 9em;
+}
+
 .Main-Page {
   padding-left: 10%;
   padding-right: 10%;
@@ -14,7 +26,7 @@
   z-index: 1;
 }
 
-.hover-over-nav:hover{
+.hover-over-nav:hover {
   text-decoration: underline;
   font-weight: bolder;
 }
@@ -26,17 +38,17 @@
 }
 
 .input-field input:focus + label {
-  color:  rgb(35, 192, 197) !important;
+  color: rgb(35, 192, 197) !important;
 }
 .row .input-field input:focus {
-  border-bottom: 1px solid  rgb(35, 192, 197) !important;
-  box-shadow: 0 1px 0 0  rgb(35, 192, 197) !important
+  border-bottom: 1px solid rgb(35, 192, 197) !important;
+  box-shadow: 0 1px 0 0 rgb(35, 192, 197) !important;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .Main-Page {
     padding-left: 1px;
-    padding-right: 1px; 
+    padding-right: 1px;
   }
 
   .main-body {
