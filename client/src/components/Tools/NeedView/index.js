@@ -75,31 +75,37 @@ class NeedView extends Component {
       // <div className={this.state.scrolled ? '' : 'needview-fixed'}>
       <Row>
         <Col s={12} m={6}>
-          <h4 className='category'>{this.props.category}</h4>
-          <h6 className='subject'>{this.props.subject}</h6>
-          <Col m={12}>
-            {/* 
+          {/* <h4 className='category'>{this.props.category}</h4> */}
+
+          <Col className='category-icon's={12} m={2}>
             {this.state.gettingAround ? (
-              <i className='material-icons'>directions_car</i>
+              <Icon medium>directions_car</Icon>
             ) : null}
             {this.state.cleaningUp ? (
-              <i className='material-icons'>delete_sweep</i>
+              <Icon medium>delete_sweep</Icon>
             ) : null}
             {this.state.fixingSomething ? (
-              <i className='material-icons'>settings</i>
+              <Icon medium>settings</Icon>
             ) : null}
             {this.state.financialAssistance ? (
-              <i className='material-icons'>monitization_on</i>
+              <Icon medium>monitization_on</Icon>
             ) : null}
             {this.state.moving ? (
-              <i className='material-icons'>card_travel</i>
+              <Icon medium>card_travel</Icon>
             ) : null}
             {this.state.professionalAssistance ? (
-              <i className='material-icons'>assignment_ind</i>
+              <Icon medium>assignment_ind</Icon>
             ) : null}{' '}
-            <div className='need-description'>{this.props.description}</div> */}
+          </Col>
+          <Col className='subject-header' s={12} m={10}>
+            <h3>{this.props.subject}</h3>
+          </Col>
+          <Col s={12}>
+            <div className='need-description'>{this.props.description}</div>
+
           </Col>
         </Col>
+        
         <Col s={12} m={6}>
           <img src={this.props.imageurl} alt='need' />
           <Row>
@@ -107,45 +113,51 @@ class NeedView extends Component {
               <div>
                 {this.props.resolved ? (
                   <div>
-                    <Button
-                      className='needview-button'
-                      key={this.props.key}
-                      value={this.props._id}
-                      onClick={() => this.props.markUnresolved(this.props._id)}
-                    >
-                      Mark Unresolved
-                    </Button>
+                    <Row>
+                      <Col  className="needview-button-divs" s={12} l={9}>
+                        <Button
+                          className='needview-button'
+                          key={this.props.key}
+                          value={this.props._id}
+                          onClick={() => this.props.markUnresolved(this.props._id)}
+                        >
+                          Mark Unresolved
+                        </Button>
+                      </Col>                   
+                      <Col s={12} l={2}>
+                        <span className="delete-icon"
+                          key={this.props.key}
+                          value={this.props._id}
+                          onClick={() => this.props.deleteNeed(this.props._id)}>
+                          <Icon small red>
+                            delete
+                          </Icon>
+                        </span>
+                      </Col>
+                    </Row>
 
-                    <span className="delete-icon"
-                      key={this.props.key}
-                      value={this.props._id}
-                      onClick={() => this.props.deleteNeed(this.props._id)}>
-                      <Icon small >
-                        delete
-                      </Icon>
-                    </span>
 
                   </div>
                 ) : (
                   <div>
                     <Row>
-                      <Col className="needview-button-divs" s={11}>
+                      <Col className="needview-button-divs" s={12} l={9}>
                         <Button
                           className='needview-button'
                           key={this.props.key}
                           value={this.props._id}
                           onClick={() => this.props.markResolved(this.props._id)}
                         >
-                            Resolved
+                            Mark Resolved
                         </Button>
                       </Col>
 
-                      <Col s={1}>
+                      <Col s={12} l={2}>
                         <span className="delete-icon"
                           key={this.props.key}
                           value={this.props._id}
                           onClick={() => this.props.deleteNeed(this.props._id)}>
-                          <Icon small >
+                          <Icon small red >
                               delete
                           </Icon>
                         </span>

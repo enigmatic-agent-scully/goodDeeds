@@ -23,7 +23,7 @@ function NeedList(props) {
                   >
                     <Row>
                       <Col s={6}>
-                        <h5>{need.category}</h5>
+                        <h5>{need.subject}</h5>
                       </Col>
                       <Col s={6}>
                         <img src={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl} alt='need' />
@@ -67,19 +67,19 @@ function NeedList(props) {
                   </Card>
                 </Tab>
 
-                <Tab title='Details'>
+                {/* <Tab title='Details'>
                   <Card >
                     <div>{need.description}</div>
                   </Card>
-                </Tab>
+                </Tab> */}
 
               </Tabs>
             </Modal>
           ))}
         </Row>
       ) : (
-        <Card>
-          <h4>No Results to Display</h4>
+        <Card id='no-results'>
+          <h5>No Results to Display</h5>
         </Card>
       )}
     </Row>

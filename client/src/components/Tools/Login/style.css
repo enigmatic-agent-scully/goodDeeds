@@ -5,6 +5,17 @@
     width: 60%;
 }
 
+#login-card {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#new-user-modal {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
 #new-user-button {
     background-color: orange;
     opacity: 80%;

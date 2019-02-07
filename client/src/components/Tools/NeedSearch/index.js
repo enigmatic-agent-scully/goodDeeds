@@ -105,7 +105,7 @@ class NeedSearch extends Component {
           className='cancel-button'
           waves='light'
           onClick={this.props.getNeeds}>
-          Clear
+          Reset
         </Button>
       </Row>
     );

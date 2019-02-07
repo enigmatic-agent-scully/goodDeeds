@@ -16,6 +16,11 @@ img {
     padding:0;
 }
 
+#no-results {
+    text-align: center;
+    padding: 10px;
+}
+
 
 /* #need-box {
     height: 0vh;
