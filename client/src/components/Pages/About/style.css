@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'pacificoregular';
+  src: url('./../Landing/pacifico-webfont.woff2') format('woff2'),
+    url('./../Landing/pacifico-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('./../Landing/GeosansLight.woff2') format('woff2'),
+    url('./../Landing/GeosansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+p {
+  font-family: 'GeosansLight';
+  font-size: 18px;
+  padding: 10px !important;
+}
+
+#top-padding {
+  height: 30vh;
+}
+
+.card-header {
+  font-family: 'pacificoregular';
+  color: orange;
+}

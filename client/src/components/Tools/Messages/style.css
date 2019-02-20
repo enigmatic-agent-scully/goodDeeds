@@ -1,7 +1,6 @@
 .message-button {
   width: 100%;
   margin: 5px 0px 20px 0px;
-
 }
 
 .message-txt {
@@ -15,10 +14,9 @@
 #author,
 #datetime {
   color: grey;
-
 }
 
-.chip-length{
+.chip-length {
   width: 90%;
 }
 
@@ -32,7 +30,7 @@
 }
 
 .message-text {
-  margin:5px;
+  margin: 5px;
 }
 
 .message-cards {
@@ -48,18 +46,18 @@
   float: right;
 }
 
-#message-scroll-box .card-content{
+#message-scroll-box .card-content {
   padding: 2px;
 }
 
-.delete-icon{
+.delete-icon {
   position: relative;
   top: 12px;
   float: right;
   padding: 0;
 }
 
-.message-input-txt-box{
+.message-input-txt-box {
   padding: 50px;
 }
 
@@ -67,6 +65,6 @@
   padding: 2px;
 }
 
-.card{
-  margin:5px 1px;
+.card {
+  margin: 5px 1px;
 }
