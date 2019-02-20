@@ -16,15 +16,23 @@
 
 p {
   font-family: 'GeosansLight';
-  font-size: 18px;
-  padding: 10px !important;
 }
 
 #top-padding {
   height: 30vh;
 }
 
-.card-header {
-  font-family: 'pacificoregular';
-  color: orange;
+@media screen and (min-width: 1300px) {
+  p {
+    font-size: 24px;
+    font-weight: 400;
+    padding: 10px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 18px;
+    padding: 10px !important;
+  }
 }

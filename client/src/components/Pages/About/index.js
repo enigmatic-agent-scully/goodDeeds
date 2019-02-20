@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Card, CardTitle } from 'react-materialize';
+import { Row, Col, Card } from 'react-materialize';
 import { Parallax } from 'react-parallax';
 import './style.css';
 
