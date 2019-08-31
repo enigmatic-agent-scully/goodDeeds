@@ -32,7 +32,9 @@ class GiveHelp extends Component {
     API.getNeeds()
       .then(res => {
         var returnedNeed = res.data;
-        var unresolvedReturnedNeed = returnedNeed.filter(need => !need.resolved);
+        var unresolvedReturnedNeed = returnedNeed.filter(
+          need => !need.resolved
+        );
         this.setState({ needs: unresolvedReturnedNeed });
       })
       .catch(err => console.log(err));
@@ -41,7 +43,7 @@ class GiveHelp extends Component {
   setCenter(lat, lng) {
     this.setState({
       cntLat: lat,
-      cntLng: lng,
+      cntLng: lng
     });
   }
 
@@ -62,8 +64,8 @@ class GiveHelp extends Component {
         const needId = res.data._id;
         const needCategory = res.data.category;
         this.GoodSamaratinRecordUpdate(needId, needCategory);
-      }).catch(err => console.log(err));
-
+      })
+      .catch(err => console.log(err));
   }
 
   handleCloseModal() {
@@ -77,7 +79,6 @@ class GiveHelp extends Component {
       isMapModalOpen: true
     });
   }
-
 
   GoodSamaratinRecordUpdate(needId, needCategory) {
     API.updateGoodSamaratinRecord({ needId, needCategory })
@@ -100,11 +101,18 @@ class GiveHelp extends Component {
                   getNeeds={this.getNeeds}
                 />
               </CollapsibleItem>
-              <CollapsibleItem id='list-collapsible' header='List of Needs' icon='list'>
+              <CollapsibleItem
+                id='list-collapsible'
+                header='List of Needs'
+                icon='list'
+              >
                 <NeedList
                   onHoverEvent={this.setCenter}
                   className='list-view'
-                  needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
+                  needs={this.state.needs.filter(
+                    need =>
+                      need.user._id !== this.props.user._id && !need.resolved
+                  )}
                   currentUserID={this.props.user._id}
                   offerHelp={this.offerHelp}
                   // isModalOpen={this.state.isModalOpen}
@@ -115,7 +123,9 @@ class GiveHelp extends Component {
           </Col>
           <Col s={12} l={8}>
             <MapView
-              needs={this.state.needs.filter(need => need.user._id !== this.props.user._id && !need.resolved)}
+              needs={this.state.needs.filter(
+                need => need.user._id !== this.props.user._id && !need.resolved
+              )}
               cntLat={this.state.cntLat}
               cntLng={this.state.cntLng}
               currentUserID={this.props.user._id}

@@ -16,7 +16,6 @@ class MapView extends Component {
     };
   }
 
-
   render() {
     return (
       <Card>
@@ -36,17 +35,19 @@ class MapView extends Component {
                   className='need-modal-map'
                   open={this.props.isModalOpen}
                   trigger={
-                    <div
-                      className='need-card'
-                      key={need._id}
-                      value={need._id}
-                    >
+                    <div className='need-card' key={need._id} value={need._id}>
                       <Row>
                         <h5>{need.subject}</h5>
                         <p>{need.description}</p>
-                        <img src={!need.imageurl ? 'http://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg' : need.imageurl} alt='need' />
+                        <img
+                          src={
+                            !need.imageurl
+                              ? './No_Image_Available.jpg'
+                              : need.imageurl
+                          }
+                          alt='need'
+                        />
                       </Row>
-
                     </div>
                   }
                 >
@@ -78,7 +79,7 @@ class MapView extends Component {
             </Marker>
           ))}
         </Map>
-      </Card >
+      </Card>
     );
   }
 }
